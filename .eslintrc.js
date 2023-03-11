@@ -14,8 +14,14 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint'],
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+      plugins: ['@typescript-eslint', 'solid', 'jsx-a11y'],
+      extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:solid/typescript',
+        'plugin:jsx-a11y/recommended',
+        'prettier',
+      ],
     },
   ],
 };
