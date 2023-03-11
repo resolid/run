@@ -1,0 +1,11 @@
+{
+  "name": "Resolid Run",
+  "short_name": "resolid-run",
+  "start_url": "/",
+  "description": "Get your app up and running with SolidJS!",
+  "display": "standalone",
+  "icons": [
+    { "src": "/icons/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icons/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
