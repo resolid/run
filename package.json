@@ -6,7 +6,8 @@
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
     "website:dev": "npm run dev -w website",
-    "website:build": "npm run build -w website"
+    "website:build": "npm run build -w website",
+    "prisma": "npm run prisma -w website"
   },
   "workspaces": [
     "./packages/*",
@@ -15,9 +16,9 @@
     "./website"
   ],
   "devDependencies": {
-    "@types/node": "^18.15.1",
-    "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.1",
+    "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
