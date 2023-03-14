@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src", "tsup.config.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["node", "vite/client"]
+  }
+}
