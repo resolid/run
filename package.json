@@ -1,10 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "build": "npm run build -w packages -w packages/adapters",
-    "test": "npm run test -w packages -w packages/adapters --if-present",
+    "prepare": "husky install",
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
+    "build": "npm run build -w packages -w packages/adapters",
+    "test": "npm run test -w packages -w packages/adapters --if-present",
     "website:dev": "npm run dev -w website",
     "website:build": "npm run build -w website",
     "prisma": "npm run prisma -w website"
@@ -24,9 +25,18 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-solid": "^0.11.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.7",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,cjs,mjs,ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mdx,html,css}": "prettier --write"
   }
 }

@@ -19,6 +19,7 @@ export const Html = (props: ComponentProps<'html'>) => {
 
   spread(document.documentElement, props, false, true);
 
+  // eslint-disable-next-line solid/reactivity
   return props.children;
 };
 
@@ -39,11 +40,13 @@ export const Head = (props: ComponentProps<'head'>) => {
 
   spread(document.head, props, false, true);
 
+  // eslint-disable-next-line solid/reactivity
   return props.children;
 };
 
 export const Body = (props: ComponentProps<'body'>) => {
   if (import.meta.env.SSR) {
+    // eslint-disable-next-line solid/reactivity
     return ssrElement('body', props, () => props.children, false) as unknown as JSX.Element;
   }
 

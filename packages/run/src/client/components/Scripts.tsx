@@ -10,8 +10,8 @@ export const Scripts = () => {
       <NoHydration>
         {isServer && isDev && (
           <>
-            <script type="module" src="/@vite/client" $ServerOnly></script>
-            <script type="module" async src={'/@fs/' + import.meta.env.ENTRY_CLIENT} $ServerOnly></script>
+            <script type="module" src="/@vite/client" $ServerOnly />
+            <script type="module" async src={'/@fs/' + import.meta.env.ENTRY_CLIENT} $ServerOnly />
           </>
         )}
       </NoHydration>
