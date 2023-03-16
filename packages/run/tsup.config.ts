@@ -39,6 +39,7 @@ export default defineConfig([
       server: 'src/server/index.ts',
     },
     platform: 'node',
+    target: 'node18',
   },
   {
     ...baseConfig,
@@ -46,5 +47,6 @@ export default defineConfig([
       vite: 'src/vite/index.ts',
     },
     platform: 'node',
+    target: 'node18',
   },
 ]);
