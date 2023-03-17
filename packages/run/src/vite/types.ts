@@ -10,4 +10,4 @@ export type ResolidRunVitePluginOptions = {
   manualChunks?: ManualChunksFunction;
 };
 
-export type ResolidRunViteOptions = ResolidRunVitePluginOptions & Partial<SolidViteOptions>;
+export type ResolidRunViteOptions = ResolidRunVitePluginOptions & Partial<Omit<SolidViteOptions, 'ssr'>>;

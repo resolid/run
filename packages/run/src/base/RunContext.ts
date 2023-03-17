@@ -3,6 +3,7 @@ import { createContext } from 'solid-js';
 type TagDescription = {
   tag: string;
   props: Record<string, unknown>;
+  id: string;
 };
 
 type ContextMatches = {
@@ -19,6 +20,7 @@ type RouterContext = {
 
 export type RunContextValue = {
   tags?: TagDescription[];
+  manifest: any;
   routerContext?: RouterContext;
 };
 

@@ -1,6 +1,6 @@
 import type { JSX } from 'solid-js';
 import { children, ComponentProps, useContext } from 'solid-js';
-import { insert, spread, ssr, ssrElement, useAssets } from 'solid-js/web';
+import { escape, insert, spread, ssr, ssrElement, useAssets } from 'solid-js/web';
 import { RunContext } from '../../base/RunContext';
 import { renderTags } from '@solidjs/meta';
 
@@ -30,7 +30,7 @@ export const Head = (props: ComponentProps<'head'>) => {
       props,
       () => (
         <>
-          {props.children}
+          {escape(props.children as string)}
           <Meta />
         </>
       ),
@@ -47,7 +47,7 @@ export const Head = (props: ComponentProps<'head'>) => {
 export const Body = (props: ComponentProps<'body'>) => {
   if (import.meta.env.SSR) {
     // eslint-disable-next-line solid/reactivity
-    return ssrElement('body', props, () => props.children, false) as unknown as JSX.Element;
+    return ssrElement('body', props, () => escape(props.children as string), false) as unknown as JSX.Element;
   }
 
   const child = children(() => props.children);
