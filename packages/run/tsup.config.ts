@@ -1,4 +1,4 @@
-import { defineConfig, Options } from 'tsup';
+import { defineConfig, type Options } from 'tsup';
 import { dependencies, devDependencies, peerDependencies } from './package.json';
 import { solidPlugin } from 'esbuild-plugin-solid';
 

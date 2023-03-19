@@ -1,8 +1,8 @@
 import {
   createEffect,
   ErrorBoundary as ErrorBoundaryBase,
-  JSX,
-  ParentProps,
+  type JSX,
+  type ParentProps,
   resetErrorBoundaries,
   Show,
 } from 'solid-js';

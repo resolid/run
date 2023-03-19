@@ -1,4 +1,4 @@
-import { createContext } from 'solid-js';
+import { createContext, useContext } from 'solid-js';
 
 type TagDescription = {
   tag: string;
@@ -6,22 +6,17 @@ type TagDescription = {
   id: string;
 };
 
-type ContextMatches = {
-  originalPath: string;
-  pattern: string;
-  path: string;
-  params: unknown;
-};
-
-type RouterContext = {
-  matches?: ContextMatches[][];
-  url?: string;
+export type ManifestEntry = {
+  type: string;
+  href: string;
 };
 
 export type RunContextValue = {
   tags?: TagDescription[];
-  manifest: any;
-  routerContext?: RouterContext;
+  manifest?: Record<string, ManifestEntry[]>;
+  components?: Set<string>;
 };
 
 export const RunContext = createContext<RunContextValue>({} as unknown as RunContextValue);
+
+export const useRunContext = () => useContext(RunContext);

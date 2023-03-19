@@ -27,7 +27,11 @@ export const dev = (viteServer: ViteDevServer) => {
           }
         }
 
-        const response = await handle(req, res.statusCode, headers, { tags: [], manifest: [], routerContext: {} });
+        const response = await handle(req, res.statusCode, headers, {
+          tags: [],
+          components: new Set(),
+          manifest: [],
+        });
 
         res.writeHead(response.status, response.headers);
 

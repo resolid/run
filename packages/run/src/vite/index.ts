@@ -1,12 +1,20 @@
 import type { ResolidRunViteOptions } from './types';
 import type { Plugin, ResolvedConfig, UserConfig } from 'vite';
+import { build } from 'vite';
 import solidVitePlugin from 'vite-plugin-solid';
 import { chunkSplitPlugin } from './plugins/split-chunk';
 import { findAny } from './utils/file';
 import { join } from 'node:path';
 import { solidPlugin } from 'esbuild-plugin-solid';
 import { dev } from './node/dev';
-import { build } from 'vite';
+import type * as Babel from '@babel/core';
+import { parse } from '@babel/parser';
+import _traverse from '@babel/traverse';
+import { isReturnJsxElement } from './utils/babel';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const traverse = _traverse.default;
 
 let secondaryBuildStarted = false;
 
@@ -79,6 +87,79 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
         viteConfig = config;
       },
     } as Plugin,
+    {
+      name: 'vite-plugin-resolid-run-route',
+      enforce: 'pre',
+      apply: 'build',
+      transform(source, id, transformOptions) {
+        if (transformOptions?.ssr && id.includes('.tsx') && id != rootEntry && id != serverEntry) {
+          const componentId = id.replace(root + '/', '');
+
+          const ast = parse(source, {
+            sourceType: 'module',
+            attachComment: false,
+            plugins: ['typescript', 'jsx'],
+          });
+
+          let componentPath:
+            | Babel.NodePath<Babel.types.ArrowFunctionExpression | Babel.types.FunctionDeclaration>
+            | undefined;
+          let hasUseRunContext = false;
+
+          traverse(ast, {
+            ImportDeclaration(path: Babel.NodePath<Babel.types.ImportDeclaration>) {
+              if (path.node.source.value === '@resolid/run') {
+                hasUseRunContext =
+                  path.node.specifiers.findIndex((specifier) => {
+                    return (
+                      specifier.type == 'ImportSpecifier' &&
+                      specifier.imported &&
+                      specifier.imported.type == 'Identifier' &&
+                      specifier.imported.name === 'useRunContext'
+                    );
+                  }) >= 0;
+              }
+            },
+            ExportDefaultDeclaration(path: Babel.NodePath<Babel.types.ExportDefaultDeclaration>) {
+              const declaration = path.get('declaration');
+
+              if (declaration.isFunctionDeclaration() && isReturnJsxElement(declaration.node.body)) {
+                componentPath = declaration;
+              }
+
+              if (declaration.isIdentifier()) {
+                const binding = path.scope.getBinding(declaration.node.name);
+
+                if (binding) {
+                  if (binding.path.isVariableDeclarator()) {
+                    const init = binding.path.get('init') as Babel.NodePath<Babel.types.ArrowFunctionExpression>;
+
+                    if (init && init.isArrowFunctionExpression() && isReturnJsxElement(init.node.body)) {
+                      componentPath = init;
+                    }
+                  }
+
+                  if (binding.path.isFunctionDeclaration() && isReturnJsxElement(binding.path.node.body)) {
+                    componentPath = binding.path;
+                  }
+                }
+              }
+            },
+          });
+
+          if (componentPath) {
+            const importStatement = hasUseRunContext ? '' : 'import { useRunContext } from "@resolid/run";';
+            const injectionCode = `useRunContext().components?.add(${JSON.stringify(componentId)});`;
+
+            const injectionPoint = componentPath.node.body.start ?? 0;
+
+            return (
+              importStatement + source.slice(0, injectionPoint + 1) + injectionCode + source.slice(injectionPoint + 1)
+            );
+          }
+        }
+      },
+    } as Plugin,
     solidVitePlugin({ ...solidViteOptions, ssr: true }),
     {
       name: 'vite-plugin-resolid-run-server',
@@ -101,6 +182,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
             return {
               build: {
                 ssr: true,
+                minify: false,
                 rollupOptions: {
                   input: serverEntry,
                   output: {
@@ -118,7 +200,6 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
               build: {
                 outDir: join(root, 'dist', 'public'),
                 manifest: true,
-                ssrManifest: true,
                 rollupOptions: {
                   input: clientEntry,
                   output: {

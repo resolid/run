@@ -11,7 +11,7 @@
 
     // Emit
     "noEmit": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
 
     // JavaScript Support
     "allowJs": true,
@@ -19,7 +19,6 @@
     // Interop Constraints
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
 
     // Language and Environment
     "lib": ["DOM", "DOM.Iterable", "ESNext"],

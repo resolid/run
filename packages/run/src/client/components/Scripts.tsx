@@ -1,9 +1,8 @@
 import { HydrationScript, NoHydration } from 'solid-js/web';
-import { useContext } from 'solid-js';
-import { RunContext } from '../../base/RunContext';
+import { useRunContext } from '../../base/RunContext';
 
 export const Scripts = () => {
-  const context = useContext(RunContext);
+  const context = useRunContext();
 
   // noinspection HtmlUnknownTarget
   return (
@@ -17,7 +16,7 @@ export const Scripts = () => {
           </>
         ) : (
           <>
-            <script type="module" async src={context.manifest['entry-client'][0].href} $ServerOnly />
+            <script type="module" async src={context.manifest?.['entry-client'][0].href} $ServerOnly />
           </>
         )}
       </NoHydration>

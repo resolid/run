@@ -1,6 +1,6 @@
 import {
   A as BaseA,
-  LinkProps,
+  type LinkProps,
   Outlet as BaseOutlet,
   Router as BaseRouter,
   Routes as BaseRoutes,

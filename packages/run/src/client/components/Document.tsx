@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js';
-import { children, ComponentProps, useContext } from 'solid-js';
+import { children, type ComponentProps, useContext } from 'solid-js';
 import { escape, insert, spread, ssr, ssrElement, useAssets } from 'solid-js/web';
 import { RunContext } from '../../base/RunContext';
 import { renderTags } from '@solidjs/meta';
@@ -8,6 +8,20 @@ const Meta = () => {
   const context = useContext(RunContext);
   // @ts-expect-error The ssr() types do not match the Assets child types
   useAssets(() => ssr(renderTags(context.tags)));
+
+  return null;
+};
+
+const Links = () => {
+  const context = useContext(RunContext);
+
+  if (!import.meta.env.DEV) {
+    useAssets(() => {
+      console.log(context.components);
+
+      return undefined;
+    });
+  }
 
   return null;
 };
@@ -32,6 +46,7 @@ export const Head = (props: ComponentProps<'head'>) => {
         <>
           {escape(props.children as string)}
           <Meta />
+          <Links />
         </>
       ),
       false
