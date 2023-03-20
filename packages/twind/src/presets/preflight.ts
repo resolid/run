@@ -1,65 +1,49 @@
-import { css } from '@twind/core';
+import { type Preflight } from '@twind/core';
+import theme from './theme';
 
 // FROM: https://www.joshwcomeau.com/css/custom-css-reset/
 
-export default css`
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+const preflight: Preflight = {
+  '*, *::before, *::after': {
+    boxSizing: 'border-box',
+  },
+  '*': {
+    margin: '0',
+  },
+  'body,html': {
+    height: '100%',
+  },
+  html: {
+    colorScheme: 'light',
+    fontFamily: `theme(fontFamily.sans, ${theme.fontFamily.sans})`,
+  },
+  body: {
+    fontSize: `theme(fontSize.base[0], ${theme.fontSize.base[0]})`,
+    lineHeight: `theme(fontSize.base[1], ${theme.fontSize.base[1]})`,
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+  },
+  '.dark': {
+    colorScheme: 'dark',
+  },
+  'img,picture,video,canvas,svg': {
+    display: 'block',
+    maxWidth: '100%',
+  },
+  'input,button,textarea,select': {
+    font: 'initial',
+  },
+  button: {
+    border: 'none',
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+  },
+  'p,h1,h2,h3,h4,h5,h6': {
+    overflowWrap: 'break-word',
+  },
+  'code,pre,samp,kbd': {
+    fontFamily: `theme(fontFamily.mono, ${theme.fontFamily.mono})`,
+  },
+};
 
-  * {
-    margin: 0;
-  }
-
-  html,
-  body {
-    height: 100%;
-  }
-
-  html {
-    @apply font-sans;
-    color-scheme: light;
-  }
-
-  body {
-    @apply text-base antialiased;
-  }
-
-  .dark {
-    color-scheme: dark;
-  }
-
-  img,
-  picture,
-  video,
-  canvas,
-  svg {
-    display: block;
-    max-width: 100%;
-  }
-
-  input,
-  button,
-  textarea,
-  select {
-    font: inherit;
-  }
-
-  button {
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-  }
-
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    overflow-wrap: break-word;
-  }
-`;
+export default preflight;

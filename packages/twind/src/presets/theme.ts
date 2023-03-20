@@ -1,3 +1,5 @@
+// noinspection ES6ConvertVarToLetConst
+
 import type { ThemeSection, ThemeSectionResolver } from '@twind/core';
 import type { AgileTheme } from '../types/types';
 import screens from '../tokens/screens';
