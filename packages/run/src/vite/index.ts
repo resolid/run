@@ -5,12 +5,14 @@ import solidVitePlugin from 'vite-plugin-solid';
 import { chunkSplitPlugin } from './plugins/split-chunk';
 import { findAny } from './utils/file';
 import { join } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { solidPlugin } from 'esbuild-plugin-solid';
 import { dev } from './node/dev';
 import type * as Babel from '@babel/core';
 import { parse } from '@babel/parser';
 import _traverse from '@babel/traverse';
 import { isReturnJsxElement } from './utils/babel';
+import { prepareManifest } from './utils/manifest';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -27,9 +29,11 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
     ...solidViteOptions
   } = options;
 
-  let root: string, rootEntry: string, clientEntry: string, serverEntry: string;
+  let root: string, rootEntry: string, clientEntry: string, serverEntry: string, clientOutPath: string;
   let isBuild: boolean;
   let viteConfig: ResolvedConfig;
+
+  const routeComponents = new Set<string>();
 
   return [
     {
@@ -42,6 +46,8 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
         rootEntry = _rootEntry ?? (findAny(join(root, 'src'), 'root') as string);
         clientEntry = _clientEntry ?? (findAny(join(root, 'src'), 'entry-client') as string);
         serverEntry = _serverEntry ?? (findAny(join(root, 'src'), 'entry-server') as string);
+
+        clientOutPath = join(root, 'dist', 'public');
 
         const config: UserConfig = {
           root,
@@ -148,6 +154,8 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
           });
 
           if (componentPath) {
+            routeComponents.add(componentId);
+
             const importStatement = hasUseRunContext ? '' : 'import { useRunContext } from "@resolid/run";';
             const injectionCode = `useRunContext().components?.add(${JSON.stringify(componentId)});`;
 
@@ -198,8 +206,9 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
             return {
               appType: 'custom',
               build: {
-                outDir: join(root, 'dist', 'public'),
+                outDir: clientOutPath,
                 manifest: true,
+                ssrManifest: true,
                 rollupOptions: {
                   input: clientEntry,
                   output: {
@@ -227,6 +236,14 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
               force: viteConfig.optimizeDeps.force,
             },
           });
+
+          const manifest = JSON.parse(readFileSync(join(clientOutPath, 'manifest.json')).toString());
+          const ssrManifest = JSON.parse(readFileSync(join(clientOutPath, 'ssr-manifest.json')).toString());
+
+          writeFileSync(
+            join(clientOutPath, 'route-manifest.json'),
+            JSON.stringify(prepareManifest(manifest, ssrManifest, routeComponents, viteConfig.base), null, 2)
+          );
         },
       },
     } as Plugin,
