@@ -1,5 +1,5 @@
 import type { ViteDevServer } from 'vite';
-import { getRequest, setResponse } from '../../node';
+import { createHeaders, createRequest, handleResponse } from '../../node';
 
 export const dev = (viteServer: ViteDevServer) => {
   return () => {
@@ -9,27 +9,13 @@ export const dev = (viteServer: ViteDevServer) => {
       try {
         const handle = (await viteServer.ssrLoadModule('~resolid-run/entry-server')).default;
 
-        const headers = new Headers();
-
-        for (const [key, values] of Object.entries(res.getHeaders())) {
-          if (values) {
-            if (Array.isArray(values)) {
-              for (const value of values) {
-                headers.append(key, value);
-              }
-            } else {
-              headers.set(key, values.toString());
-            }
-          }
-        }
-
-        const response = await handle(req, res.statusCode, headers, {
+        const response = await handle(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
           tags: [],
           components: new Set(),
           manifest: [],
         });
 
-        await setResponse(res, response);
+        await handleResponse(res, response);
       } catch (e) {
         viteServer.ssrFixStacktrace(e as unknown as Error);
         res.statusCode = 500;

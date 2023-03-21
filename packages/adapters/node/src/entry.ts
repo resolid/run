@@ -3,13 +3,11 @@ import polka from 'polka';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { type ServerResponse, type IncomingMessage } from 'http';
-import { setResponse } from '@resolid/run/node';
+import { handleResponse, createHeaders, createRequest } from '@resolid/run/node';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-expect-error Cannot find module
 import manifest from '../../dist/public/route-manifest.json';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-expect-error Cannot find module
 import handlerRequest from './entry-server.js';
 
 const { PORT = 3000 } = process.env;
@@ -27,27 +25,21 @@ const assets = sirv(join(__dirname, '/public'), {
 });
 
 const render = async (req: IncomingMessage, res: ServerResponse) => {
-  const headers = new Headers();
+  try {
+    const response = handlerRequest(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
+      tags: [],
+      components: new Set(),
+      manifest: manifest,
+    });
 
-  for (const [key, values] of Object.entries(res.getHeaders())) {
-    if (values) {
-      if (Array.isArray(values)) {
-        for (const value of values) {
-          headers.append(key, value);
-        }
-      } else {
-        headers.set(key, values.toString());
-      }
-    }
+    await handleResponse(res, response);
+  } catch (err) {
+    console.error(err);
+
+    res.statusCode = 500;
+    res.statusMessage = 'Internal Server Error';
+    res.end();
   }
-
-  const response = handlerRequest(req, res.statusCode, headers, {
-    tags: [],
-    components: new Set(),
-    manifest: manifest,
-  });
-
-  await setResponse(res, response);
 };
 
 const server = polka().use('/', assets).use(render);

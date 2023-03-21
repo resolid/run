@@ -2,6 +2,7 @@ import { Body, Head, Html, Link, Meta, Routes, Scripts, Title, ErrorBoundary } f
 import { Suspense } from 'solid-js';
 import routes from './routes';
 
+// noinspection JSUnusedGlobalSymbols
 export default function Root() {
   return (
     <Html lang="zh-CN">

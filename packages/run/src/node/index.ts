@@ -2,30 +2,15 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
 import { once } from 'node:events';
 import { installPolyfills } from './polyfills';
+import { type OutgoingHttpHeaders, type IncomingHttpHeaders } from 'http';
 
 installPolyfills();
 
-declare module 'net' {
-  interface Socket {
-    encrypted?: boolean;
-  }
-}
+export const createRequest = (req: IncomingMessage) => {
+  // noinspection HttpUrlsUsage
+  const origin = req.headers.origin || `http://${req.headers.host}`;
+  const url = new URL(req.url ?? '', origin);
 
-declare module 'http' {
-  interface IncomingMessage {
-    ip?: string;
-    protocol?: string;
-  }
-}
-
-const getOrigin = (req: IncomingMessage): string => {
-  const protocol = req.protocol || (req.socket?.encrypted && 'https') || 'http';
-  const host = req.headers.host;
-
-  return `${protocol}://${host}`;
-};
-
-export const getRequest = (req: IncomingMessage) => {
   const body =
     req.method === 'GET' || req.method === 'HEAD'
       ? undefined
@@ -39,18 +24,35 @@ export const getRequest = (req: IncomingMessage) => {
           },
         });
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return new Request(req.url!, {
+  return new Request(url.href, {
     method: req.method,
-    headers: req.headers as HeadersInit,
+    headers: createHeaders(req.headers),
     body,
     // @ts-expect-error Argument of type
     duplex: 'half',
   });
 };
 
+export const createHeaders = (outgoingHeaders: OutgoingHttpHeaders | IncomingHttpHeaders) => {
+  const headers = new Headers();
+
+  for (const [key, values] of Object.entries(outgoingHeaders)) {
+    if (values) {
+      if (Array.isArray(values)) {
+        for (const value of values) {
+          headers.append(key, value);
+        }
+      } else {
+        headers.set(key, values.toString());
+      }
+    }
+  }
+
+  return headers;
+};
+
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export const setResponse = async (res: ServerResponse, response: any) => {
+export const handleResponse = async (res: ServerResponse, response: any) => {
   res.writeHead(response.status, response.headers);
 
   if (!response.body) {
