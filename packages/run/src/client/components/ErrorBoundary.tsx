@@ -14,10 +14,9 @@ const ErrorMessage = (props: { error: Error }) => {
     <div style={{ padding: '16px' }}>
       <div
         style={{
-          'background-color': 'rgba(252, 165, 165)',
-          color: 'rgb(153, 27, 27)',
+          'background-color': '#FABBB4',
+          color: '#A1160A',
           'border-radius': '5px',
-          overflow: 'scroll',
           padding: '16px',
           'margin-bottom': '8px',
         }}
@@ -29,15 +28,15 @@ const ErrorMessage = (props: { error: Error }) => {
           id="reset-errors"
           onClick={resetErrorBoundaries}
           style={{
-            color: 'rgba(252, 165, 165)',
-            'background-color': 'rgb(153, 27, 27)',
+            color: '#FADCD9',
+            'background-color': '#A1160A',
             'border-radius': '5px',
-            padding: '4px 8px',
+            padding: '5px 10px',
           }}
         >
           Clear errors and retry
         </button>
-        <pre style={{ 'margin-top': '8px', width: '100%' }}>{props.error.stack}</pre>
+        <pre style={{ 'margin-top': '8px', width: '100%', 'white-space': 'pre-line' }}>{props.error.stack}</pre>
       </div>
     </div>
   );
