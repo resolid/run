@@ -2,6 +2,8 @@
   "name": "Resolid Run",
   "short_name": "resolid-run",
   "start_url": "/",
+  "theme_color": "#4586be",
+  "background_color": "#ffffff",
   "description": "Get your app up and running with SolidJS!",
   "display": "standalone",
   "icons": [
