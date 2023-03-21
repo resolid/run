@@ -11,7 +11,7 @@ const BaseLayout = () => {
             <div class={'relative flex flex-wrap items-center justify-between gap-6 desktop:gap-0 desktop:py-4'}>
               <div class={'relative z-20 flex w-full justify-between tablet:px-0 desktop:w-max'}>
                 <A href={'/'}>
-                  <img class={'h-8 w-auto'} height="32" width="129" alt={'Resolid Run'} src={ResolidBanner} />
+                  <img height={32} width={129} alt={'Resolid Run'} src={ResolidBanner} />
                 </A>
               </div>
               <div
