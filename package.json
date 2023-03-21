@@ -4,12 +4,13 @@
     "prepare": "husky install",
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
-    "build": "npm run build -w packages -w packages/adapters",
-    "test": "npm run test -w packages -w packages/adapters --if-present",
-    "website:dev": "npm run dev -w website",
-    "website:build": "npm run build -w website",
-    "website:serve": "npm run serve -w website",
-    "prisma": "npm run prisma -w website"
+    "build": "npm run build --workspace=packages --workspace packages/adapters",
+    "test": "npm run test --workspace=packages --workspace packages/adapters --if-present",
+    "website:dev": "npm run dev --workspace=website",
+    "website:build": "npm run build --workspace=website",
+    "website:serve": "npm run serve --workdpace=website",
+    "website:deploy": "npm run build && npm run website:build",
+    "prisma": "npm run prisma --workspace=website"
   },
   "workspaces": [
     "./packages/*",

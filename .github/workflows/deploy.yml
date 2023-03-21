@@ -22,7 +22,7 @@ jobs:
 
       - name: Build
         shell: 'bash'
-        run: npm run website:build
+        run: npm run website:deploy
 
       - name: Deploy
         uses: Burnett01/rsync-deployments@5.2.1
