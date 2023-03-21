@@ -7,7 +7,7 @@ import { findAny } from './utils/file';
 import { join } from 'node:path';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { solidPlugin } from 'esbuild-plugin-solid';
-import { dev } from './node/dev';
+import { dev } from './serve/dev';
 import type * as Babel from '@babel/core';
 import { parse } from '@babel/parser';
 import _traverse from '@babel/traverse';

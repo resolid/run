@@ -1,6 +1,9 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
 import { once } from 'node:events';
+import { installPolyfills } from './polyfills';
+
+installPolyfills();
 
 declare module 'net' {
   interface Socket {

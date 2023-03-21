@@ -23,6 +23,11 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
+    "./node": {
+      "import": "./dist/node.js",
+      "require": "./dist/node.cjs",
+      "types": "./dist/node.d.ts"
+    },
     "./server": {
       "import": "./dist/server.js",
       "require": "./dist/server.cjs",
@@ -38,6 +43,9 @@
     "*": {
       "*": [
         "./dist/index.d.ts"
+      ],
+      "node": [
+        "./dist/node.d.ts"
       ],
       "server": [
         "./dist/server.d.ts"

@@ -1,10 +1,7 @@
 import type { ViteDevServer } from 'vite';
-import { installPolyfills } from '../utils/polyfills';
-import { getRequest, setResponse } from './http';
+import { getRequest, setResponse } from '../../node';
 
 export const dev = (viteServer: ViteDevServer) => {
-  installPolyfills();
-
   return () => {
     viteServer.middlewares.use(async (req, res) => {
       console.log(req.method, new URL(req.url ?? '', viteServer.resolvedUrls?.local[0]).href);

@@ -3,6 +3,7 @@ import polka from 'polka';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { type ServerResponse, type IncomingMessage } from 'http';
+import { setResponse } from '@resolid/run/node';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -10,8 +11,6 @@ import manifest from '../../dist/public/route-manifest.json';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import handlerRequest from './entry-server.js';
-import { Readable } from 'node:stream';
-import { once } from 'node:events';
 
 const { PORT = 3000 } = process.env;
 
@@ -48,17 +47,7 @@ const render = async (req: IncomingMessage, res: ServerResponse) => {
     manifest: manifest,
   });
 
-  res.writeHead(response.status, response.headers);
-
-  if (!response.body) {
-    res.end();
-    return;
-  }
-
-  const readable = Readable.from(response.body);
-  readable.pipe(res);
-
-  await once(readable, 'end');
+  await setResponse(res, response);
 };
 
 const server = polka().use('/', assets).use(render);

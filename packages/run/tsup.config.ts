@@ -36,6 +36,14 @@ export default defineConfig([
   {
     ...baseConfig,
     entry: {
+      node: 'src/node/index.ts',
+    },
+    platform: 'node',
+    target: 'node18',
+  },
+  {
+    ...baseConfig,
+    entry: {
       server: 'src/server/index.ts',
     },
     platform: 'node',
