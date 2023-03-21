@@ -7,6 +7,8 @@ export type ResolidRunVitePluginOptions = {
   clientEntry?: string;
   serverEntry?: string;
 
+  inspect?: boolean;
+
   manualChunks?: ManualChunksFunction;
 };
 

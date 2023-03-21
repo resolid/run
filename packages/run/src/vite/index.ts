@@ -7,6 +7,7 @@ import { findAny } from './utils/file';
 import { join } from 'node:path';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { solidPlugin } from 'esbuild-plugin-solid';
+import viteInspect from 'vite-plugin-inspect';
 import { dev } from './serve/dev';
 import type * as Babel from '@babel/core';
 import { parse } from '@babel/parser';
@@ -27,6 +28,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
     rootEntry: _rootEntry,
     clientEntry: _clientEntry,
     serverEntry: _serverEntry,
+    inspect = true,
     manualChunks,
     ...solidViteOptions
   } = options;
@@ -172,6 +174,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
         }
       },
     } as Plugin,
+    inspect && viteInspect({ build: true, outputDir: join('.resolid', 'inspect') }),
     solidVitePlugin({ ...solidViteOptions, ssr: true }),
     {
       name: 'vite-plugin-resolid-run-server',

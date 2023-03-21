@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import resolid from '@resolid/run/vite';
-import inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
   plugins: [
@@ -22,11 +21,5 @@ export default defineConfig({
         }
       },
     }),
-    inspect(),
   ],
-  preview: {
-    headers: {
-      'Cache-Control': 'public, max-age=600',
-    },
-  },
 });

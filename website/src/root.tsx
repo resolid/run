@@ -1,3 +1,4 @@
+/* @refresh reload */
 import { Body, Head, Html, Link, Meta, Routes, Scripts, Title, ErrorBoundary } from '@resolid/run';
 import { Suspense } from 'solid-js';
 import routes from './routes';
@@ -17,7 +18,7 @@ export default function Root() {
         <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <Link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
-      <Body>
+      <Body class={'min-h-screen bg-white'}>
         <ErrorBoundary>
           <Suspense fallback={'Loading...'}>
             <Routes base={import.meta.env.BASE_URL}>{routes as never}</Routes>
