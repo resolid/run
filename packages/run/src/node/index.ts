@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
 import { once } from 'node:events';
+import { splitCookiesString } from 'set-cookie-parser';
 import { installPolyfills } from './polyfills';
 import { type OutgoingHttpHeaders, type IncomingHttpHeaders } from 'http';
 
@@ -51,16 +52,24 @@ export const createHeaders = (outgoingHeaders: OutgoingHttpHeaders | IncomingHtt
   return headers;
 };
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export const handleResponse = async (res: ServerResponse, response: any) => {
-  res.writeHead(response.status, response.headers);
+export const handleResponse = async (res: ServerResponse, response: Response) => {
+  res.statusCode = response.status;
+  res.statusMessage = response.statusText;
+
+  for (const [name, value] of response.headers) {
+    if (name == 'set-cookie') {
+      res.setHeader(name, splitCookiesString(value));
+    } else {
+      res.setHeader(name, value);
+    }
+  }
 
   if (!response.body) {
     res.end();
     return;
   }
 
-  const readable = Readable.from(response.body);
+  const readable = Readable.from(response.body as never);
   readable.pipe(res);
 
   await once(readable, 'end');
