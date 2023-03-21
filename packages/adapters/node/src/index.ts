@@ -27,10 +27,14 @@ export default function () {
           }),
           common({ strictRequires: true, ...commonjsOptions }),
         ],
-        external: ['undici', 'stream/web', ...ssrExternal],
+        external: [...ssrExternal],
       });
 
-      await bundle.write({ format: 'esm', dir: join(root, 'dist'), inlineDynamicImports: true });
+      await bundle.write({
+        format: 'esm',
+        file: join(root, 'dist', 'server.mjs'),
+        inlineDynamicImports: true,
+      });
 
       await bundle.close();
     },
