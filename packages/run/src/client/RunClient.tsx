@@ -5,6 +5,7 @@ import { RunContext } from '../base/RunContext';
 // @ts-expect-error Cannot find module
 import Root from '~resolid-run/root';
 
+// noinspection JSUnusedGlobalSymbols
 export const RunClient = () => {
   return (
     <RunContext.Provider value={{}}>

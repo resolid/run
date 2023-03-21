@@ -1,6 +1,7 @@
 import { HydrationScript, NoHydration } from 'solid-js/web';
 import { useRunContext } from '../../base/RunContext';
 
+// noinspection JSUnusedGlobalSymbols
 export const Scripts = () => {
   const context = useRunContext();
 

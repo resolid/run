@@ -1,7 +1,6 @@
 import type { ViteDevServer } from 'vite';
 import { installPolyfills } from '../utils/polyfills';
-import { Readable } from 'node:stream';
-import { once } from 'node:events';
+import { getRequest, setResponse } from './http';
 
 export const dev = (viteServer: ViteDevServer) => {
   installPolyfills();
@@ -33,17 +32,7 @@ export const dev = (viteServer: ViteDevServer) => {
           manifest: [],
         });
 
-        res.writeHead(response.status, response.headers);
-
-        if (!response.body) {
-          res.end();
-          return;
-        }
-
-        const readable = Readable.from(response.body);
-        readable.pipe(res);
-
-        await once(readable, 'end');
+        await setResponse(res, response);
       } catch (e) {
         viteServer.ssrFixStacktrace(e as unknown as Error);
         res.statusCode = 500;

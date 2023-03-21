@@ -13,6 +13,7 @@ import { parse } from '@babel/parser';
 import _traverse from '@babel/traverse';
 import { isReturnJsxElement } from './utils/babel';
 import { prepareManifest } from './utils/manifest';
+import { resolveAdapter } from './utils/adapter';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -22,6 +23,7 @@ let secondaryBuildStarted = false;
 
 export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[] {
   const {
+    adapter = '@resolid/run-node',
     rootEntry: _rootEntry,
     clientEntry: _clientEntry,
     serverEntry: _serverEntry,
@@ -32,6 +34,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
   let root: string, rootEntry: string, clientEntry: string, serverEntry: string, clientOutPath: string;
   let isBuild: boolean;
   let viteConfig: ResolvedConfig;
+  let finalise: () => Promise<void>;
 
   const routeComponents = new Set<string>();
 
@@ -112,6 +115,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
             | undefined;
           let hasUseRunContext = false;
 
+          // noinspection JSUnusedGlobalSymbols
           traverse(ast, {
             ImportDeclaration(path: Babel.NodePath<Babel.types.ImportDeclaration>) {
               if (path.node.source.value === '@resolid/run') {
@@ -189,6 +193,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
           if (ssr) {
             return {
               build: {
+                outDir: join('.resolid', 'server'),
                 ssr: true,
                 minify: false,
                 rollupOptions: {
@@ -244,6 +249,22 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
             join(clientOutPath, 'route-manifest.json'),
             JSON.stringify(prepareManifest(manifest, ssrManifest, routeComponents, viteConfig.base), null, 2)
           );
+
+          finalise = async () => {
+            const adapt = await resolveAdapter(adapter);
+
+            await adapt.build(viteConfig.root, viteConfig.ssr.external, viteConfig.build.commonjsOptions);
+          };
+        },
+      },
+      closeBundle: {
+        sequential: true,
+        async handler() {
+          if (!viteConfig.build.ssr) {
+            return;
+          }
+
+          await finalise?.();
         },
       },
     } as Plugin,

@@ -81,6 +81,7 @@ export const chunkSplitPlugin = ({ manualChunks }: { manualChunks?: ManualChunks
     }
   };
 
+  // noinspection TypeScriptValidateTypes,JSUnusedGlobalSymbols
   return {
     name: 'vite-plugin-split-chunk',
     async config(userConfig) {

@@ -1,0 +1,34 @@
+{
+  "name": "@resolid/run-node",
+  "version": "0.1.1",
+  "type": "module",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "@resolid/run": "*",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "polka": "1.0.0-next.22",
+    "rollup": "^3.20.0",
+    "sirv": "^2.0.2"
+  },
+  "peerDependencies": {
+    "@resolid/run": "*",
+    "polka": "1.0.0-next.22",
+    "sirv": "^2.0.2"
+  }
+}

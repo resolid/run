@@ -1,11 +1,11 @@
-import type { JSX } from 'solid-js';
-import { children, type ComponentProps, useContext } from 'solid-js';
+import type { JSX, JSXElement } from 'solid-js';
+import { children, type ComponentProps } from 'solid-js';
 import { escape, insert, spread, ssr, ssrElement, useAssets } from 'solid-js/web';
-import { RunContext } from '../../base/RunContext';
+import { useRunContext } from '../../base/RunContext';
 import { renderTags } from '@solidjs/meta';
 
 const Meta = () => {
-  const context = useContext(RunContext);
+  const context = useRunContext();
   // @ts-expect-error The ssr() types do not match the Assets child types
   useAssets(() => ssr(renderTags(context.tags)));
 
@@ -13,19 +13,31 @@ const Meta = () => {
 };
 
 const Links = () => {
-  const context = useContext(RunContext);
+  const context = useRunContext();
 
   if (!import.meta.env.DEV) {
     useAssets(() => {
-      console.log(context.components);
+      const links: Record<string, JSXElement> = {};
 
-      return undefined;
+      context.components?.forEach((key) => {
+        context.manifest?.[key].forEach((entry) => {
+          links[entry.href] =
+            entry.type == 'style' ? (
+              <link rel="stylesheet" href={entry.href} $ServerOnly />
+            ) : entry.type === 'script' ? (
+              <link rel="modulepreload" href={entry.href} $ServerOnly />
+            ) : undefined;
+        });
+      });
+
+      return Object.values(links);
     });
   }
 
   return null;
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const Html = (props: ComponentProps<'html'>) => {
   if (import.meta.env.SSR) {
     return ssrElement('html', props, undefined, false) as unknown as JSX.Element;
@@ -37,6 +49,7 @@ export const Html = (props: ComponentProps<'html'>) => {
   return props.children;
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const Head = (props: ComponentProps<'head'>) => {
   if (import.meta.env.SSR) {
     return ssrElement(
@@ -59,6 +72,7 @@ export const Head = (props: ComponentProps<'head'>) => {
   return props.children;
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const Body = (props: ComponentProps<'body'>) => {
   if (import.meta.env.SSR) {
     // eslint-disable-next-line solid/reactivity

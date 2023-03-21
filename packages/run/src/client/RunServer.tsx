@@ -13,6 +13,7 @@ export type RunServerProps = {
   context: RunContextValue;
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const RunServer = (props: RunServerProps) => {
   return (
     // eslint-disable-next-line solid/reactivity

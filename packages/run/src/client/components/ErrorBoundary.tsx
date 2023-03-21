@@ -7,23 +7,7 @@ import {
   Show,
 } from 'solid-js';
 
-export const ErrorBoundary = (props: ParentProps<{ fallback?: (e: Error, reset: () => void) => JSX.Element }>) => {
-  return (
-    <ErrorBoundaryBase
-      fallback={(e, reset) => {
-        return (
-          <Show when={!props.fallback} fallback={props.fallback && props.fallback(e, reset)} keyed>
-            <ErrorMessage error={e} />
-          </Show>
-        );
-      }}
-    >
-      {props.children}
-    </ErrorBoundaryBase>
-  );
-};
-
-export const ErrorMessage = (props: { error: Error }) => {
+const ErrorMessage = (props: { error: Error }) => {
   createEffect(() => console.error(props.error));
 
   return (
@@ -56,5 +40,22 @@ export const ErrorMessage = (props: { error: Error }) => {
         <pre style={{ 'margin-top': '8px', width: '100%' }}>{props.error.stack}</pre>
       </div>
     </div>
+  );
+};
+
+// noinspection JSUnusedGlobalSymbols
+export const ErrorBoundary = (props: ParentProps<{ fallback?: (e: Error, reset: () => void) => JSX.Element }>) => {
+  return (
+    <ErrorBoundaryBase
+      fallback={(e, reset) => {
+        return (
+          <Show when={!props.fallback} fallback={props.fallback && props.fallback(e, reset)} keyed>
+            <ErrorMessage error={e} />
+          </Show>
+        );
+      }}
+    >
+      {props.children}
+    </ErrorBoundaryBase>
   );
 };
