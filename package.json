@@ -8,6 +8,7 @@
     "test": "npm run test -w packages -w packages/adapters --if-present",
     "website:dev": "npm run dev -w website",
     "website:build": "npm run build -w website",
+    "website:serve": "npm run serve -w website",
     "prisma": "npm run prisma -w website"
   },
   "workspaces": [
@@ -17,11 +18,11 @@
     "./website"
   ],
   "devDependencies": {
-    "@types/node": "^18.15.3",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@types/node": "^18.15.5",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.7.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-solid": "^0.11.0",
