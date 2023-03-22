@@ -27,7 +27,7 @@ const assets = sirv(join(__dirname, '/public'), {
 
 const render = async (req: IncomingMessage, res: ServerResponse) => {
   try {
-    const response = handleRunRequest(
+    const response = await handleRunRequest(
       createRequest(req),
       res.statusCode,
       createHeaders(res.getHeaders()),

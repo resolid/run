@@ -1,6 +1,7 @@
 import { type ManifestEntry, type RunContextValue } from '../base/RunContext';
+import { handleFetch$, hasHandler } from './server';
 
-export const handleRunRequest = (
+export const handleRunRequest = async (
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
@@ -12,6 +13,12 @@ export const handleRunRequest = (
     runContext: RunContextValue
   ) => Response
 ) => {
+  if (hasHandler(new URL(request.url).pathname)) {
+    return await handleFetch$({
+      request,
+    });
+  }
+
   return handleRequest(request, responseStatusCode, responseHeaders, {
     tags: [],
     components: new Set(),

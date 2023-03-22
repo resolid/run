@@ -15,7 +15,6 @@ import _traverse from '@babel/traverse';
 import { babelOptions, isReturnJsxElement } from './utils/babel';
 import { prepareManifest } from './utils/manifest';
 import { resolveAdapter } from './utils/adapter';
-import transformRouteData from './babel/transformRouteData';
 import transformServer from './babel/transformServer';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -193,14 +192,6 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
       babel: babelOptions(
         (source: string, id: string, ssr: boolean) => ({
           plugins: [
-            [
-              transformRouteData,
-              {
-                ssr,
-                root: process.cwd(),
-                minify: process.env.NODE_ENV === 'production',
-              },
-            ],
             [
               transformServer,
               {

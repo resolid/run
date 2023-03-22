@@ -151,6 +151,7 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
               CallExpression: (path) => {
                 if (path.node.callee.type === 'Identifier' && path.node.callee.name === 'server$') {
                   const serverFn = path.get('arguments')[0] as Babel.NodePath<Babel.types.Expression>;
+                  const serverFnOpts = path.get('arguments')[1];
 
                   const program = path.findParent((p) => t.isProgram(p)) as Babel.NodePath<Babel.types.Program>;
                   const statement = path.findParent((p) =>
@@ -162,7 +163,6 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
                     Babel.types.VariableDeclarator | Babel.types.FunctionDeclaration | Babel.types.ObjectProperty
                   >;
 
-                  const serverResource = path.getData('serverResource') ?? false;
                   const serverIndex = state.servers++;
                   const filename = state.filename.replace(state.opts.root, '').slice(1);
                   const hash = (state.opts.minify ? hashFn : (str: string) => str)(
@@ -218,10 +218,11 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
                   if (state.opts.ssr) {
                     statement.insertBefore(
                       template(`
-                      const $$server_module${serverIndex} = server$.createHandler(%%source%%, "${route}", ${serverResource});
+                      const $$server_module${serverIndex} = server$.createHandler(%%source%%, "${route}", %%options%%);
                       server$.registerHandler("${route}", $$server_module${serverIndex});
                       `)({
                         source: serverFn.node,
+                        options: serverFnOpts?.node || t.identifier('undefined'),
                       })
                     );
                   } else {
@@ -230,10 +231,10 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
                         `
                         ${
                           process.env.TEST_ENV === 'client'
-                            ? `server$.registerHandler("${route}", server$.createHandler(%%source%%, "${route}", ${serverResource});`
+                            ? `server$.registerHandler("${route}", server$.createHandler(%%source%%, "${route}", %%options%%);`
                             : ``
                         }
-                        const $$server_module${serverIndex} = server$.createFetcher("${route}", ${serverResource});`,
+                        const $$server_module${serverIndex} = server$.createFetcher("${route}", %%options%%);`,
                         {
                           syntacticPlaceholders: true,
                         }
@@ -241,8 +242,11 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
                         process.env.TEST_ENV === 'client'
                           ? {
                               source: serverFn.node,
+                              options: serverFnOpts?.node || t.identifier('undefined'),
                             }
-                          : {}
+                          : {
+                              options: serverFnOpts?.node || t.identifier('undefined'),
+                            }
                       )
                     );
                   }
@@ -253,7 +257,7 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
               FunctionExpression: markFunction,
               ArrowFunctionExpression: markFunction,
               ImportSpecifier: function (path, state) {
-                // Rewrite imports to `@resolid/start` to `@resolid/start/server` during SSR
+                // Rewrite imports to `@resolid/run` to `@resolid/run/server` during SSR
                 if (state.opts.ssr && (path.node.imported as Babel.types.Identifier).name === 'server$') {
                   const importDeclaration = path.findParent((p) =>
                     p.isImportDeclaration()
