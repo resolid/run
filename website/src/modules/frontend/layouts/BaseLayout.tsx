@@ -1,6 +1,7 @@
 import { A, Outlet } from '@resolid/run';
 import ResolidBanner from '../../../assets/images/resolid-banner.svg';
 import { cx } from '@resolid/twind';
+import { For } from 'solid-js';
 
 const BaseLayout = () => {
   return (
@@ -24,31 +25,30 @@ const BaseLayout = () => {
               >
                 <div class={'text-gray-600 laptop:pr-4'}>
                   <ul class="list-none m-0 space-y-6 text-base font-medium tracking-wide laptop:flex laptop:space-y-0">
-                    <li>
-                      <A href={'/solution'} class="block no-underline transition hover:text-blue-500 tablet:px-4">
-                        <span>Solution</span>
-                      </A>
-                    </li>
-                    <li>
-                      <A href={'/customers'} class="block no-underline transition hover:text-blue-500 tablet:px-4">
-                        <span>Customers</span>
-                      </A>
-                    </li>
-                    <li>
-                      <A href={'/pricing'} class="block no-underline transition hover:text-blue-500 tablet:px-4">
-                        <span>Pricing</span>
-                      </A>
-                    </li>
-                    <li>
-                      <A href={'/blog'} class="block no-underline transition hover:text-blue-500 tablet:px-4">
-                        <span>Blog</span>
-                      </A>
-                    </li>
-                    <li>
-                      <A href={'/about'} class="block no-underline transition hover:text-blue-500 tablet:px-4">
-                        <span>About</span>
-                      </A>
-                    </li>
+                    <For
+                      each={[
+                        { name: 'Home', href: '/', end: true },
+                        { name: 'Solution', href: '/solution' },
+                        { name: 'Customers', href: '/customers' },
+                        { name: 'Pricing', href: '/pricing' },
+                        { name: 'Blog', href: '/blog' },
+                        { name: 'About', href: '/about' },
+                      ]}
+                      fallback={<div>Loading...</div>}
+                    >
+                      {(link) => (
+                        <li>
+                          <A
+                            end={link.end}
+                            activeClass={'text-blue-600'}
+                            href={link.href}
+                            class="block no-underline transition hover:text-blue-500 tablet:px-4"
+                          >
+                            <span>{link.name}</span>
+                          </A>
+                        </li>
+                      )}
+                    </For>
                   </ul>
                 </div>
                 <div />
