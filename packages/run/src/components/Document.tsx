@@ -1,7 +1,7 @@
 import type { JSX, JSXElement } from 'solid-js';
 import { children, type ComponentProps } from 'solid-js';
 import { escape, insert, spread, ssr, ssrElement, useAssets } from 'solid-js/web';
-import { useRunContext } from '../../base/RunContext';
+import { useRunContext } from '../base/RunContext';
 import { renderTags } from '@solidjs/meta';
 
 const Meta = () => {

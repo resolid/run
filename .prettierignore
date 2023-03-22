@@ -1,4 +1,5 @@
 **/dist
 **/build
+website/.resolid
 .vscode
 package-lock.json

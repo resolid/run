@@ -1,5 +1,5 @@
 import { HydrationScript, NoHydration } from 'solid-js/web';
-import { useRunContext } from '../../base/RunContext';
+import { useRunContext } from '../base/RunContext';
 
 // noinspection JSUnusedGlobalSymbols
 export const Scripts = () => {

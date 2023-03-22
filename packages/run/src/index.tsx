@@ -15,11 +15,11 @@ export {
   type RouteDataFuncArgs,
 } from '@solidjs/router';
 
-export * from './client/components/Router';
+export * from './components/Router';
 
-export * from './client/RunClient';
-export * from './client/RunServer';
+export * from './entry/RunClient';
+export * from './entry/RunServer';
 
-export * from './client/components/Document';
-export * from './client/components/ErrorBoundary';
-export * from './client/components/Scripts';
+export * from './components/Document';
+export * from './components/ErrorBoundary';
+export * from './components/Scripts';

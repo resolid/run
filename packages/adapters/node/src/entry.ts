@@ -3,12 +3,13 @@ import polka from 'polka';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { type ServerResponse, type IncomingMessage } from 'http';
-import { handleResponse, createHeaders, createRequest } from '@resolid/run/node';
+import { setResponse, createRequest, createHeaders } from '@resolid/run/node';
+import { handleRunRequest } from '@resolid/run/server';
 
 // @ts-expect-error Cannot find module
 import manifest from '../../dist/public/route-manifest.json';
 // @ts-expect-error Cannot find module
-import handlerRequest from './entry-server.js';
+import handleRequest from './entry-server.js';
 
 const { PORT = 3000 } = process.env;
 
@@ -26,13 +27,15 @@ const assets = sirv(join(__dirname, '/public'), {
 
 const render = async (req: IncomingMessage, res: ServerResponse) => {
   try {
-    const response = handlerRequest(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
-      tags: [],
-      components: new Set(),
-      manifest: manifest,
-    });
+    const response = handleRunRequest(
+      createRequest(req),
+      res.statusCode,
+      createHeaders(res.getHeaders()),
+      manifest,
+      handleRequest
+    );
 
-    await handleResponse(res, response);
+    await setResponse(res, response);
   } catch (err) {
     console.error(err);
 

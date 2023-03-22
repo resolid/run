@@ -6,6 +6,7 @@ import {
   Routes as BaseRoutes,
   useLocation as useBaseLocation,
   useNavigate as useBaseNavigate,
+  useSearchParams as useBaseSearchParams,
 } from '@solidjs/router';
 
 // noinspection JSUnusedGlobalSymbols

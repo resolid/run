@@ -9,7 +9,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 export default function () {
   return {
     name: 'node',
-    async build(root: string, ssrExternal: string[], commonjsOptions: RollupCommonJSOptions) {
+    async build(root: string, outPath: string, ssrExternal: string[], commonjsOptions: RollupCommonJSOptions) {
       const __dirname = dirname(fileURLToPath(import.meta.url));
 
       writeFileSync(
@@ -32,7 +32,7 @@ export default function () {
 
       await bundle.write({
         format: 'esm',
-        file: join(root, 'dist', 'server.mjs'),
+        file: join(outPath, 'server.mjs'),
         inlineDynamicImports: true,
       });
 

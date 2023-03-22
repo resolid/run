@@ -12,9 +12,11 @@ import { dev } from './serve/dev';
 import type * as Babel from '@babel/core';
 import { parse } from '@babel/parser';
 import _traverse from '@babel/traverse';
-import { isReturnJsxElement } from './utils/babel';
+import { babelOptions, isReturnJsxElement } from './utils/babel';
 import { prepareManifest } from './utils/manifest';
 import { resolveAdapter } from './utils/adapter';
+import transformRouteData from './babel/transformRouteData';
+import transformServer from './babel/transformServer';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -33,7 +35,8 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
     ...solidViteOptions
   } = options;
 
-  let root: string, rootEntry: string, clientEntry: string, serverEntry: string, clientOutPath: string;
+  let root: string, rootEntry: string, clientEntry: string, serverEntry: string;
+  let outPath: string, clientOutPath: string;
   let isBuild: boolean;
   let viteConfig: ResolvedConfig;
   let finalise: () => Promise<void>;
@@ -52,7 +55,8 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
         clientEntry = _clientEntry ?? (findAny(join(root, 'src'), 'entry-client') as string);
         serverEntry = _serverEntry ?? (findAny(join(root, 'src'), 'entry-server') as string);
 
-        clientOutPath = join(root, 'dist', 'public');
+        outPath = join(root, userConfig.build?.outDir || 'dist');
+        clientOutPath = join(outPath, 'public');
 
         const config: UserConfig = {
           root,
@@ -183,7 +187,33 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
       },
     } as Plugin,
     inspect && viteInspect({ build: true, outputDir: join('.resolid', 'inspect') }),
-    solidVitePlugin({ ...solidViteOptions, ssr: true }),
+    solidVitePlugin({
+      ...solidViteOptions,
+      ssr: true,
+      babel: babelOptions(
+        (source: string, id: string, ssr: boolean) => ({
+          plugins: [
+            [
+              transformRouteData,
+              {
+                ssr,
+                root: process.cwd(),
+                minify: process.env.NODE_ENV === 'production',
+              },
+            ],
+            [
+              transformServer,
+              {
+                ssr,
+                root: process.cwd(),
+                minify: process.env.NODE_ENV === 'production',
+              },
+            ],
+          ],
+        }),
+        options.babel
+      ),
+    }),
     {
       name: 'vite-plugin-resolid-run-server',
       config() {
@@ -264,7 +294,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
           finalise = async () => {
             const adapt = await resolveAdapter(adapter);
 
-            await adapt.build(viteConfig.root, viteConfig.ssr.external, viteConfig.build.commonjsOptions);
+            await adapt.build(viteConfig.root, outPath, viteConfig.ssr.external, viteConfig.build.commonjsOptions);
           };
         },
       },

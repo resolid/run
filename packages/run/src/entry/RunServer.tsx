@@ -1,5 +1,5 @@
 import { MetaProvider } from '@solidjs/meta';
-import { Router } from './components/Router';
+import { Router } from '../components/Router';
 import { ssr } from 'solid-js/web';
 import { RunContext, type RunContextValue } from '../base/RunContext';
 

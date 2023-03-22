@@ -52,7 +52,7 @@ export const createHeaders = (outgoingHeaders: OutgoingHttpHeaders | IncomingHtt
   return headers;
 };
 
-export const handleResponse = async (res: ServerResponse, response: Response) => {
+export const setResponse = async (res: ServerResponse, response: Response) => {
   res.statusCode = response.status;
   res.statusMessage = response.statusText;
 
