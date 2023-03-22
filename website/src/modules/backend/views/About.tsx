@@ -1,4 +1,4 @@
-const About = () => {
+const About = function () {
   return <div>Admin About</div>;
 };
 

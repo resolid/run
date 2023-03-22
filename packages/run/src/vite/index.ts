@@ -113,7 +113,9 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
           });
 
           let componentPath:
-            | Babel.NodePath<Babel.types.ArrowFunctionExpression | Babel.types.FunctionDeclaration>
+            | Babel.NodePath<
+                Babel.types.ArrowFunctionExpression | Babel.types.FunctionDeclaration | Babel.types.FunctionExpression
+              >
             | undefined;
           let hasUseRunContext = false;
 
@@ -144,9 +146,15 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
 
                 if (binding) {
                   if (binding.path.isVariableDeclarator()) {
-                    const init = binding.path.get('init') as Babel.NodePath<Babel.types.ArrowFunctionExpression>;
+                    const init = binding.path.get('init') as Babel.NodePath<
+                      Babel.types.ArrowFunctionExpression | Babel.types.FunctionExpression
+                    >;
 
-                    if (init && init.isArrowFunctionExpression() && isReturnJsxElement(init.node.body)) {
+                    if (
+                      init &&
+                      (init.isArrowFunctionExpression() || init.isFunctionExpression()) &&
+                      isReturnJsxElement(init.node.body)
+                    ) {
                       componentPath = init;
                     }
                   }
