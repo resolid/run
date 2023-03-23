@@ -1,6 +1,7 @@
-import { isFunction } from '@motionone/utils';
-
-export { isFunction };
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const isFunction = (value: unknown): value is Function => {
+  return typeof value === 'function';
+};
 
 export type MaybeFunction<T, Args extends unknown[] = []> = T | ((...args: Args) => T);
 
