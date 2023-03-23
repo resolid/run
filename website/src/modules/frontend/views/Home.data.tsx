@@ -1,10 +1,16 @@
 import { createRouteData } from '@resolid/run';
 import { server$ } from '@resolid/run/server';
 
+let count = 0;
+
+export const increment = server$(async () => {
+  count = count + 1;
+});
+
 export const homeData = () => {
   return createRouteData(
     server$(() => {
-      return { message: 'Home Server Message' };
+      return { count };
     })
   );
 };
