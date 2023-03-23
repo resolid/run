@@ -7,16 +7,13 @@ export const dev = (viteServer: ViteDevServer) => {
       console.log(req.method, new URL(req.url ?? '', viteServer.resolvedUrls?.local[0]).href);
 
       try {
-        const handleRunRequest = (await viteServer.ssrLoadModule('@resolid/run/server')).handleRunRequest;
         const handleRequest = (await viteServer.ssrLoadModule('~resolid-run/entry-server')).default;
 
-        const response = await handleRunRequest(
-          createRequest(req),
-          res.statusCode,
-          createHeaders(res.getHeaders()),
-          {},
-          handleRequest
-        );
+        const response = await handleRequest(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
+          tags: [],
+          components: new Set(),
+          manifest: {},
+        });
 
         await setResponse(res, response);
       } catch (e) {

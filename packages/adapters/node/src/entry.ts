@@ -4,7 +4,6 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { type ServerResponse, type IncomingMessage } from 'http';
 import { setResponse, createRequest, createHeaders } from '@resolid/run/node';
-import { handleRunRequest } from '@resolid/run/server';
 
 // @ts-expect-error Cannot find module
 import manifest from '../../dist/public/route-manifest.json';
@@ -27,13 +26,11 @@ const assets = sirv(join(__dirname, '/public'), {
 
 const render = async (req: IncomingMessage, res: ServerResponse) => {
   try {
-    const response = await handleRunRequest(
-      createRequest(req),
-      res.statusCode,
-      createHeaders(res.getHeaders()),
-      manifest,
-      handleRequest
-    );
+    const response = await handleRequest(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
+      tags: [],
+      components: new Set(),
+      manifest: manifest,
+    });
 
     await setResponse(res, response);
   } catch (err) {

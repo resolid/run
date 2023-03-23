@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "serve": "vite build && node ./dist/server.mjs",
+    "serve": "node ./dist/server.mjs",
     "prisma": "prisma"
   },
   "dependencies": {

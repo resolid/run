@@ -48,10 +48,6 @@ const serverMethods: ServerFetcherMethods = {
       opts = opts ?? {};
 
       if (!opts.__hasRequest) {
-        // This will happen if the server function is called directly during SSR
-        // Even though we're not crossing the network, we still need to
-        // create a Request object to pass to the server function as if it was
-
         const payloadInit = payloadRequestInit(payload);
 
         const resolvedHref = resolveRequestHref(pathname, method, payloadInit);
@@ -99,7 +95,7 @@ const serverMethods: ServerFetcherMethods = {
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   registerHandler(pathname: string, handler: Fetcher<any>): any {
-    handlers.set(pathname, handler);
+    addHandler(pathname, handler);
   },
 };
 
@@ -193,7 +189,6 @@ const respondWith = (
     }
 
     if (data.status === 101) {
-      // this is a websocket upgrade, so we don't want to modify the response
       return data;
     }
 
@@ -255,6 +250,11 @@ const respondWith = (
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handlers = new Map<string, Fetcher<any>>();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const addHandler = (pathname: string, handler: Fetcher<any>) => {
+  handlers.set(pathname, handler);
+};
 
 export const getHandler = (pathname: string) => {
   return handlers.get(pathname);
