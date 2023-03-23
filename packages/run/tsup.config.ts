@@ -50,6 +50,7 @@ export default defineConfig([
       server: 'src/server/index.tsx',
     },
     platform: 'node',
+    target: 'node16',
   },
   {
     ...baseConfig,
@@ -57,6 +58,7 @@ export default defineConfig([
       node: 'src/node/index.ts',
     },
     platform: 'node',
+    target: 'node16',
   },
   {
     ...baseConfig,
@@ -64,5 +66,6 @@ export default defineConfig([
       vite: 'src/vite/index.ts',
     },
     platform: 'node',
+    target: 'node16',
   },
 ]);

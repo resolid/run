@@ -9,7 +9,7 @@ export const increment = server$(async () => {
 
 export const homeData = () => {
   return createRouteData(
-    server$(() => {
+    server$(async () => {
       return { count };
     })
   );

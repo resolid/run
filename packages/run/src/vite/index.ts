@@ -234,7 +234,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
                     inlineDynamicImports: true,
                   },
                 },
-                target: 'node18',
+                target: 'node16',
                 ssrEmitAssets: true,
               },
               publicDir: false,

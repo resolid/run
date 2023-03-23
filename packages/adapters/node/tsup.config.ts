@@ -5,7 +5,7 @@ const baseConfig: Options = {
   format: ['esm'],
   noExternal: Object.keys(dependencies),
   platform: 'node',
-  target: 'node18',
+  target: 'node16',
   dts: true,
   treeshake: true,
   clean: true,
