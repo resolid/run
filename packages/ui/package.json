@@ -13,41 +13,10 @@
     "build": "tsup",
     "prepublishOnly": "npm run build"
   },
-  "main": "./dist/server.cjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "worker": {
-      "solid": "./dist/server.jsx",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/server.js"
-      },
-      "require": "./dist/server.cjs"
-    },
-    "browser": {
-      "solid": "./dist/index.jsx",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": "./dist/index.cjs"
-    },
-    "deno": {
-      "solid": "./dist/server.jsx",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/server.js"
-      },
-      "require": "./dist/server.cjs"
-    },
-    "node": {
-      "solid": "./dist/server.jsx",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/server.js"
-      },
-      "require": "./dist/server.cjs"
-    },
     "solid": "./dist/index.jsx",
     "import": {
       "types": "./dist/index.d.ts",
@@ -74,10 +43,6 @@
   },
   "homepage": "https://run.resolid.tech",
   "license": "MIT",
-  "browser": {
-    "./dist/server.js": "./dist/index.js",
-    "./dist/server.cjs": "./dist/index.cjs"
-  },
-  "typesVersions": {},
-  "module": "./dist/server.js"
+  "browser": {},
+  "typesVersions": {}
 }

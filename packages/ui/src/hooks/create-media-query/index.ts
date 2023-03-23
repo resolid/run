@@ -1,8 +1,9 @@
 import { type Accessor, createSignal } from 'solid-js';
 import { createEventListener } from '../create-event-listener';
+import { isServer } from 'solid-js/web';
 
 export const createMediaQuery = (query: string, fallbackState = false): Accessor<boolean> => {
-  if (process.env.SSR) {
+  if (isServer) {
     return () => fallbackState;
   }
 

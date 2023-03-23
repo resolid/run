@@ -1,4 +1,5 @@
 import { type Accessor, createMemo, type JSX } from 'solid-js';
+import { isServer } from 'solid-js/web';
 
 export type Ref<T> = T | ((el: T) => void) | undefined;
 
@@ -10,7 +11,7 @@ export const mergeRefs = <T extends Element>(...refs: Ref<T>[]): ((el: T) => voi
   };
 };
 
-export const defaultElementPredicate: (item: JSX.Element | Element) => item is Element = process.env.SSR
+export const defaultElementPredicate: (item: JSX.Element | Element) => item is Element = isServer
   ? (item): item is Element => item != null && typeof item === 'object' && 't' in item
   : (item): item is Element => item instanceof Element;
 
@@ -46,5 +47,5 @@ export const resolveFirst = (
   const children = createMemo(fn);
 
   // eslint-disable-next-line solid/reactivity
-  return createMemo(() => getFirstChild(children(), process.env.SSR ? serverPredicate : predicate));
+  return createMemo(() => getFirstChild(children(), isServer ? serverPredicate : predicate));
 };

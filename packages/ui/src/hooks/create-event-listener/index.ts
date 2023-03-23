@@ -3,6 +3,7 @@ import { type MaybeAccessor, tryOnCleanup, unAccessor } from '../../primitives';
 import { type Many } from '../../utils/types';
 import { asArray } from '../../utils/array';
 import { isFunction } from '../../utils/function';
+import { isServer } from 'solid-js/web';
 
 export type TargetWithEventMap = Window | Document | HTMLElement | MediaQueryList;
 
@@ -43,7 +44,7 @@ export const createEventListener: CreateEventListener = (
   target?: MaybeAccessor<Many<EventTarget | undefined>>,
   options?: boolean | AddEventListenerOptions
 ) => {
-  if (process.env.SSR) {
+  if (isServer) {
     return;
   }
 

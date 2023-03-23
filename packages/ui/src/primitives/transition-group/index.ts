@@ -12,6 +12,7 @@ import {
   useTransition,
   $TRACK,
 } from 'solid-js';
+import { isServer } from 'solid-js/web';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
@@ -38,7 +39,7 @@ export const createSwitchTransition = <T>(
   const initSource = untrack(source);
   const initReturned = initSource ? [initSource] : [];
 
-  if (process.env.SSR) {
+  if (isServer) {
     return () => initReturned;
   }
 
@@ -129,7 +130,7 @@ export const createListTransition = <T extends object>(
 ): Accessor<T[]> => {
   const initSource = untrack(source);
 
-  if (process.env.SSR) {
+  if (isServer) {
     const copy = initSource.slice();
     return () => copy;
   }
