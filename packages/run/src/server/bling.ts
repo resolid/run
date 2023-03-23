@@ -2,7 +2,7 @@
 
 import type {
   AnyFetchFn,
-  Deserializer,
+  CreateFetcherFn,
   Fetcher,
   FetchFnCtx,
   FetchFnCtxOptions,
@@ -22,13 +22,7 @@ import {
   XResolidLocationHeader,
   XResolidOrigin,
   XResolidResponseTypeHeader,
-} from '../base/utils';
-
-const deserializers: Deserializer[] = [];
-
-export function addDeserializer(deserializer: Deserializer) {
-  deserializers.push(deserializer);
-}
+} from '../base/reponses';
 
 const serverImpl = (() => {
   throw new Error('Should be compiled away');
@@ -41,6 +35,8 @@ export type ServerFetcherMethods = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   registerHandler(pathname: string, handler: Fetcher<any>): void;
 };
+
+export type ServerFn = CreateFetcherFn & ServerFetcherMethods;
 
 const serverMethods: ServerFetcherMethods = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -56,7 +52,7 @@ const serverMethods: ServerFetcherMethods = {
         // Even though we're not crossing the network, we still need to
         // create a Request object to pass to the server function as if it was
 
-        const payloadInit = payloadRequestInit(payload, false);
+        const payloadInit = payloadRequestInit(payload);
 
         const resolvedHref = resolveRequestHref(pathname, method, payloadInit);
         opts.request = new Request(
@@ -107,7 +103,8 @@ const serverMethods: ServerFetcherMethods = {
   },
 };
 
-export const server$ = Object.assign(serverImpl, serverMethods);
+// noinspection JSUnusedGlobalSymbols
+export const server$: ServerFn = Object.assign(serverImpl, serverMethods);
 
 export async function handleFetch$(_ctx: Omit<FetchFnCtxWithRequest, '__hasRequest'>) {
   if (!_ctx.request) {
@@ -158,12 +155,6 @@ const parseRequest = async (event: FetchFnCtxWithRequest) => {
         payload = JSON.parse(text, (key: string, value: any) => {
           if (!value) {
             return value;
-          }
-
-          const deserializer = deserializers.find((d) => d.apply(value));
-
-          if (deserializer) {
-            return deserializer.deserialize(value, event);
           }
 
           return value;

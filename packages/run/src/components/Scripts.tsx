@@ -1,5 +1,5 @@
-import { HydrationScript, NoHydration } from 'solid-js/web';
-import { useRunContext } from '../base/RunContext';
+import { HydrationScript, isServer, NoHydration } from 'solid-js/web';
+import { useRunContext } from './RunContext';
 
 // noinspection JSUnusedGlobalSymbols
 export const Scripts = () => {
@@ -10,16 +10,17 @@ export const Scripts = () => {
     <>
       <HydrationScript />
       <NoHydration>
-        {import.meta.env.DEV ? (
-          <>
-            <script type="module" src="/@vite/client" $ServerOnly />
-            <script type="module" async src={'/@fs/' + import.meta.env.ENTRY_CLIENT} $ServerOnly />
-          </>
-        ) : (
-          <>
-            <script type="module" async src={context.manifest?.['entry-client'][0].href} $ServerOnly />
-          </>
-        )}
+        {isServer &&
+          (import.meta.env.DEV ? (
+            <>
+              <script type="module" src="/@vite/client" $ServerOnly />
+              <script type="module" async src={'/@fs/' + import.meta.env.ENTRY_CLIENT} $ServerOnly />
+            </>
+          ) : (
+            <>
+              <script type="module" async src={context.manifest?.['entry-client'][0].href} $ServerOnly />
+            </>
+          ))}
       </NoHydration>
     </>
   );

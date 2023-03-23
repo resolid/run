@@ -41,7 +41,13 @@ export default defineConfig([
   {
     ...baseConfig,
     entry: {
-      server: 'src/server.tsx',
+      browser: 'src/browser/index.tsx',
+    },
+  },
+  {
+    ...baseConfig,
+    entry: {
+      server: 'src/server/index.tsx',
     },
     platform: 'node',
   },

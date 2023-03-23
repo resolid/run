@@ -165,6 +165,7 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
 
                   const serverIndex = state.servers++;
                   const filename = state.filename.replace(state.opts.root, '').slice(1);
+
                   const hash = (state.opts.minify ? hashFn : (str: string) => str)(
                     nodePath.join(filename, String(serverIndex))
                   );
@@ -256,18 +257,6 @@ const transformServer = ({ types: t, template }: typeof Babel): Babel.PluginObj<
               FunctionDeclaration: markFunction,
               FunctionExpression: markFunction,
               ArrowFunctionExpression: markFunction,
-              ImportSpecifier: function (path, state) {
-                // Rewrite imports to `@resolid/run` to `@resolid/run/server` during SSR
-                if (state.opts.ssr && (path.node.imported as Babel.types.Identifier).name === 'server$') {
-                  const importDeclaration = path.findParent((p) =>
-                    p.isImportDeclaration()
-                  ) as Babel.NodePath<Babel.types.ImportDeclaration>;
-                  if (importDeclaration) {
-                    importDeclaration.node.source.value += '/server';
-                  }
-                }
-                markImport(path, state);
-              },
               ImportDefaultSpecifier: markImport,
               ImportNamespaceSpecifier: markImport,
             },

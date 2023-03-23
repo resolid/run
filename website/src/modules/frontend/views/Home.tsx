@@ -1,12 +1,18 @@
-import { server$ } from '@resolid/run';
-
-const sayHello = server$(() => console.log('Hello world'));
+import { useRouteData } from '@resolid/run';
+import { Show } from 'solid-js';
+import { type HomeData } from './Home.data';
 
 function Home() {
+  const routeData = useRouteData<HomeData>();
+
   return (
     <div>
       <p>Home</p>
-      <button onClick={() => sayHello()}>Say Hello!</button>
+      <p>
+        <Show when={routeData()} keyed>
+          {routeData()?.message}
+        </Show>
+      </p>
     </div>
   );
 }

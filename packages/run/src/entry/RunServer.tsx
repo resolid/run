@@ -1,12 +1,12 @@
 import { MetaProvider } from '@solidjs/meta';
 import { Router } from '../components/Router';
 import { ssr } from 'solid-js/web';
-import { RunContext, type RunContextValue } from '../base/RunContext';
+import { RunContext, type RunContextValue } from '../components/RunContext';
 
 // @ts-expect-error Cannot find module
 import Root from '~resolid-run/root';
 
-export { useRunContext, type RunContextValue } from '../base/RunContext';
+export { useRunContext, type RunContextValue } from '../components/RunContext';
 
 export type RunServerProps = {
   url: string;

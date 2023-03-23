@@ -1,6 +1,6 @@
 import { MetaProvider } from '@solidjs/meta';
 import { Router } from '@solidjs/router';
-import { RunContext } from '../base/RunContext';
+import { RunContext } from '../components/RunContext';
 
 // @ts-expect-error Cannot find module
 import Root from '~resolid-run/root';

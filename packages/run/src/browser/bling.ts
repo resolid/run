@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 // From: https://github.com/TanStack/bling/blob/main/packages/bling/src/client.ts
 
 import type {
@@ -7,7 +9,6 @@ import type {
   FetchFnCtxOptions,
   FetchFnCtxWithRequest,
   FetchFnReturn,
-  Serializer,
 } from '../base/types';
 import {
   mergeFetchOpts,
@@ -17,13 +18,7 @@ import {
   resolveRequestHref,
   XResolidOrigin,
   XResolidResponseTypeHeader,
-} from '../base/utils';
-
-const serializers: Serializer[] = [];
-
-export function addSerializer({ apply, serialize }: Serializer) {
-  serializers.push({ apply, serialize });
-}
+} from '../base/reponses';
 
 export type CreateClientFetcherFn = <T extends AnyFetchFn>(fn: T, opts?: FetchFnCtxWithRequest) => ClientFetcher<T>;
 
@@ -58,7 +53,7 @@ const fetchMethods: CreateClientFetcherMethods = {
         },
       };
 
-      const payloadInit = payloadRequestInit(payload, serializers);
+      const payloadInit = payloadRequestInit(payload);
 
       const resolvedHref = resolveRequestHref(pathname, method, payloadInit);
 

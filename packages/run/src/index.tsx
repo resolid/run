@@ -24,4 +24,4 @@ export * from './components/Document';
 export * from './components/ErrorBoundary';
 export * from './components/Scripts';
 
-export * from './client/client';
+export * from './base/createRouteData';

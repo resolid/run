@@ -1,12 +1,6 @@
-import type {
-  AnyFetchFn,
-  Fetcher,
-  FetcherFn,
-  FetcherMethods,
-  FetchFnCtxOptions,
-  FetchFnCtxWithRequest,
-  Serializer,
-} from './types';
+// noinspection JSUnusedGlobalSymbols
+
+import type { AnyFetchFn, Fetcher, FetcherFn, FetcherMethods, FetchFnCtxOptions, FetchFnCtxWithRequest } from './types';
 
 export const XResolidStatusCodeHeader = 'x-resolid-status-code';
 export const XResolidLocationHeader = 'x-resolid-location';
@@ -196,24 +190,13 @@ export function mergeFetchOpts(...objs: (FetchFnCtxOptions | undefined)[]): Fetc
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const payloadRequestInit = (payload: any, serializers: false | Serializer[]) => {
+export const payloadRequestInit = (payload: any) => {
   const req: RequestInit = {};
 
   if (payload instanceof FormData) {
     req.body = payload;
   } else {
-    req.body = JSON.stringify(
-      payload,
-      serializers
-        ? (key, value) => {
-            const serializer = serializers.find(({ apply }) => apply(value));
-            if (serializer) {
-              return serializer.serialize(value);
-            }
-            return value;
-          }
-        : undefined
-    );
+    req.body = JSON.stringify(payload);
 
     req.headers = {
       [ContentTypeHeader]: JSONResponseType,

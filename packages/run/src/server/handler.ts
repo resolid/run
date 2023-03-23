@@ -1,5 +1,7 @@
-import { type ManifestEntry, type RunContextValue } from '../base/RunContext';
-import { handleFetch$, hasHandler } from './server';
+// noinspection JSUnusedGlobalSymbols
+
+import { type ManifestEntry, type RunContextValue } from '../components/RunContext';
+import { handleFetch$, hasHandler } from './bling';
 
 export const handleRunRequest = async (
   request: Request,

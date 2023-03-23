@@ -29,9 +29,18 @@
       "types": "./dist/node.d.ts"
     },
     "./server": {
-      "import": "./dist/server.js",
-      "require": "./dist/server.cjs",
-      "types": "./dist/server.d.ts"
+      "browser": {
+        "import": "./dist/browser.js",
+        "require": "./dist/browser.cjs"
+      },
+      "node": {
+        "import": "./dist/server.js",
+        "require": "./dist/server.cjs"
+      },
+      "default": {
+        "import": "./dist/server.js",
+        "require": "./dist/server.cjs"
+      }
     },
     "./vite": {
       "import": "./dist/vite.js",

@@ -1,20 +1,6 @@
 export const FormError = Error;
 export const ServerError = Error;
 
-export type Serializer = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  apply: (value: any) => boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  serialize: (value: any) => any;
-};
-
-export type Deserializer = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  apply: (value: any) => any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  deserialize: (value: any, ctx: FetchFnCtx) => any;
-};
-
 export type FetcherFn<T extends AnyFetchFn> = (
   payload: Parameters<T>['0'] extends undefined ? void | undefined : Parameters<T>['0'],
   opts?: FetchFnCtx
