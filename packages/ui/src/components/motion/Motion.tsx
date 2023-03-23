@@ -6,7 +6,7 @@ import type { MotionEventHandlers, MotionOptions } from './types';
 import { ParentContext, PresenceContext } from './MotionContext';
 import { createMotionOneState } from './primitives';
 import { combineStyle, mergeRefs } from '../../primitives';
-import { type Merge } from '../../utils/types';
+import { type Merge } from '@resolid/utils';
 
 export type MotionComponentProps = {
   /**

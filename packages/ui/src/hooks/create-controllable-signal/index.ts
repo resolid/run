@@ -1,5 +1,5 @@
 import { type Accessor, createMemo, createSignal, untrack } from 'solid-js';
-import { runIfFn } from '../../utils/function';
+import { runIfFn } from '@resolid/utils';
 
 export type CreateControllableSignalProps<T> = {
   value?: Accessor<T | undefined>;

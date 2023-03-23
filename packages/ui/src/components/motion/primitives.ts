@@ -2,8 +2,7 @@ import { type MotionOptions } from './types';
 import { createMotionState, createStyles, type MotionState } from '@motionone/dom';
 import { type PresenceState } from './MotionContext';
 import { type Accessor, createEffect, onCleanup, onMount } from 'solid-js';
-// noinspection ES6PreferShortImport
-import { isFunction } from '../../utils/function';
+import { isFunction } from '@resolid/utils';
 
 export const onCompleteExit = (el: Element, fn: VoidFunction) => el.addEventListener('motioncomplete', fn);
 
