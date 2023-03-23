@@ -2,6 +2,7 @@ import { A, Outlet } from '@resolid/run';
 import ResolidBanner from '../../../assets/images/resolid-banner.svg';
 import { cx } from '@resolid/twind';
 import { For } from 'solid-js';
+import { Github } from '~/core/icons/Github';
 
 const BaseLayout = () => {
   return (
@@ -51,7 +52,16 @@ const BaseLayout = () => {
                     </For>
                   </ul>
                 </div>
-                <div />
+                <a
+                  class={
+                    'block p-2 border border-gray-200 rounded-full text-gray-600 bg-gray-50 hover:(border-gray-300 bg-gray-100)'
+                  }
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://github.com/resolid/run"
+                >
+                  <Github />
+                </a>
               </div>
             </div>
           </div>
