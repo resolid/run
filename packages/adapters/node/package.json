@@ -23,7 +23,7 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "polka": "1.0.0-next.22",
-    "rollup": "^3.20.0",
+    "rollup": "^3.20.2",
     "sirv": "^2.0.2"
   },
   "peerDependencies": {
