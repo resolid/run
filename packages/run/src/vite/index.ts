@@ -42,6 +42,26 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
 
   const routeComponents = new Set<string>();
 
+  const viteSolidPlugin = solidVitePlugin({
+    ...solidViteOptions,
+    ssr: true,
+    babel: babelOptions(
+      (source: string, id: string, ssr: boolean) => ({
+        plugins: [
+          [
+            transformServer,
+            {
+              ssr,
+              root: process.cwd(),
+              minify: process.env.NODE_ENV === 'production',
+            },
+          ],
+        ],
+      }),
+      options.babel
+    ),
+  });
+
   return [
     {
       name: 'vite-plugin-resolid-run-config',
@@ -186,25 +206,22 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
       },
     } as Plugin,
     inspect && viteInspect({ build: true, outputDir: join('.resolid', 'inspect') }),
-    solidVitePlugin({
-      ...solidViteOptions,
-      ssr: true,
-      babel: babelOptions(
-        (source: string, id: string, ssr: boolean) => ({
-          plugins: [
-            [
-              transformServer,
-              {
-                ssr,
-                root: process.cwd(),
-                minify: process.env.NODE_ENV === 'production',
-              },
-            ],
-          ],
-        }),
-        options.babel
-      ),
-    }),
+    {
+      name: 'vite-plugin-resolid-run-data',
+      enforce: 'pre',
+
+      transform(source, id, transformOptions) {
+        const babelSolidCompiler = (code: string, id: string) => {
+          // @ts-expect-error Cannot invoke
+          return viteSolidPlugin.transform(code, id, transformOptions);
+        };
+
+        if (id.includes('.data.ts')) {
+          return babelSolidCompiler(source, id.replace('.data.ts', '.tsx'));
+        }
+      },
+    } as Plugin,
+    viteSolidPlugin,
     {
       name: 'vite-plugin-resolid-run-server',
       config() {
