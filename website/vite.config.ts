@@ -11,17 +11,21 @@ export default defineConfig({
           return 'solid';
         }
 
-        if (
-          (id.includes('/packages/') && !id.includes('/packages/run/')) ||
-          (id.includes('/node_modules/@resolid/') && !id.includes('/node_modules/@resolid/run/'))
-        ) {
+        if (id.includes('/node_modules/@resolid/') && !id.includes('/node_modules/@resolid/run/')) {
           return 'resolid';
         }
 
         if (id.includes('/node_modules/')) {
           return 'vendor';
         }
+
+        if (id.includes('/packages/') && !id.includes('/packages/run/')) {
+          return 'resolid';
+        }
       },
     }),
   ],
+  build: {
+    minify: true,
+  },
 });

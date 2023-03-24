@@ -1,7 +1,8 @@
 import { createRouteAction, useRouteData } from '@resolid/run';
 import { createSignal, Show, Suspense } from 'solid-js';
-import { type HomeData, increment } from './Home.data';
 import { Motion, MotionPresence } from '@resolid/ui';
+import { Alert } from '@resolid/ui';
+import { type HomeData, increment } from './Home.data';
 
 function Home() {
   const routeData = useRouteData<HomeData>();
@@ -11,6 +12,9 @@ function Home() {
   return (
     <div class={'flex flex-col gap-3'}>
       <p>Home</p>
+      <div>
+        <Alert>测试</Alert>
+      </div>
       <p>
         <Suspense fallback={'Loading'}>
           <Show when={routeData()} keyed>
@@ -19,16 +23,19 @@ function Home() {
         </Suspense>
       </p>
       <p>
-        <button class={'border-gray-300 border px-3 py-1 rounded-sm'} onClick={() => submit()}>
+        <button class={'border-gray-300 border px-3 py-1 rounded-sm hover:bg-gray-50'} onClick={() => submit()}>
           Increment
         </button>
       </p>
       <p>
-        <button class={'border-gray-300 border px-3 py-1 rounded-sm'} onClick={() => setShow((prev) => !prev)}>
+        <button
+          class={'border-gray-300 border px-3 py-1 rounded-sm hover:bg-gray-50'}
+          onClick={() => setShow((prev) => !prev)}
+        >
           Animation
         </button>
       </p>
-      <p>
+      <div>
         <MotionPresence>
           <Show when={show()} keyed>
             <Motion
@@ -41,7 +48,7 @@ function Home() {
             </Motion>
           </Show>
         </MotionPresence>
-      </p>
+      </div>
     </div>
   );
 }
