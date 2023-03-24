@@ -1,12 +1,11 @@
 import type { MotionPreset } from './MotionPresets';
 import { MotionPresets } from './MotionPresets';
-import { type ComponentProps, splitProps, useContext } from 'solid-js';
+import { splitProps, useContext } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import type { MotionEventHandlers, MotionOptions } from './types';
 import { ParentContext, PresenceContext } from './MotionContext';
 import { createMotionOneState } from './primitives';
-import { combineStyle, mergeRefs } from '../../primitives';
-import { type Merge } from '@resolid/utils';
+import { combineStyle, createPolymorphic, mergeRefs } from '../../primitives';
 
 export type MotionComponentProps = {
   /**
@@ -28,18 +27,14 @@ export const getMotionProps = (
   return { ...MotionPresets[motionPreset], ...motionProps };
 };
 
-export type MotionProps = Merge<ComponentProps<'div'>, MotionEventHandlers & MotionOptions>;
+export type MotionProps = MotionEventHandlers & MotionOptions;
 
-export const Motion = (
-  props: MotionProps & {
-    tag?: string;
-  }
-) => {
+export const Motion = createPolymorphic<'div', MotionProps>((props) => {
   const [options, local, rest] = splitProps(
     props,
     ['initial', 'animate', 'inView', 'inViewOptions', 'hover', 'press', 'variants', 'transition', 'exit'],
     [
-      'tag',
+      'as',
       'ref',
       'style',
       'onMotionStart',
@@ -65,7 +60,7 @@ export const Motion = (
   return (
     <ParentContext.Provider value={state}>
       <Dynamic
-        component={local.tag || 'div'}
+        component={local.as || 'div'}
         ref={mergeRefs((el) => (root = el), local.ref)}
         style={local.style ? combineStyle(local.style, style) : style}
         on:motionstart={local.onMotionStart}
@@ -80,4 +75,4 @@ export const Motion = (
       />
     </ParentContext.Provider>
   );
-};
+});
