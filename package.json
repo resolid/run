@@ -1,10 +1,11 @@
 {
   "private": true,
+  "name": "monorepo",
   "scripts": {
     "prepare": "husky install",
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
-    "build": "npm run build:utils && npm run build:twind && npm run build:uirun && npm run build:adapters",
+    "build": "npm run build:utils && npm run build:twind && npm run build:ui && npm run build:run && npm run build:adapters",
     "test": "npm run test --workspace=packages --workspace=packages/adapters --if-present",
     "website:dev": "npm run dev --workspace=website",
     "website:build": "npm run build --workspace=website",
@@ -13,7 +14,8 @@
     "prisma": "npm run prisma --workspace=website",
     "build:utils": "npm run build --workspace=packages/utils",
     "build:twind": "npm run build --workspace=packages/twind",
-    "build:uirun": "npm run build --workspace=packages/ui & npm run build --workspace=packages/run",
+    "build:ui": "npm run build --workspace=packages/ui",
+    "build:run": "npm run build --workspace=packages/run",
     "build:adapters": "npm run build --workspace=packages/adapters"
   },
   "workspaces": [
@@ -25,7 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",
     "@commitlint/config-conventional": "^17.4.4",
-    "@types/node": "^18.15.6",
+    "@types/node": "^18.15.7",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
@@ -35,7 +37,7 @@
     "eslint-plugin-solid": "^0.11.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "prettier": "^2.8.6",
+    "prettier": "^2.8.7",
     "tailwindcss": "^3.2.7",
     "tsup": "^6.7.0",
     "typescript": "^5.0.2"
