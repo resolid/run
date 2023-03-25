@@ -1,15 +1,15 @@
 import { createRouteAction, useRouteData } from '@resolid/run';
 import { createSignal, Show, Suspense } from 'solid-js';
 import { Alert, Button, Motion, MotionPresence } from '@resolid/ui';
-import { type HomeData, increment } from './Home.data';
+import { type HomeData, increment } from './Index.data';
 
-function Home() {
+function Index() {
   const routeData = useRouteData<HomeData>();
   const [, submit] = createRouteAction(increment);
   const [show, setShow] = createSignal(false);
 
   return (
-    <div class={'flex flex-col gap-3'}>
+    <div class={'flex flex-col gap-3 pt-4'}>
       <p>Home</p>
       <div>
         <Alert>测试</Alert>
@@ -47,4 +47,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Index;

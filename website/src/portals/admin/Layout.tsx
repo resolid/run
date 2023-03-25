@@ -1,6 +1,6 @@
 import { A, Outlet } from '@resolid/run';
 
-const BaseLayout = () => {
+const AdminLayout = () => {
   return (
     <div>
       <h3>Admin Layout</h3>
@@ -17,4 +17,4 @@ const BaseLayout = () => {
   );
 };
 
-export default BaseLayout;
+export default AdminLayout;

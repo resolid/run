@@ -1,11 +1,11 @@
 import { A, Outlet } from '@resolid/run';
-import ResolidBanner from '../../../assets/images/resolid-banner.svg';
+import ResolidBanner from '~/assets/images/resolid-banner.svg';
 import { cx } from '@resolid/twind';
 import { For } from 'solid-js';
 import { Github } from '~/core/icons/Github';
 import { System } from '~/core/icons/System';
 
-const BaseLayout = () => {
+const SiteLayout = () => {
   return (
     <>
       <header>
@@ -30,9 +30,9 @@ const BaseLayout = () => {
                     <For
                       each={[
                         { name: 'Home', href: '/', end: true },
-                        { name: 'Solution', href: '/solution' },
-                        { name: 'Customers', href: '/customers' },
-                        { name: 'Pricing', href: '/pricing' },
+                        { name: 'Docs', href: '/docs' },
+                        { name: 'UI', href: '/ui' },
+                        { name: 'Forum', href: '/forum' },
                         { name: 'Blog', href: '/blog' },
                         { name: 'About', href: '/about' },
                       ]}
@@ -71,7 +71,7 @@ const BaseLayout = () => {
           </div>
         </nav>
       </header>
-      <section class={'pt-20'}>
+      <section class={'pt-16'}>
         <div class={'mx-auto px-4 mobile:px-12 laptop:max-w-6xl laptop:px-0'}>
           <Outlet />
         </div>
@@ -80,4 +80,4 @@ const BaseLayout = () => {
   );
 };
 
-export default BaseLayout;
+export default SiteLayout;

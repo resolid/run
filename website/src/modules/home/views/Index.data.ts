@@ -7,11 +7,11 @@ export const increment = server$(async () => {
   count = count + 2;
 });
 
-export const homeData = () =>
+export const indexData = () =>
   createRouteData(
     server$(async () => {
       return { count };
     })
   );
 
-export type HomeData = typeof homeData;
+export type HomeData = typeof indexData;

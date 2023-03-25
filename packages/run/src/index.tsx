@@ -11,6 +11,7 @@ export {
   useRouteData,
   useRoutes,
   useSearchParams,
+  type LinkProps,
   type RouteDataFunc,
   type RouteDataFuncArgs,
 } from '@solidjs/router';

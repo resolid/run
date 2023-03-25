@@ -1,6 +1,6 @@
 import type { RouteDefinition } from '@solidjs/router';
-import adminRoutes from './modules/backend/routes';
-import siteRoutes from './modules/frontend/routes';
+import adminRoutes from '~/portals/admin/routes';
+import siteRoutes from '~/portals/site/routes';
 
 const routes: RouteDefinition[] = [...adminRoutes, ...siteRoutes];
 
