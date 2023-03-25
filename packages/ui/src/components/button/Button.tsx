@@ -57,32 +57,32 @@ export type ButtonProps = ButtonBaseProps & {
 };
 
 const buttonSizes = {
-  xs: 'h-6 px-3 text-sm',
-  sm: 'h-7 px-4',
-  md: 'h-8 px-5',
-  lg: 'h-9 px-6',
-  xl: 'h-10 px-7 text-lg',
+  xs: 'h-6 px-1 text-sm',
+  sm: 'h-7 px-2',
+  md: 'h-8 px-3',
+  lg: 'h-9 px-4',
+  xl: 'h-10 px-5 text-lg',
 };
 
 const buttonVariants = (color: string, group?: { vertical: boolean }) => {
   return {
     solid: [
-      `no-underline text-white border-transparent bg-${color}-500 disabled:bg-${color}-500 hover:bg-${color}-600 active:bg-${color}-700`,
+      `no-underline text-white border-transparent bg-${color}-600 disabled:bg-${color}-600 hover:bg-${color}-700 active:bg-${color}-800`,
       group && `not-last-child:(border-${group.vertical ? 'b' : 'r'}-current)`,
     ],
     outline: [
-      `no-underline border-current text-${color}-500 bg-white disabled:bg-white hover:bg-${color}-50 active:bg-${color}-100`,
+      `no-underline border-current text-${color}-600 bg-white disabled:bg-white hover:bg-${color}-50 active:bg-${color}-100`,
       group && `not-first-child:(-m${group.vertical ? 't' : 'l'}-[1px])`,
     ],
     light: [
-      `no-underline border-transparent text-${color}-500 bg-${color}-50 disabled:bg-${color}-50 hover:bg-${color}-100 active:bg-${color}-200`,
+      `no-underline border-transparent text-${color}-600 bg-${color}-50 disabled:bg-${color}-50 hover:bg-${color}-100 active:bg-${color}-200`,
       group && `not-last-child:(border-${group.vertical ? 'b' : 'r'}-${color}-100)`,
     ],
     subtle: [
-      `no-underline border-transparent text-${color}-500 bg-transparent disabled:bg-transparent hover:bg-${color}-100 active:bg-${color}-200`,
+      `no-underline border-transparent text-${color}-600 bg-transparent disabled:bg-transparent hover:bg-${color}-100 active:bg-${color}-200`,
     ],
     link: [
-      `border-transparent underline underline-offset-2 text-${color}-500 disabled:text-${color}-500 hover:text-${color}-600 active:text-${color}-700`,
+      `border-transparent underline underline-offset-2 text-${color}-600 disabled:text-${color}-600 hover:text-${color}-700 active:text-${color}-800`,
     ],
   };
 };

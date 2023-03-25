@@ -24,7 +24,7 @@ const alertVariants = (color: ScaleColor) => {
   return {
     solid: `text-white border-transparent bg-${color}-500`,
     outline: `border-${color}-500 text-${color}-500 bg-white`,
-    light: `border-transparent bg-${color}-100 text-${color}-500`,
+    light: `border-transparent bg-${color}-50 text-${color}-900`,
   };
 };
 

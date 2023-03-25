@@ -22,9 +22,7 @@ function Home() {
         </Suspense>
       </p>
       <p>
-        <Button color={'gray'} variant={'outline'} onClick={() => submit()}>
-          Increment
-        </Button>
+        <Button onClick={() => submit()}>Increment</Button>
       </p>
       <p>
         <Button color={'gray'} variant={'outline'} onClick={() => setShow((prev) => !prev)}>
