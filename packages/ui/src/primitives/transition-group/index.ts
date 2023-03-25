@@ -3,6 +3,7 @@
 // From: https://github.com/solidjs-community/solid-primitives/blob/main/packages/transition-group/src/index.ts
 
 import {
+  $TRACK,
   type Accessor,
   batch,
   createComputed,
@@ -10,7 +11,6 @@ import {
   createSignal,
   untrack,
   useTransition,
-  $TRACK,
 } from 'solid-js';
 import { isServer } from 'solid-js/web';
 

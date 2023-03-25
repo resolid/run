@@ -1,7 +1,7 @@
 import type { AgileTheme } from '../types/types';
 import type { AutocompleteItem, AutocompleteProvider, Variant, VariantResolver } from '@twind/core';
-import { __DEV__ } from '../utils/env';
 import { arbitrary, normalize, withAutocomplete } from '@twind/core';
+import { __DEV__ } from '../utils/env';
 
 function withAutocomplete$(
   rule: VariantResolver<AgileTheme>,

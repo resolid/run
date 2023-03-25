@@ -3,7 +3,7 @@ import { Readable } from 'node:stream';
 import { once } from 'node:events';
 import { splitCookiesString } from 'set-cookie-parser';
 import { installPolyfills } from './polyfills';
-import { type OutgoingHttpHeaders, type IncomingHttpHeaders } from 'http';
+import { type IncomingHttpHeaders, type OutgoingHttpHeaders } from 'http';
 
 installPolyfills();
 

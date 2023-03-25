@@ -1,7 +1,6 @@
 import { createRouteAction, useRouteData } from '@resolid/run';
 import { createSignal, Show, Suspense } from 'solid-js';
-import { Motion, MotionPresence } from '@resolid/ui';
-import { Alert } from '@resolid/ui';
+import { Alert, Motion, MotionPresence } from '@resolid/ui';
 import { type HomeData, increment } from './Home.data';
 
 function Home() {

@@ -1,5 +1,5 @@
 /* @refresh reload */
-import { Body, Head, Html, Link, Meta, Routes, Scripts, Title, ErrorBoundary } from '@resolid/run';
+import { Body, ErrorBoundary, Head, Html, Link, Meta, Routes, Scripts, Title } from '@resolid/run';
 import { Suspense } from 'solid-js';
 import routes from './routes';
 

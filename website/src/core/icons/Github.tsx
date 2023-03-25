@@ -1,4 +1,5 @@
 import { Icon, type IconProps } from '../components/Icon';
+
 export const Github = (props: IconProps) => {
   return (
     <Icon stroke={'none'} viewBox={'2 2 20 20'} fill={'currentColor'} {...props}>

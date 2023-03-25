@@ -1,4 +1,5 @@
 import { Icon, type IconProps } from '../components/Icon';
+
 export const System = (props: IconProps) => {
   return (
     <Icon stroke={'none'} fill={'currentColor'} {...props}>

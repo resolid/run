@@ -2,8 +2,8 @@ import sirv from 'sirv';
 import polka from 'polka';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { type ServerResponse, type IncomingMessage } from 'http';
-import { setResponse, createRequest, createHeaders } from '@resolid/run/node';
+import { type IncomingMessage, type ServerResponse } from 'http';
+import { createHeaders, createRequest, setResponse } from '@resolid/run/node';
 
 // @ts-expect-error Cannot find module
 import manifest from './route-manifest.json';

@@ -1,12 +1,17 @@
 import {
+  arbitrary,
   asArray,
   type AutocompleteProvider,
   type ColorFromThemeValue,
   type CSSBase,
   type CSSObject,
   type CSSProperties,
+  match,
+  matchColor,
   type MatchResult,
+  matchTheme,
   type MaybeArray,
+  mql,
   type Rule,
   type ThemeMatchResult,
   type ThemeRuleResolver,
@@ -15,7 +20,6 @@ import {
   withAutocomplete,
 } from '@twind/core';
 import type { AgileTheme } from '../types/types';
-import { arbitrary, match, matchColor, matchTheme, mql } from '@twind/core';
 import { __DEV__ } from '../utils/env';
 
 // FROM: https://github.com/tw-in-js/twind/blob/main/packages/preset-tailwind/src/rules.ts
