@@ -35,7 +35,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
   } = options;
 
   let root: string, rootEntry: string, clientEntry: string, serverEntry: string;
-  let outPath: string, clientOutPath: string;
+  let outPath: string, clientOutPath: string, serverOutPath: string;
   let isBuild: boolean;
   let viteConfig: ResolvedConfig;
   let finalise: () => Promise<void>;
@@ -76,6 +76,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
 
         outPath = join(root, userConfig.build?.outDir || 'dist');
         clientOutPath = join(outPath, 'public');
+        serverOutPath = join(root, '.resolid', 'server');
 
         const config: UserConfig = {
           root,
@@ -242,7 +243,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
           if (ssr) {
             return {
               build: {
-                outDir: join('.resolid', 'server'),
+                outDir: serverOutPath,
                 ssr: true,
                 minify: false,
                 rollupOptions: {
@@ -251,7 +252,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
                     inlineDynamicImports: true,
                   },
                 },
-                target: 'node16',
+                target: 'node18',
                 ssrEmitAssets: true,
               },
               publicDir: false,
@@ -297,6 +298,11 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
           writeFileSync(
             join(clientOutPath, 'route-manifest.json'),
             JSON.stringify(prepareManifest(manifest, ssrManifest, routeComponents, viteConfig.base), null, 2)
+          );
+
+          writeFileSync(
+            join(serverOutPath, 'route-manifest.json'),
+            readFileSync(join(clientOutPath, 'route-manifest.json')).toString()
           );
 
           finalise = async () => {

@@ -6,7 +6,7 @@ import { type ServerResponse, type IncomingMessage } from 'http';
 import { setResponse, createRequest, createHeaders } from '@resolid/run/node';
 
 // @ts-expect-error Cannot find module
-import manifest from '../../dist/public/route-manifest.json';
+import manifest from './route-manifest.json';
 // @ts-expect-error Cannot find module
 import handleRequest from './entry-server.js';
 

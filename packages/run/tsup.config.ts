@@ -4,12 +4,7 @@ import { solidPlugin } from 'esbuild-plugin-solid';
 
 const baseConfig: Options = {
   format: ['cjs', 'esm'],
-  external: [
-    ...Object.keys(peerDependencies),
-    ...Object.keys(devDependencies),
-    '~resolid-run/root',
-    '~resolid-run/entry-server',
-  ],
+  external: [...Object.keys(peerDependencies), ...Object.keys(devDependencies), '~resolid-run/root'],
   noExternal: Object.keys(dependencies),
   dts: true,
   treeshake: true,
@@ -41,16 +36,16 @@ export default defineConfig([
   {
     ...baseConfig,
     entry: {
-      browser: 'src/browser/index.tsx',
+      browser: 'src/browser/index.ts',
     },
   },
   {
     ...baseConfig,
     entry: {
-      server: 'src/server/index.tsx',
+      server: 'src/server/index.ts',
     },
     platform: 'node',
-    target: 'node16',
+    target: 'node18',
   },
   {
     ...baseConfig,
@@ -58,7 +53,7 @@ export default defineConfig([
       node: 'src/node/index.ts',
     },
     platform: 'node',
-    target: 'node16',
+    target: 'node18',
   },
   {
     ...baseConfig,
@@ -66,6 +61,6 @@ export default defineConfig([
       vite: 'src/vite/index.ts',
     },
     platform: 'node',
-    target: 'node16',
+    target: 'node18',
   },
 ]);

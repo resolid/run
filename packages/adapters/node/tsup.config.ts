@@ -5,7 +5,7 @@ const baseConfig: Options = {
   format: ['esm'],
   noExternal: Object.keys(dependencies),
   platform: 'node',
-  target: 'node16',
+  target: 'node18',
   dts: true,
   treeshake: true,
   clean: true,
@@ -24,7 +24,7 @@ export default defineConfig([
     external: [
       ...Object.keys(peerDependencies),
       ...Object.keys(devDependencies),
-      '../../dist/public/route-manifest.json',
+      './route-manifest.json',
       './entry-server.js',
     ],
     dts: false,
