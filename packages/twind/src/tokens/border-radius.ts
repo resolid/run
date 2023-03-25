@@ -2,7 +2,7 @@ export default {
   none: '0',
   xs: '1px',
   sm: '2px',
-  DEFAULT: '4px',
+  DEFAULT: '3px',
   md: '5px',
   lg: '6px',
   xl: '8px',

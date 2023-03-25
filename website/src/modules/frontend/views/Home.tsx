@@ -1,6 +1,6 @@
 import { createRouteAction, useRouteData } from '@resolid/run';
 import { createSignal, Show, Suspense } from 'solid-js';
-import { Alert, Motion, MotionPresence } from '@resolid/ui';
+import { Alert, Button, Motion, MotionPresence } from '@resolid/ui';
 import { type HomeData, increment } from './Home.data';
 
 function Home() {
@@ -22,17 +22,14 @@ function Home() {
         </Suspense>
       </p>
       <p>
-        <button class={'border-gray-300 border px-3 py-1 rounded-sm hover:bg-gray-50'} onClick={() => submit()}>
+        <Button color={'gray'} variant={'outline'} onClick={() => submit()}>
           Increment
-        </button>
+        </Button>
       </p>
       <p>
-        <button
-          class={'border-gray-300 border px-3 py-1 rounded-sm hover:bg-gray-50'}
-          onClick={() => setShow((prev) => !prev)}
-        >
+        <Button color={'gray'} variant={'outline'} onClick={() => setShow((prev) => !prev)}>
           Animation
-        </button>
+        </Button>
       </p>
       <div>
         <MotionPresence>
