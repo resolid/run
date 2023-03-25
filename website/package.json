@@ -1,6 +1,7 @@
 {
   "name": "website",
   "private": true,
+  "description": "Website of Resolid Run.",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
