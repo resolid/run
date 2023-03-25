@@ -75,7 +75,7 @@
     "@babel/parser": "^7.21.3",
     "@babel/traverse": "^7.21.3",
     "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.8.1",
+    "@solidjs/router": "^0.8.2",
     "@types/set-cookie-parser": "^2.4.2",
     "esbuild-plugin-solid": "^0.5.0",
     "set-cookie-parser": "^2.6.0",
@@ -87,7 +87,7 @@
   },
   "peerDependencies": {
     "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.8.1",
+    "@solidjs/router": "^0.8.2",
     "esbuild-plugin-solid": "^0.5.0",
     "solid-js": "^1.6.15",
     "undici": "^5.21.0",
