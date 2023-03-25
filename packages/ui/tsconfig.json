@@ -2,8 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "include": ["src", "tsup.config.ts"],
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "paths": {
+      "@resolid/twind": ["../twind/src"],
+      "@resolid/utils": ["../utils/src"]
+    }
   }
 }

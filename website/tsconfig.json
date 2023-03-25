@@ -7,7 +7,10 @@
     "jsxImportSource": "solid-js",
     "types": ["node", "vite/client"],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@resolid/ui": ["../packages/ui/src"],
+      "@resolid/twind": ["../packages/twind/src"],
+      "@resolid/utils": ["../packages/utils/src"]
     }
   }
 }
