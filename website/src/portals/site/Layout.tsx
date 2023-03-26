@@ -71,11 +71,11 @@ const SiteLayout = () => {
           </div>
         </nav>
       </header>
-      <section class={'pt-16'}>
+      <div class={'pt-16'}>
         <div class={'mx-auto px-4 mobile:px-12 laptop:max-w-6xl laptop:px-0'}>
           <Outlet />
         </div>
-      </section>
+      </div>
     </>
   );
 };

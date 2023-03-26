@@ -12,7 +12,21 @@ export const isReturnJsxElement = (nodeBody: Babel.types.BlockStatement | Babel.
 
   return (
     nodeBody.body.findIndex((body) => {
-      return body.type == 'ReturnStatement' && body.argument?.type == 'JSXElement';
+      if (body.type != 'ReturnStatement') {
+        return false;
+      }
+
+      if (body.argument?.type == 'JSXElement') {
+        return true;
+      }
+
+      if (body.argument?.type == 'ConditionalExpression') {
+        if (body.argument.consequent.type == 'JSXElement' || body.argument.alternate.type == 'JSXElement') {
+          return true;
+        }
+      }
+
+      return false;
     }) >= 0
   );
 };

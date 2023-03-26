@@ -2,6 +2,7 @@
 import { Body, ErrorBoundary, Head, Html, Link, Meta, Routes, Scripts, Title } from '@resolid/run';
 import { Suspense } from 'solid-js';
 import routes from './routes';
+import { ColorModeScript, ResolidProvider } from '@resolid/ui';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Root() {
@@ -20,9 +21,12 @@ export default function Root() {
         <Link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <Body class={'min-h-screen'}>
+        <ColorModeScript />
         <ErrorBoundary>
-          <Suspense fallback={'Loading...'}>
-            <Routes base={import.meta.env.BASE_URL}>{routes as never}</Routes>
+          <Suspense>
+            <ResolidProvider>
+              <Routes base={import.meta.env.BASE_URL}>{routes as never}</Routes>
+            </ResolidProvider>
           </Suspense>
         </ErrorBoundary>
         <Scripts />

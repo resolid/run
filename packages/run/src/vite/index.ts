@@ -127,7 +127,12 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
       enforce: 'pre',
       apply: 'build',
       transform(source, id, transformOptions) {
-        if (transformOptions?.ssr && id.includes('.tsx') && id != rootEntry && id != serverEntry) {
+        if (
+          transformOptions?.ssr &&
+          (id.includes('.tsx') || id.includes('.mdx')) &&
+          id != rootEntry &&
+          id != serverEntry
+        ) {
           const componentId = id.replace(root + '/', '');
 
           const ast = parse(source, {

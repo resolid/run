@@ -1,6 +1,8 @@
 import { A, type LinkProps, Outlet } from '@resolid/run';
 import { For, Show } from 'solid-js';
 import { type Menu, menus } from '~/modules/ui/menus';
+import { mdxComponents } from '~/modules/ui/mdxComponents';
+import { MDXProvider } from 'solid-mdx';
 
 const MenuLink = (props: LinkProps) => {
   return <A {...props} />;
@@ -48,7 +50,9 @@ export default function Layout() {
       </aside>
       <div class={'pl-60'}>
         <main class={'mx-auto h-full p-4'}>
-          <Outlet />
+          <MDXProvider components={mdxComponents}>
+            <Outlet />
+          </MDXProvider>
         </main>
       </div>
     </>
