@@ -1,7 +1,11 @@
 import type * as Babel from '@babel/core';
 import { type Options } from 'vite-plugin-solid';
 
-export const isReturnJsxElement = (nodeBody: Babel.types.BlockStatement | Babel.types.Expression): boolean => {
+const isJSX = (type: string | undefined) => {
+  return type == 'JSXFragment' || type == 'JSXElement';
+};
+
+export const isReturnJsx = (nodeBody: Babel.types.BlockStatement | Babel.types.Expression): boolean => {
   if (nodeBody.type != 'BlockStatement') {
     return false;
   }
@@ -16,12 +20,12 @@ export const isReturnJsxElement = (nodeBody: Babel.types.BlockStatement | Babel.
         return false;
       }
 
-      if (body.argument?.type == 'JSXElement') {
+      if (isJSX(body.argument?.type)) {
         return true;
       }
 
       if (body.argument?.type == 'ConditionalExpression') {
-        if (body.argument.consequent.type == 'JSXElement' || body.argument.alternate.type == 'JSXElement') {
+        if (isJSX(body.argument.consequent.type) || isJSX(body.argument.alternate.type)) {
           return true;
         }
       }

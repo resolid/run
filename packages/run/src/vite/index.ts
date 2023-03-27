@@ -12,7 +12,7 @@ import { dev } from './serve/dev';
 import type * as Babel from '@babel/core';
 import { parse } from '@babel/parser';
 import _traverse from '@babel/traverse';
-import { babelOptions, isReturnJsxElement } from './utils/babel';
+import { babelOptions, isReturnJsx } from './utils/babel';
 import { prepareManifest } from './utils/manifest';
 import { resolveAdapter } from './utils/adapter';
 import transformServer from './babel/transformServer';
@@ -166,7 +166,7 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
             ExportDefaultDeclaration(path: Babel.NodePath<Babel.types.ExportDefaultDeclaration>) {
               const declaration = path.get('declaration');
 
-              if (declaration.isFunctionDeclaration() && isReturnJsxElement(declaration.node.body)) {
+              if (declaration.isFunctionDeclaration() && isReturnJsx(declaration.node.body)) {
                 componentPath = declaration;
               }
 
@@ -182,13 +182,16 @@ export default function resolidRun(options: ResolidRunViteOptions = {}): Plugin[
                     if (
                       init &&
                       (init.isArrowFunctionExpression() || init.isFunctionExpression()) &&
-                      isReturnJsxElement(init.node.body)
+                      isReturnJsx(init.node.body)
                     ) {
                       componentPath = init;
                     }
                   }
 
-                  if (binding.path.isFunctionDeclaration() && isReturnJsxElement(binding.path.node.body)) {
+                  if (
+                    binding.path.isFunctionDeclaration() &&
+                    (binding.path.node.id?.name == 'MDXContent' || isReturnJsx(binding.path.node.body))
+                  ) {
                     componentPath = binding.path;
                   }
                 }
