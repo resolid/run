@@ -4,9 +4,7 @@ import resolid from '@resolid/run/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import mdx from '@mdx-js/rollup';
 import rehypeSlug from 'rehype-slug';
-import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 
 export default defineConfig(async ({ command }) => {
   const isBuild = command == 'build';
@@ -17,12 +15,11 @@ export default defineConfig(async ({ command }) => {
       {
         enforce: 'pre',
         ...mdx({
-          jsx: true,
-          jsxImportSource: 'solid-js',
-          providerImportSource: 'solid-mdx',
+          jsxImportSource: 'solid-jsx',
+          providerImportSource: 'solid-jsx',
           elementAttributeNameCase: 'html',
           rehypePlugins: [rehypeSlug],
-          remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
+          remarkPlugins: [remarkGfm],
         }),
       },
       resolid({

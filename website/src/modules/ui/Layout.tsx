@@ -1,8 +1,8 @@
-import { A, type LinkProps, Outlet } from '@resolid/run';
-import { For, Show } from 'solid-js';
+import { A, type LinkProps, Outlet, useLocation } from '@resolid/run';
+import { createEffect, For, Show } from 'solid-js';
 import { type Menu, menus } from '~/modules/ui/menus';
-import { mdxComponents } from '~/modules/ui/mdxComponents';
-import { MDXProvider } from 'solid-mdx';
+import { mdx } from '~/modules/ui/mdx';
+import { MDXProvider } from 'solid-jsx';
 
 const MenuLink = (props: LinkProps) => {
   return <A {...props} />;
@@ -14,8 +14,8 @@ const MenuItem = (props: { menu: Menu; deep: number }) => {
       {props.menu.path ? (
         <MenuLink
           class={`block py-1 pl-${props.deep * 2}`}
-          activeClass={'bg-blue-50 text-blue-500'}
-          inactiveClass={'hover:(text-gray-500 bg-gray-50) text-gray-600'}
+          activeClass={'bg-blue-50 text-blue-600'}
+          inactiveClass={'hover:bg-gray-100 active:bg-gray-200'}
           href={'/ui' + props.menu.path}
         >
           {props.menu.label}
@@ -37,6 +37,12 @@ const MenuItem = (props: { menu: Menu; deep: number }) => {
 };
 
 export default function Layout() {
+  const location = useLocation();
+
+  createEffect(() => {
+    console.log(location.pathname);
+  });
+
   return (
     <>
       <aside class={'w-60 fixed top-16 bottom-0 scrollbar-thin overflow-y-auto overflow-x-hidden overscroll-contain'}>
@@ -50,8 +56,10 @@ export default function Layout() {
       </aside>
       <div class={'pl-60'}>
         <main class={'mx-auto h-full p-4'}>
-          <MDXProvider components={mdxComponents}>
-            <Outlet />
+          <MDXProvider components={mdx}>
+            <article class={'flex flex-col w-full gap-4'}>
+              <Outlet />
+            </article>
           </MDXProvider>
         </main>
       </div>

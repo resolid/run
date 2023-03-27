@@ -4,7 +4,7 @@ import { twindConfig } from '@resolid/twind';
 const config = twindConfig({
   preflight: css`
     body {
-      @apply overflow-y-scroll bg-white text-black;
+      @apply overflow-y-scroll bg-white text-gray-900;
     }
   `,
   ignorelist: ['stylus'],

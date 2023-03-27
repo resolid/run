@@ -9,7 +9,7 @@ function Index() {
   const [show, setShow] = createSignal(false);
 
   return (
-    <div class={'flex flex-col gap-3 pt-4'}>
+    <div class={'flex flex-col gap-4 p-4'}>
       <p>Home</p>
       <div>
         <Alert>测试</Alert>

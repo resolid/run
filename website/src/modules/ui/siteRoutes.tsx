@@ -1,5 +1,6 @@
 import { type RouteDefinition } from '@solidjs/router';
 import { type Component, lazy } from 'solid-js';
+import { Navigate } from '@resolid/run';
 
 const documents = import.meta.glob<boolean, string, { default: Component }>('./content/documents/*.mdx');
 const components = import.meta.glob<boolean, string, { default: Component }>('./content/components/*.mdx');
@@ -9,7 +10,7 @@ const getBasename = (path: string) => {
 };
 
 const routes: RouteDefinition[] = [
-  { path: '/', component: lazy(() => import('./views/Index')) },
+  { path: '/', component: () => <Navigate href={'introduction'} /> },
   ...Object.keys(documents).map((key) => {
     return { path: '/' + getBasename(key), component: lazy(documents[key]) };
   }),

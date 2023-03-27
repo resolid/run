@@ -30,7 +30,7 @@
     "@motionone/dom": "^10.15.5",
     "@resolid/twind": "^0.1.1",
     "@resolid/utils": "^0.1.1",
-    "solid-js": "^1.6.15",
+    "solid-js": "^1.6.16",
     "tsup-preset-solid": "^0.1.8"
   },
   "peerDependencies": {
@@ -38,7 +38,7 @@
     "@motionone/dom": "^10.15.5",
     "@resolid/twind": "^0.1.1",
     "@resolid/utils": "^0.1.1",
-    "solid-js": "^1.6.15"
+    "solid-js": "^1.6.16"
   },
   "repository": {
     "type": "git",

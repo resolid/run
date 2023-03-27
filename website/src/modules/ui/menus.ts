@@ -6,15 +6,19 @@ export type Menu = {
 
 export const menus: Menu[] = [
   {
-    label: 'Guide',
+    label: 'Overview',
     children: [
       {
-        label: 'Quick Start',
-        path: '/start',
+        label: 'Introduction',
+        path: '/introduction',
       },
       {
-        label: 'Theme',
-        path: '/theme',
+        label: 'Getting Started',
+        path: '/getting-started',
+      },
+      {
+        label: 'Theming',
+        path: '/theming',
       },
       {
         label: 'Dark Mode',
