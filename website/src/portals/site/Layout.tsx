@@ -7,7 +7,7 @@ import { System } from '~/core/icons/System';
 const SiteLayout = () => {
   return (
     <>
-      <header class={'sticky z-10 w-full top-0 border-b border-gray-100 bg-white/80 backdrop-blur'}>
+      <header class={'fixed z-10 w-full inset-x-0 border-b border-gray-100 bg-white/80 backdrop-blur'}>
         <nav class={'mx-auto p-4 desktop:max-w-7xl flex items-center justify-between'}>
           <div class={'flex flex-row items-center'}>
             <A href={'/'}>
@@ -60,7 +60,7 @@ const SiteLayout = () => {
           </div>
         </nav>
       </header>
-      <div class={'mx-auto desktop:max-w-7xl'}>
+      <div class={'pt-16 mx-auto desktop:max-w-7xl'}>
         <Outlet />
       </div>
     </>
