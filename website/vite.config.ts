@@ -175,7 +175,7 @@ export default defineConfig(async ({ command }) => {
       }),
     ],
     build: {
-      minify: false,
+      minify: true,
     },
   };
 
