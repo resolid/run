@@ -1,10 +1,15 @@
 import { A, Outlet } from '@resolid/run';
 import ResolidBanner from '~/assets/images/resolid-banner.svg';
-import { For } from 'solid-js';
+import { createSignal, For, Show } from 'solid-js';
 import { Github } from '~/core/icons/Github';
 import { System } from '~/core/icons/System';
+import { Menu } from '~/core/icons/Menu';
+import { Close } from '~/core/icons/Close';
+import { cx } from '@resolid/twind';
 
 const SiteLayout = () => {
+  const [collapsed, setCollapsed] = createSignal(true);
+
   return (
     <>
       <header class={'fixed z-10 w-full inset-x-0 border-b border-gray-100 bg-white/80 backdrop-blur'}>
@@ -15,8 +20,15 @@ const SiteLayout = () => {
             </A>
           </div>
           <div class={'flex flex-row items-center gap-4'}>
-            <div class={'invisible absolute top-full left-0 z-20 w-full laptop:(visible relative)'}>
-              <ul class="space-y-6 font-medium tracking-wide laptop:(flex space-y-0)">
+            <div
+              class={cx(
+                'fixed p-5 w-full top-full z-20 right-0 left-0 h-screen bg-white',
+                'duration-300 transition-opacity',
+                'laptop:(opacity-100 relative p-0 h-auto block)',
+                collapsed() ? 'block' : 'hidden'
+              )}
+            >
+              <ul class="max-w-[288px] mx-auto space-y-5 font-medium tracking-wide laptop:(flex space-y-0 max-w-none)">
                 <For
                   each={[
                     { name: 'Home', href: '/', end: true },
@@ -35,7 +47,8 @@ const SiteLayout = () => {
                         activeClass={'text-blue-600'}
                         inactiveClass={'text-gray-600'}
                         href={link.href}
-                        class="hover:text-blue-500 tablet:px-4"
+                        onClick={() => setCollapsed(false)}
+                        class="block hover:text-blue-500 tablet:px-4"
                       >
                         <span>{link.name}</span>
                       </A>
@@ -57,6 +70,11 @@ const SiteLayout = () => {
                 <Github class={'h-5 w-5'} />
               </a>
             </div>
+            <button onClick={() => setCollapsed((prev) => !prev)} class={'block laptop:hidden'}>
+              <Show when={!collapsed()} fallback={<Close class={'h-5 w-5'} />} keyed>
+                <Menu class={'h-5 w-5'} />
+              </Show>
+            </button>
           </div>
         </nav>
       </header>

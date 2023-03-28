@@ -1,7 +1,9 @@
 import { css, install } from '@twind/core';
 import { twindConfig } from '@resolid/twind';
+import presetTypography from '@twind/preset-typography';
 
 const config = twindConfig({
+  presets: [presetTypography()],
   preflight: css`
     body {
       @apply overflow-y-scroll bg-white text-gray-900;

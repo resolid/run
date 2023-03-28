@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from '@resolid/run';
 import { MDXProvider } from 'solid-jsx';
-import { TableOfContents } from '~/shared/mdx/TableOfContents';
 import { AsideMenu } from '~/shared/AsideMenu';
 import { menus } from './menus';
 import { mdx } from './mdx';
+import { TocLayout } from '~/shared/mdx/TocLayout';
 
 export default function Layout() {
   const location = useLocation();
@@ -24,14 +24,9 @@ export default function Layout() {
       <div class={'pl-60'}>
         <main class={'mx-auto h-full p-4'}>
           <MDXProvider components={mdx}>
-            <div class={'flex justify-between'}>
-              <article class={'w-full'}>
-                <Outlet />
-              </article>
-              <nav class={'hidden w-52 laptop:block'}>
-                <TableOfContents module={'docs'} path={getMdxPath()} />
-              </nav>
-            </div>
+            <TocLayout module={'docs'} path={getMdxPath()}>
+              <Outlet />
+            </TocLayout>
           </MDXProvider>
         </main>
       </div>
