@@ -80,7 +80,7 @@ export type Container = {
   padding?: string | Record<string, string>;
 };
 
-export type AgileTheme = BaseTheme & {
+export type ResolidTheme = BaseTheme & {
   columns: Record<string, string>;
   spacing: Record<string, string>;
   durations: Record<string, MaybeArray<string>>;

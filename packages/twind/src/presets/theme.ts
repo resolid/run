@@ -1,7 +1,7 @@
 // noinspection ES6ConvertVarToLetConst
 
 import type { ThemeSection, ThemeSectionResolver } from '@twind/core';
-import type { AgileTheme } from '../types/types';
+import type { ResolidTheme } from '../types/types';
 import screens from '../tokens/screens';
 import colors from '../tokens/colors';
 import borderRadius from '../tokens/border-radius';
@@ -46,14 +46,14 @@ export type Theme = {
         lg: [size: string, lineHeight: string];
         xl: [size: string, lineHeight: string];
       }
-    : AgileTheme[Section];
+    : ResolidTheme[Section];
 } & {
-  [Section in Exclude<keyof AgileTheme, 'colors' | StableSections | OmitedSections>]: ThemeSection<
-    AgileTheme[Section],
-    AgileTheme
+  [Section in Exclude<keyof ResolidTheme, 'colors' | StableSections | OmitedSections>]: ThemeSection<
+    ResolidTheme[Section],
+    ResolidTheme
   >;
 } & {
-  [Section in OmitedSections]?: ThemeSection<AgileTheme[Section], AgileTheme>;
+  [Section in OmitedSections]?: ThemeSection<ResolidTheme[Section], ResolidTheme>;
 };
 
 const theme: Theme = {
@@ -837,8 +837,8 @@ function linear(
   return result;
 }
 
-function alias<Section extends keyof AgileTheme>(
+function alias<Section extends keyof ResolidTheme>(
   section: Section
-): ThemeSectionResolver<AgileTheme[Section], AgileTheme> {
+): ThemeSectionResolver<ResolidTheme[Section], ResolidTheme> {
   return ({ theme }) => theme(section);
 }

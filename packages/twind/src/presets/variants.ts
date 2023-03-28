@@ -1,12 +1,12 @@
-import type { AgileTheme } from '../types/types';
+import type { ResolidTheme } from '../types/types';
 import type { AutocompleteItem, AutocompleteProvider, Variant, VariantResolver } from '@twind/core';
 import { arbitrary, normalize, withAutocomplete } from '@twind/core';
 import { __DEV__ } from '../utils/env';
 
 function withAutocomplete$(
-  rule: VariantResolver<AgileTheme>,
-  autocomplete: AutocompleteProvider<AgileTheme> | false
-): VariantResolver<AgileTheme> {
+  rule: VariantResolver<ResolidTheme>,
+  autocomplete: AutocompleteProvider<ResolidTheme> | false
+): VariantResolver<ResolidTheme> {
   if (__DEV__) {
     return withAutocomplete(rule, autocomplete);
   }
@@ -14,7 +14,7 @@ function withAutocomplete$(
   return rule;
 }
 
-const variants: Variant<AgileTheme>[] = [
+const variants: Variant<ResolidTheme>[] = [
   ['sticky', '@supports ((position: -webkit-sticky) or (position:sticky))'],
   ['motion-reduce', '@media (prefers-reduced-motion:reduce)'],
   ['motion-safe', '@media (prefers-reduced-motion:no-preference)'],

@@ -19,15 +19,15 @@ import {
   toCSS,
   withAutocomplete,
 } from '@twind/core';
-import type { AgileTheme } from '../types/types';
+import type { ResolidTheme } from '../types/types';
 import { __DEV__ } from '../utils/env';
 
 // FROM: https://github.com/tw-in-js/twind/blob/main/packages/preset-tailwind/src/rules.ts
 
 function withAutocomplete$(
-  rule: Rule<AgileTheme>,
-  autocomplete: AutocompleteProvider<AgileTheme> | false
-): Rule<AgileTheme> {
+  rule: Rule<ResolidTheme>,
+  autocomplete: AutocompleteProvider<ResolidTheme> | false
+): Rule<ResolidTheme> {
   if (__DEV__) {
     return withAutocomplete(rule, autocomplete);
   }
@@ -35,7 +35,7 @@ function withAutocomplete$(
   return rule;
 }
 
-const rules: Rule<AgileTheme>[] = [
+const rules: Rule<ResolidTheme>[] = [
   match('\\[([-\\w]+):(.+)]', ({ 1: $1, 2: $2 }, context) => ({
     '@layer overrides': {
       '&': {
@@ -947,7 +947,7 @@ const rules: Rule<AgileTheme>[] = [
   matchTheme('scroll-p([xytrbl])?(?:$|-)', 'padding', edge('scroll-padding')),
 
   // Margin
-  matchTheme<AgileTheme, 'scrollMargin'>('-?scroll-m([xytrbl])?(?:$|-)', 'scroll-margin', edge('scroll-margin')),
+  matchTheme<ResolidTheme, 'scrollMargin'>('-?scroll-m([xytrbl])?(?:$|-)', 'scroll-margin', edge('scroll-margin')),
 
   // Touch Action
   match('touch-(auto|none|manipulation)', 'touch-action'),
@@ -1086,7 +1086,7 @@ function convertContentValue({ $$ }: MatchResult) {
 function edge(
   propertyPrefix: string,
   propertySuffix = ''
-): ThemeRuleResolver<string | ColorFromThemeValue, AgileTheme> {
+): ThemeRuleResolver<string | ColorFromThemeValue, ResolidTheme> {
   return ({ 1: $1, _ }) => {
     const edges =
       {
@@ -1103,7 +1103,7 @@ function edge(
   };
 }
 
-function filter(prefix = ''): Rule<AgileTheme>[] {
+function filter(prefix = ''): Rule<ResolidTheme>[] {
   const filters = [
     'blur',
     'brightness',
@@ -1136,7 +1136,7 @@ function filter(prefix = ''): Rule<AgileTheme>[] {
     match(`${prefix}filter`, defaults),
 
     ...filters.map((key) =>
-      matchTheme<AgileTheme, 'hueRotate' | 'dropShadow'>(
+      matchTheme<ResolidTheme, 'hueRotate' | 'dropShadow'>(
         // hue-rotate can be negated
         `${key[0] == 'h' ? '-?' : ''}(${prefix}${key})(?:$|-)`,
 

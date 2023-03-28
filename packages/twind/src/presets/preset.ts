@@ -1,11 +1,11 @@
 import type { Preset } from '@twind/core';
-import type { AgileTheme } from '../types/types';
+import type { ResolidTheme } from '../types/types';
 import preflight from './preflight';
 import theme from './theme';
 import rules from './rules';
 import variants from './variants';
 
-const presetAgile = (): Preset<AgileTheme> => {
+const presetAgile = (): Preset<ResolidTheme> => {
   return {
     darkMode: 'class',
     darkColor: (section, key, { theme }) => {
