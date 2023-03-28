@@ -48,7 +48,7 @@ export const mdx = {
   },
   a: (props: ComponentProps<'a'>) => {
     // eslint-disable-next-line jsx-a11y/anchor-has-content
-    return <a target="_blank" rel="noopener noreferrer" {...props} />;
+    return <a class={'text-blue-500 hover:(text-blue-600 underline)'} target="_blank" rel="noreferrer" {...props} />;
   },
   p: (props: ComponentProps<'p'>) => {
     return <p class={'mt-3 mb-3'} {...props} />;

@@ -18,6 +18,7 @@ const getHeadingsFromToc = (tableOfContents: TocItem[]) => {
     }
 
     const style = window.getComputedStyle(el);
+
     const scrollMt = parseFloat(style.scrollMarginTop) + 1;
 
     const top = window.scrollY + el.getBoundingClientRect().top - scrollMt;
@@ -38,7 +39,7 @@ const useCurrentSection = (tableOfContents: Accessor<TocItem[] | undefined>) => 
 
     const headings = getHeadingsFromToc(toc);
 
-    function onScroll() {
+    const onScroll = () => {
       const top = window.scrollY;
 
       let current = headings[0]?.slug;
@@ -56,7 +57,7 @@ const useCurrentSection = (tableOfContents: Accessor<TocItem[] | undefined>) => 
       }
 
       setCurrentSection(current);
-    }
+    };
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -78,7 +79,9 @@ export const TableOfContents = (props: { module: string; path: string }) => {
 
       try {
         const { getHeadings } =
-          paths.length == 3
+          paths.length == 4
+            ? await import(`../../modules/${payload[0]}/${paths[0]}/${paths[1]}/${paths[2]}/${paths[3]}.mdx`)
+            : paths.length == 3
             ? await import(`../../modules/${payload[0]}/${paths[0]}/${paths[1]}/${paths[2]}.mdx`)
             : paths.length == 2
             ? await import(`../../modules/${payload[0]}/${paths[0]}/${paths[1]}.mdx`)
@@ -103,7 +106,8 @@ export const TableOfContents = (props: { module: string; path: string }) => {
           <li>
             <a
               class={cx(
-                '-ml-px block pl-4 py-1 border-l',
+                '-ml-px block py-1 border-l',
+                item.depth == 2 ? 'pl-4' : 'pl-8',
                 item.slug == currentSection()
                   ? 'border-l-blue-300 text-blue-500'
                   : 'hover:(border-l-gray-300 text-gray-700) border-l-transparent text-gray-500'

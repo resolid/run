@@ -1,6 +1,7 @@
 import type { RouteDefinition } from '@solidjs/router';
 import { lazy } from 'solid-js';
 import { indexData } from '~/modules/home/views/Index.data';
+import docsSiteRoutes from '~/modules/docs/siteRoutes';
 import uiSiteRoutes from '~/modules/ui/siteRoutes';
 
 const routes: RouteDefinition[] = [
@@ -13,7 +14,7 @@ const routes: RouteDefinition[] = [
         component: lazy(() => import('~/modules/home/views/Index')),
         data: indexData,
       },
-      { path: '/docs', component: lazy(() => import('~/modules/docs/views/Index')) },
+      { path: '/docs', component: lazy(() => import('~/modules/docs/Layout')), children: docsSiteRoutes },
       { path: '/ui', component: lazy(() => import('~/modules/ui/Layout')), children: uiSiteRoutes },
       { path: '/forum', component: lazy(() => import('~/modules/forum/views/Index')) },
       { path: '/blog', component: lazy(() => import('~/modules/blog/views/Index')) },

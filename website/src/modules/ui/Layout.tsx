@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from '@resolid/run';
-import { menus } from '~/modules/ui/menus';
-import { mdx } from '~/modules/ui/mdx';
 import { MDXProvider } from 'solid-jsx';
 import { TableOfContents } from '~/shared/mdx/TableOfContents';
 import { AsideMenu } from '~/shared/AsideMenu';
+import { menus } from './menus';
+import { mdx } from './mdx';
 
 export default function Layout() {
   const location = useLocation();

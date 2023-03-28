@@ -1,3 +1,3 @@
 export default function Index() {
-  return <div>Forum</div>;
+  return <div class={'p-4'}>Forum</div>;
 }

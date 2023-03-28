@@ -19,7 +19,7 @@ const MenuItem = (props: { menu: Menu; deep: number }) => {
           class={`block py-1 pl-${props.deep * 2}`}
           activeClass={'bg-blue-50 text-blue-600'}
           inactiveClass={'hover:bg-gray-100 active:bg-gray-200'}
-          href={'/ui' + props.menu.path}
+          href={props.menu.path}
         >
           {props.menu.label}
         </MenuLink>

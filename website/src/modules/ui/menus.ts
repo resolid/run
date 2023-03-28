@@ -6,23 +6,23 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Introduction',
-        path: '/introduction',
+        path: 'introduction',
       },
       {
         label: 'Getting Started',
-        path: '/getting-started',
+        path: 'getting-started',
       },
       {
         label: 'Theming',
-        path: '/theming',
+        path: 'theming',
       },
       {
         label: 'Dark Mode',
-        path: '/dark-mode',
+        path: 'dark-mode',
       },
       {
         label: 'Animation',
-        path: '/animation',
+        path: 'animation',
       },
     ],
   },
@@ -31,19 +31,19 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Button',
-        path: '/components/button',
+        path: 'components/button',
       },
       {
         label: 'Icon',
-        path: '/components/icon',
+        path: 'components/icon',
       },
       {
         label: 'Image',
-        path: '/components/image',
+        path: 'components/image',
       },
       {
         label: 'Typography',
-        path: '/components/typography',
+        path: 'components/typography',
       },
     ],
   },
@@ -52,23 +52,23 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Layout',
-        path: '/components/layout',
+        path: 'components/layout',
       },
       {
         label: 'Flex',
-        path: '/components/flex',
+        path: 'components/flex',
       },
       {
         label: 'Grid',
-        path: '/components/grid',
+        path: 'components/grid',
       },
       {
         label: 'Table',
-        path: '/components/table',
+        path: 'components/table',
       },
       {
         label: 'Divider',
-        path: '/components/divider',
+        path: 'components/divider',
       },
     ],
   },
@@ -77,11 +77,11 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Avatar',
-        path: '/components/avatar',
+        path: 'components/avatar',
       },
       {
         label: 'Badge',
-        path: '/components/badge',
+        path: 'components/badge',
       },
     ],
   },
@@ -90,31 +90,31 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Input',
-        path: '/components/input',
+        path: 'components/input',
       },
       {
         label: 'NumberInput',
-        path: '/components/number-input',
+        path: 'components/number-input',
       },
       {
         label: 'Select',
-        path: '/components/select',
+        path: 'components/select',
       },
       {
         label: 'Slider',
-        path: '/components/slider',
+        path: 'components/slider',
       },
       {
         label: 'Checkbox',
-        path: '/components/checkbox',
+        path: 'components/checkbox',
       },
       {
         label: 'Radio',
-        path: '/components/radio',
+        path: 'components/radio',
       },
       {
         label: 'Switch',
-        path: '/components/switch',
+        path: 'components/switch',
       },
     ],
   },
@@ -123,43 +123,43 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Alert',
-        path: '/components/alert',
+        path: 'components/alert',
       },
       {
         label: 'Toast',
-        path: '/components/toast',
+        path: 'components/toast',
       },
       {
         label: 'Tooltip',
-        path: '/components/tooltip',
+        path: 'components/tooltip',
       },
       {
         label: 'Popover',
-        path: '/components/popover',
+        path: 'components/popover',
       },
       {
         label: 'Modal',
-        path: '/components/modal',
+        path: 'components/modal',
       },
       {
         label: 'Drawer',
-        path: '/components/drawer',
+        path: 'components/drawer',
       },
       {
         label: 'ProgressBar',
-        path: '/components/progress-bar',
+        path: 'components/progress-bar',
       },
       {
         label: 'Spinner',
-        path: '/components/spinner',
+        path: 'components/spinner',
       },
       {
         label: 'Overlay',
-        path: '/components/overlay',
+        path: 'components/overlay',
       },
       {
         label: 'SpinnerOverlay',
-        path: '/components/spinner-overlay',
+        path: 'components/spinner-overlay',
       },
     ],
   },
@@ -168,19 +168,19 @@ export const menus: Menu[] = [
     children: [
       {
         label: 'Breadcrumb',
-        path: '/components/breadcrumb',
+        path: 'components/breadcrumb',
       },
       {
         label: 'Pagination',
-        path: '/components/pagination',
+        path: 'components/pagination',
       },
       {
         label: 'DropdownMenu',
-        path: '/components/dropdown-menu',
+        path: 'components/dropdown-menu',
       },
       {
         label: 'ContextMenu',
-        path: '/components/context-menu',
+        path: 'components/context-menu',
       },
     ],
   },
