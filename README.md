@@ -16,13 +16,14 @@
 
 - Light
 - Typesafe
+- Config router
 
 ## ⌨️ Contributing
 
-See [CONTRIBUTING.md](https://github.com/resolid/run/tree/main/CONTRIBUTING.md) for information on how to develop resolid locally.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to develop resolid locally.
 
 ## 📋 License
 
-[MIT](https://github.com/resolid/run/tree/main/LICENSE.md)
+[MIT](./LICENSE)
 
 ##
