@@ -1,26 +1,5 @@
-import { type ComponentProps, onMount, splitProps } from 'solid-js';
+import { type ComponentProps, splitProps } from 'solid-js';
 import { Title } from '@resolid/run';
-import { useTOC } from '~/shared/mdx/toc/TOCContext';
-import { isString } from '@resolid/utils';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getSectionString(children: any): string {
-  if (isString(children)) {
-    return children as string;
-  }
-
-  if (children instanceof Element) {
-    const e = document.createElement('textarea');
-    e.innerHTML = children.innerHTML;
-    return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue || '';
-  }
-
-  if (Array.isArray(children)) {
-    return children.map((item) => getSectionString(item)).join('');
-  }
-
-  return '';
-}
 
 export const mdx = {
   h1: (props: ComponentProps<'h1'>) => {
@@ -35,12 +14,6 @@ export const mdx = {
   },
   h2: (props: ComponentProps<'h2'>) => {
     const [local, rest] = splitProps(props, ['id', 'children']);
-
-    const { addSection } = useTOC();
-
-    onMount(() => {
-      local.id && addSection(getSectionString(props.children), local.id);
-    });
 
     return (
       <h2 id={local.id} class={'group scroll-mt-20 text-lg font-bold mt-4 mb-4'} {...rest}>

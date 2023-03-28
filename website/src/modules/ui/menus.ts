@@ -1,8 +1,4 @@
-export type Menu = {
-  label: string;
-  path?: string;
-  children?: Menu[];
-};
+import { type Menu } from '~/shared/AsideMenu';
 
 export const menus: Menu[] = [
   {
