@@ -16,6 +16,7 @@ export default defineConfig([
     entry: {
       index: 'src/index.tsx',
     },
+    target: 'esnext',
     esbuildOptions(options) {
       options.jsx = 'preserve';
 
@@ -31,6 +32,7 @@ export default defineConfig([
     entry: {
       index: 'src/index.tsx',
     },
+    target: 'esnext',
     esbuildPlugins: [solidPlugin()],
   },
   {
@@ -38,6 +40,7 @@ export default defineConfig([
     entry: {
       browser: 'src/browser/index.ts',
     },
+    target: 'esnext',
   },
   {
     ...baseConfig,

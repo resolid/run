@@ -15,23 +15,25 @@ export const MotionPresence: FlowComponent<{
   const render = (
     <PresenceContext.Provider value={() => initial}>
       <ParentContext.Provider value={undefined}>
-        {createSwitchTransition(
-          // eslint-disable-next-line solid/reactivity
-          resolveFirst(() => props.children),
-          {
-            appear: initial,
-            mode: props.exitBeforeEnter ? 'out-in' : 'parallel',
-            onExit(el, remove) {
-              const state = mountedStates.get(el as Element);
+        <>
+          {createSwitchTransition(
+            // eslint-disable-next-line solid/reactivity
+            resolveFirst(() => props.children),
+            {
+              appear: initial,
+              mode: props.exitBeforeEnter ? 'out-in' : 'parallel',
+              onExit(el, remove) {
+                const state = mountedStates.get(el as Element);
 
-              if (state && (state.getOptions() as MotionOptions).exit) {
-                onCompleteExit(el as Element, remove);
-              } else {
-                remove();
-              }
-            },
-          }
-        )}
+                if (state && (state.getOptions() as MotionOptions).exit) {
+                  onCompleteExit(el as Element, remove);
+                } else {
+                  remove();
+                }
+              },
+            }
+          )}
+        </>
       </ParentContext.Provider>
     </PresenceContext.Provider>
   );

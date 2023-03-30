@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "test": "vitest run",
     "prepublishOnly": "npm run build"
   },
   "main": "./dist/index.cjs",

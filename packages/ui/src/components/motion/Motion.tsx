@@ -5,7 +5,7 @@ import { Dynamic } from 'solid-js/web';
 import type { MotionEventHandlers, MotionOptions } from './types';
 import { ParentContext, PresenceContext } from './MotionContext';
 import { createMotionOneState } from './primitives';
-import { combineStyle, createPolymorphic, mergeRefs } from '../../primitives';
+import { mergeStyle, createPolymorphic, mergeRefs } from '../../primitives';
 
 export type MotionComponentProps = {
   /**
@@ -62,7 +62,7 @@ export const Motion = createPolymorphic<'div', MotionProps>((props) => {
       <Dynamic
         component={local.as || 'div'}
         ref={mergeRefs((el) => (root = el), local.ref)}
-        style={local.style ? combineStyle(local.style, style) : style}
+        style={local.style ? mergeStyle(local.style, style) : style}
         on:motionstart={local.onMotionStart}
         on:motioncomplete={local.onMotionComplete}
         on:hoverstart={local.onHoverStart}

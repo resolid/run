@@ -1,20 +1,19 @@
 import { type JSX } from 'solid-js';
 
-const extractCSSRegex = /((?:--)?(?:\w+-?)+)\s*:\s*([^;]*)/g;
+const extractCSSRegex = /([^:; ]*):\s*([^;]*)/g;
 
 export const stringStyleToObject = (style: string): JSX.CSSProperties => {
   const object: Record<string, string> = {};
   let match: RegExpExecArray | null;
 
   while ((match = extractCSSRegex.exec(style))) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    object[match[1]!] = match[2]!;
+    object[match[1]] = match[2];
   }
 
   return object;
 };
 
-export const combineStyle = (
+export const mergeStyle = (
   a: JSX.CSSProperties | string,
   b: JSX.CSSProperties | string
 ): JSX.CSSProperties | string => {

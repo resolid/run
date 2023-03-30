@@ -1,12 +1,13 @@
 import { type RouteDefinition } from '@solidjs/router';
 import { type Component, lazy } from 'solid-js';
 import { Navigate } from '@resolid/run';
+import { getPathname } from '~/shared/utils/path';
 
 const documents = import.meta.glob<boolean, string, { default: Component }>('./content/documents/*.mdx');
 const components = import.meta.glob<boolean, string, { default: Component }>('./content/components/*.mdx');
 
 const getBasename = (path: string) => {
-  return new URL(path, 'http://test.test').pathname.split('/').pop()?.split('.')[0];
+  return getPathname(path).split('/').pop()?.split('.')[0];
 };
 
 const routes: RouteDefinition[] = [

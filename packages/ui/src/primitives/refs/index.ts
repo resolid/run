@@ -23,8 +23,8 @@ export const getFirstChild = <T extends object>(
     return value;
   }
 
-  if (typeof value === 'function' && !value.length) {
-    return getFirstChild(value(), predicate);
+  if (typeof value === 'function' && !(value as () => JSX.Element).length) {
+    return getFirstChild((value as () => JSX.Element)(), predicate);
   }
 
   if (Array.isArray(value)) {

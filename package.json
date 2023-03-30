@@ -22,6 +22,7 @@
     "./packages/*",
     "./packages/adapters/*",
     "./examples/*",
+    "./tests",
     "./website"
   ],
   "devDependencies": {
@@ -34,13 +35,20 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-solid": "^0.11.0",
+    "eslint-plugin-solid": "^0.12.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
     "tailwindcss": "^3.3.0",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1",
+    "vitest": "^0.29.8",
+    "vite-plugin-solid": "^2.6.1",
+    "vite-tsconfig-paths": "^4.0.7"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx}": [
