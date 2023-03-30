@@ -83,8 +83,9 @@ const mdx = async (config: { rehypePlugins: []; remarkPlugins: [] }) => {
 
   const plugin = {
     ...(await import('@mdx-js/rollup')).default({
-      jsxImportSource: 'solid-jsx',
-      providerImportSource: 'solid-jsx',
+      jsx: true,
+      jsxImportSource: 'solid-js',
+      providerImportSource: '@resolid/mdx',
       elementAttributeNameCase: 'html',
       rehypePlugins: [...config.rehypePlugins, rehypeSlug, rehypeCollectHeadings],
       remarkPlugins: [...config.remarkPlugins, remarkGfm],

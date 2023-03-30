@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from '@resolid/run';
-import { MDXProvider } from 'solid-jsx';
+import { MDXProvider } from '@resolid/mdx';
 import { AsideMenu } from '~/shared/AsideMenu';
 import { menus } from './menus';
 import { mdx } from './mdx';

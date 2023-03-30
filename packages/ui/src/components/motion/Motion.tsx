@@ -5,7 +5,7 @@ import { Dynamic } from 'solid-js/web';
 import type { MotionEventHandlers, MotionOptions } from './types';
 import { ParentContext, PresenceContext } from './MotionContext';
 import { createMotionOneState } from './primitives';
-import { mergeStyle, createPolymorphic, mergeRefs } from '../../primitives';
+import { createPolymorphic, mergeRefs, mergeStyle } from '../../primitives';
 
 export type MotionComponentProps = {
   /**

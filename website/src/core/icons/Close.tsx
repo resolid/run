@@ -1,4 +1,4 @@
-import { type IconProps, Icon } from '../components/Icon';
+import { Icon, type IconProps } from '../components/Icon';
 
 export const Close = (props: IconProps) => {
   return (

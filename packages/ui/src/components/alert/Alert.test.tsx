@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertIcon, AlertTitle } from './Alert';
 import { describe, expect, test } from 'vitest';
-import { testRender, testA11y } from '@resolid/tests';
+import { testA11y, testRender } from '@resolid/tests';
 
 describe('Alert', () => {
   test('passes a11y test', async () => {

@@ -1,5 +1,5 @@
-import { wait, to } from './index';
-import { describe, test, expect } from 'vitest';
+import { to, wait } from './index';
+import { describe, expect, test } from 'vitest';
 
 describe('utils/promise', () => {
   test('async await', async () => {
