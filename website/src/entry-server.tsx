@@ -2,12 +2,10 @@ import type { RunContextValue } from '@resolid/run';
 import { RunServer } from '@resolid/run';
 import { createHandler } from '@resolid/run/server';
 import { renderToStream } from 'solid-js/web';
-import TwindStream from '@twind/with-react/readableStream';
-import tw from './twind';
 
 export default createHandler(
   (request: Request, responseStatusCode: number, responseHeaders: Headers, runContext: RunContextValue) => {
-    const { readable, writable } = new TwindStream(tw);
+    const { readable, writable } = new TransformStream();
 
     const stream = renderToStream(() => <RunServer context={runContext} url={request.url} />);
 

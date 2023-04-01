@@ -29,7 +29,6 @@
   "devDependencies": {
     "@floating-ui/dom": "^1.2.5",
     "@motionone/dom": "^10.15.5",
-    "@resolid/twind": "^0.1.1",
     "@resolid/utils": "^0.1.1",
     "@resolid/tests": "*",
     "solid-js": "^1.7.0",
@@ -38,7 +37,6 @@
   "peerDependencies": {
     "@floating-ui/dom": "^1.2.5",
     "@motionone/dom": "^10.15.5",
-    "@resolid/twind": "^0.1.1",
     "@resolid/utils": "^0.1.1",
     "solid-js": "^1.7.0"
   },

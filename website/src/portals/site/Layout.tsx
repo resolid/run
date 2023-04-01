@@ -5,7 +5,7 @@ import { Github } from '~/core/icons/Github';
 import { System } from '~/core/icons/System';
 import { Menu } from '~/core/icons/Menu';
 import { Close } from '~/core/icons/Close';
-import { cx } from '@resolid/twind';
+import { cx } from '@resolid/utils';
 
 const SiteLayout = () => {
   const [collapsed, setCollapsed] = createSignal(true);
@@ -24,11 +24,11 @@ const SiteLayout = () => {
               class={cx(
                 'fixed p-5 w-full top-full z-20 right-0 left-0 h-screen bg-white',
                 'duration-300 transition-opacity',
-                'laptop:(opacity-100 relative p-0 h-auto block)',
+                'laptop:opacity-100 laptop:relative laptop:p-0 laptop:h-auto laptop:block',
                 collapsed() ? 'block' : 'hidden'
               )}
             >
-              <ul class="max-w-[288px] mx-auto space-y-5 font-medium tracking-wide laptop:(flex space-y-0 max-w-none)">
+              <ul class="max-w-[288px] mx-auto space-y-5 font-medium tracking-wide laptop:flex laptop:space-y-0 laptop:max-w-none">
                 <For
                   each={[
                     { name: 'Home', href: '/', end: true },
@@ -58,11 +58,11 @@ const SiteLayout = () => {
               </ul>
             </div>
             <div class={'flex flex-row items-center gap-4'}>
-              <button class={'text-gray-600 hover:(text-blue-500)'}>
+              <button class={'text-gray-600 hover:text-blue-500'}>
                 <System class={'h-5 w-5'} />
               </button>
               <a
-                class={'text-gray-600 hover:(text-blue-500)'}
+                class={'text-gray-600 hover:text-blue-500'}
                 rel="noreferrer"
                 target="_blank"
                 href="https://github.com/resolid/run"

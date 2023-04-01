@@ -1,6 +1,6 @@
 import { createRouteAction, useRouteData } from '@resolid/run';
 import { createSignal, Show, Suspense } from 'solid-js';
-import { Alert, Button, Motion, MotionPresence } from '@resolid/ui';
+import { Motion, MotionPresence } from '@resolid/ui';
 import { type HomeData, increment } from './Index.data';
 
 function Index() {
@@ -11,9 +11,6 @@ function Index() {
   return (
     <div class={'flex flex-col gap-4 p-4'}>
       <p>Home</p>
-      <div>
-        <Alert>测试</Alert>
-      </div>
       <p>
         <Suspense fallback={'Loading'}>
           <Show when={routeData()} keyed>
@@ -22,12 +19,10 @@ function Index() {
         </Suspense>
       </p>
       <p>
-        <Button onClick={() => submit()}>Increment</Button>
+        <button onClick={() => submit()}>Increment</button>
       </p>
       <p>
-        <Button color={'gray'} variant={'outline'} onClick={() => setShow((prev) => !prev)}>
-          Animation
-        </Button>
+        <button onClick={() => setShow((prev) => !prev)}>Animation</button>
       </p>
       <div>
         <MotionPresence>

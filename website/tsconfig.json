@@ -9,7 +9,6 @@
     "paths": {
       "~/*": ["./src/*"],
       "@resolid/ui": ["../packages/ui/src"],
-      "@resolid/twind": ["../packages/twind/src"],
       "@resolid/utils": ["../packages/utils/src"]
     }
   }

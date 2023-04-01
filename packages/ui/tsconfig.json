@@ -6,7 +6,6 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "@resolid/twind": ["../twind/src"],
       "@resolid/utils": ["../utils/src"]
     }
   }

@@ -5,7 +5,7 @@
     "prepare": "husky install",
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
-    "build": "npm run build:utils && npm run build:mdx && npm run build:twind && npm run build:ui && npm run build:run && npm run build:adapters",
+    "build": "npm run build:utils && npm run build:mdx && npm run build:ui && npm run build:run && npm run build:adapters",
     "test": "npm run test --workspace=packages --workspace=packages/adapters --if-present",
     "website:dev": "npm run dev --workspace=website",
     "website:build": "npm run build --workspace=website",
@@ -14,7 +14,6 @@
     "prisma": "npm run prisma --workspace=website",
     "build:utils": "npm run build --workspace=packages/utils",
     "build:mdx": "npm run build --workspace=packages/mdx",
-    "build:twind": "npm run build --workspace=packages/twind",
     "build:ui": "npm run build --workspace=packages/ui",
     "build:run": "npm run build --workspace=packages/run",
     "build:adapters": "npm run build --workspace=packages/adapters"

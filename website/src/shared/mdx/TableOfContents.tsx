@@ -1,7 +1,7 @@
 import { createRouteData } from '@resolid/run';
 import { server$ } from '@resolid/run/server';
 import { type Accessor, createEffect, createSignal, For, onCleanup } from 'solid-js';
-import { cx } from '@resolid/twind';
+import { cx } from '@resolid/utils';
 
 type TocItem = {
   depth: number;
@@ -110,7 +110,7 @@ export const TableOfContents = (props: { module: string; path: string }) => {
                 item.depth == 2 ? 'pl-4' : 'pl-8',
                 item.slug == currentSection()
                   ? 'border-l-blue-300 text-blue-500'
-                  : 'hover:(border-l-gray-300 text-gray-700) border-l-transparent text-gray-500'
+                  : 'hover:border-l-gray-300 hover:text-gray-700 border-l-transparent text-gray-500'
               )}
               href={'#' + item.slug}
             >

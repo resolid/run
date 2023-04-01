@@ -4,6 +4,8 @@ import { Suspense } from 'solid-js';
 import routes from './routes';
 import { ColorModeScript, ResolidProvider } from '@resolid/ui';
 
+import './root.css';
+
 // noinspection JSUnusedGlobalSymbols
 export default function Root() {
   return (
