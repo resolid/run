@@ -67,7 +67,7 @@ const Header = () => {
               class={'p-2 text-gray-600 hover:text-blue-500'}
               rel="noreferrer"
               target="_blank"
-              href="https://github.com/resolid/nxt"
+              href="https://github.com/resolid/run"
               title={'Go to Resolid Run on Github'}
             >
               <Github size={'sm'} />
