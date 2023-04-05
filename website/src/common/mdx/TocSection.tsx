@@ -115,8 +115,8 @@ export const TocSection = (props: { getMdxPath: GetMdxPath }) => {
                 '-ml-px block border-l py-1',
                 item.depth == 2 ? 'pl-4' : 'pl-8',
                 item.slug == currentSection()
-                  ? 'border-l-blue-300 text-blue-500'
-                  : 'text-gray-500 hover:border-l-gray-300 hover:text-gray-700'
+                  ? 'border-l-blue-300 text-blue-600'
+                  : 'text-gray-600 hover:border-l-gray-300 hover:text-gray-700'
               )}
               href={'#' + item.slug}
             >

@@ -1,7 +1,7 @@
 type ManifestFile = {
   file: string;
   imports?: string[];
-  dynamicImports?: string[];
+  css?: string[];
   src?: string;
   isEntry?: boolean;
   isDynamicEntry?: boolean;
@@ -33,6 +33,12 @@ export const prepareManifest = (
 
       file.imports?.forEach((imp) => {
         visitFile(manifest[imp]);
+      });
+
+      file.css?.forEach((css) => {
+        if (visitedFiles.has(css)) return;
+        files.push({ type: 'style', href: basePath + css });
+        visitedFiles.add(css);
       });
     };
 

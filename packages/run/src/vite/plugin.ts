@@ -63,7 +63,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
 
   return [
     {
-      name: 'vite-plugin-resolid-run-config',
+      name: 'resolid-run-config',
       enforce: 'pre',
       config(userConfig, { mode, command }) {
         root = userConfig.root || process.cwd();
@@ -122,7 +122,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
       },
     } as Plugin,
     {
-      name: 'vite-plugin-resolid-run-route',
+      name: 'resolid-run-route',
       enforce: 'pre',
       //apply: 'build',
       transform(source, id, transformOptions) {
@@ -215,7 +215,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
     } as Plugin,
     inspect && viteInspect({ build: true, outputDir: join('.resolid', 'inspect') }),
     {
-      name: 'vite-plugin-resolid-run-data',
+      name: 'resolid-run-data',
       enforce: 'pre',
 
       transform(source, id, transformOptions) {
@@ -231,7 +231,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
     } as Plugin,
     viteSolidPlugin,
     {
-      name: 'vite-plugin-resolid-run-server',
+      name: 'resolid-run-server',
       config() {
         return {
           appType: 'custom',
@@ -242,7 +242,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
       },
     } as Plugin,
     {
-      name: 'vite-plugin-resolid-run-build',
+      name: 'resolid-run-build',
       config(userConfig) {
         if (isBuild) {
           const ssr = userConfig.build?.ssr;
