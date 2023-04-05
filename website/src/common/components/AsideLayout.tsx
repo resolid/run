@@ -27,7 +27,7 @@ const AsideLayoutBar = () => {
         'tablet:hidden fixed flex h-12 w-full items-center justify-between border-b bg-white/75 px-2 backdrop-blur'
       }
     >
-      <button onClick={() => setOpened(true)} class={'flex items-center gap-1 p-2'}>
+      <button title={'Open Navigation'} onClick={() => setOpened(true)} class={'flex items-center gap-1 p-2'}>
         <Menu size={'xs'} />
         <span>Menu</span>
       </button>

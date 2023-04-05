@@ -51,7 +51,11 @@ export const AsideLayoutSide = (props: { menus: Menu[] }) => {
       )}
     >
       <nav role={'navigation'} class={'relative'}>
-        <button onClick={() => setOpened(false)} class={'tablet:hidden fixed end-3 top-3 p-2'}>
+        <button
+          title={'Close Navigation'}
+          onClick={() => setOpened(false)}
+          class={'tablet:hidden fixed end-3 top-3 p-2'}
+        >
           <Close size={'xs'} />
         </button>
         <ul class={'space-y-3 p-4'}>
