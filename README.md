@@ -12,18 +12,20 @@
 
 </div>
 
-## ✨ Highlights
+## Highlights
 
 - Light
 - Typesafe
 - Config router
 
-## ⌨️ Contributing
+## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to develop resolid locally.
 
-## 📋 License
+## License
 
 [MIT](./LICENSE)
 
-##
+## Thanks
+
+[![WebStorm](.github/assets/webstorm-icon.svg)](https://jb.gg/OpenSourceSupport)
