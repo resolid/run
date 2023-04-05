@@ -22,13 +22,11 @@
     ".": {
       "solid": "./dist/index.jsx",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./node": {
       "import": "./dist/node.js",
-      "require": "./dist/node.cjs",
-      "types": "./dist/node.d.ts"
+      "require": "./dist/node.cjs"
     },
     "./server": {
       "browser": {
@@ -46,8 +44,7 @@
     },
     "./vite": {
       "import": "./dist/vite.js",
-      "require": "./dist/vite.cjs",
-      "types": "./dist/vite.d.ts"
+      "require": "./dist/vite.cjs"
     }
   },
   "typesVersions": {
@@ -68,28 +65,34 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.21.3",
-    "@babel/parser": "^7.21.3",
-    "@babel/traverse": "^7.21.3",
-    "@solidjs/meta": "^0.28.2",
+    "@babel/core": "^7.21.4",
+    "@babel/parser": "^7.21.4",
+    "@babel/traverse": "^7.21.4",
+    "@solidjs/meta": "^0.28.4",
     "@solidjs/router": "^0.8.2",
+    "@types/babel__core": "^7.20.0",
+    "@types/babel__traverse": "^7.18.3",
     "@types/set-cookie-parser": "^2.4.2",
     "esbuild-plugin-solid": "^0.5.0",
+    "rollup": "^3.20.2",
     "set-cookie-parser": "^2.6.0",
-    "solid-js": "^1.7.0",
-    "undici": "^5.21.0",
+    "solid-js": "^1.7.2",
+    "vite": "^4.2.1",
+    "vite-plugin-solid": "^2.7.0",
     "vite-plugin-inspect": "^0.7.18"
   },
   "peerDependencies": {
-    "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.8.2",
-    "esbuild-plugin-solid": "^0.5.0",
-    "solid-js": "^1.7.0",
-    "undici": "^5.21.0",
-    "set-cookie-parser": "^2.6.0",
-    "vite": "^4.2.1",
-    "vite-plugin-inspect": "^0.7.18",
-    "vite-plugin-solid": "^2.6.1"
+    "@babel/core": ">=7",
+    "@babel/parser": ">=7",
+    "@babel/traverse": ">=7",
+    "@solidjs/meta": ">=0",
+    "@solidjs/router": ">=0",
+    "esbuild-plugin-solid": ">=0",
+    "set-cookie-parser": ">=2",
+    "solid-js": ">=1",
+    "vite": ">=4",
+    "vite-plugin-inspect": ">=0",
+    "vite-plugin-solid": ">=2"
   },
   "engines": {
     "node": ">=18"

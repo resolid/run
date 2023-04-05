@@ -1,7 +1,7 @@
 import { type ComponentProps, splitProps } from 'solid-js';
 import { Title } from '@resolid/run';
 
-export const mdx = {
+export const mdxComponents = {
   h1: (props: ComponentProps<'h1'>) => {
     const [local, rest] = splitProps(props, ['id', 'children']);
 

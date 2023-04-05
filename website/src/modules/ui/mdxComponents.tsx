@@ -1,7 +1,7 @@
 import { ColorPalette } from './mdx-components/ColorPalette';
-import { mdx as shared } from '~/shared/mdx/mdx';
+import { mdxComponents as shared } from '~/common/mdx/mdxComponents';
 
-export const mdx = {
+export const mdxComponents = {
   ...shared,
   ColorPalette: ColorPalette,
 };

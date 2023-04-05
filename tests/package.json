@@ -11,14 +11,13 @@
     "@testing-library/user-event": "^14.4.3",
     "axe-core": "^4.6.3",
     "chalk": "^5.2.0",
-    "pretty-format": "^29.5.0",
+    "jsdom": "^21.1.1",
     "lodash-es": "^4.17.21",
-    "jsdom": "^21.1.1"
+    "pretty-format": "^29.5.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.7"
+    "@types/lodash-es": "^4.17.7",
+    "solid-js": "^1.7.2"
   },
-  "peerDependencies": {
-    "solid-js": ">=1"
-  }
+  "peerDependencies": {}
 }

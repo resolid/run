@@ -11,18 +11,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'pnpm'
 
       - name: Install
         shell: 'bash'
-        run: npm install
+        run: pnpm install
 
       - name: Build
         shell: 'bash'
-        run: npm run website:deploy
+        run: pnpm run website:deploy
 
       - name: Deploy
         uses: Burnett01/rsync-deployments@5.2.1

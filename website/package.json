@@ -10,20 +10,28 @@
     "prisma": "prisma"
   },
   "dependencies": {
-    "@resolid/mdx": "*",
-    "@resolid/run": "*",
     "@prisma/client": "^4.12.0",
-    "solid-js": "^1.7.0",
-    "zod": "^3.21.4"
+    "@resolid/mdx": "workspace:*",
+    "@resolid/run": "workspace:*",
+    "@resolid/run-node": "workspace:*",
+    "@resolid/tailwind": "workspace:*",
+    "@resolid/ui": "workspace:*",
+    "@resolid/utils": "workspace:*",
+    "polka": "1.0.0-next.22",
+    "solid-js": "^1.7.2",
+    "zod": "^3.21.4",
+    "sirv": "^2.0.2"
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",
     "@tailwindcss/typography": "^0.5.9",
+    "acorn": "^8.8.2",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "prisma": "^4.12.0",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
-    "tailwindcss": "^3.3.0"
+    "tailwindcss": "^3.3.1",
+    "unist-util-visit": "^4.1.2"
   }
 }

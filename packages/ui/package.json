@@ -29,16 +29,17 @@
   "devDependencies": {
     "@floating-ui/dom": "^1.2.5",
     "@motionone/dom": "^10.15.5",
-    "@resolid/utils": "^0.1.1",
-    "@resolid/tests": "*",
-    "solid-js": "^1.7.0",
+    "@motionone/types": "^10.15.1",
+    "@resolid/tests": "workspace:*",
+    "@resolid/utils": "workspace:*",
+    "solid-js": "^1.7.2",
     "tsup-preset-solid": "^0.1.8"
   },
   "peerDependencies": {
-    "@floating-ui/dom": "^1.2.5",
-    "@motionone/dom": "^10.15.5",
-    "@resolid/utils": "^0.1.1",
-    "solid-js": "^1.7.0"
+    "@floating-ui/dom": ">=1",
+    "@motionone/dom": ">=10",
+    "@resolid/utils": "*",
+    "solid-js": ">=1"
   },
   "repository": {
     "type": "git",

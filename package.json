@@ -1,36 +1,22 @@
 {
   "private": true,
-  "name": "monorepo",
+  "name": "resolid-run",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
-    "build": "npm run build:utils && npm run build:mdx && npm run build:ui && npm run build:run && npm run build:adapters",
-    "test": "npm run test --workspace=packages --workspace=packages/adapters --if-present",
-    "website:dev": "npm run dev --workspace=website",
-    "website:build": "npm run build --workspace=website",
-    "website:serve": "npm run serve --workspace=website",
-    "website:deploy": "npm run build && npm run website:build",
-    "prisma": "npm run prisma --workspace=website",
-    "build:utils": "npm run build --workspace=packages/utils",
-    "build:mdx": "npm run build --workspace=packages/mdx",
-    "build:ui": "npm run build --workspace=packages/ui",
-    "build:run": "npm run build --workspace=packages/run",
-    "build:adapters": "npm run build --workspace=packages/adapters"
+    "website:dev": "pnpm run --filter website dev",
+    "website:build": "pnpm run --filter website build",
+    "website:serve": "pnpm run --filter website serve",
+    "website:deploy": "pnpm run --filter website... build"
   },
-  "workspaces": [
-    "./packages/*",
-    "./packages/adapters/*",
-    "./examples/*",
-    "./tests",
-    "./website"
-  ],
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
     "@types/node": "^18.15.11",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
@@ -39,16 +25,13 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
-    "tailwindcss": "^3.3.0",
+    "prettier-plugin-tailwindcss": "^0.2.6",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1",
-    "vitest": "^0.29.8",
-    "vite-plugin-solid": "^2.6.1",
-    "vite-tsconfig-paths": "^4.0.7"
-  },
-  "engines": {
-    "node": ">=18"
+    "vite-plugin-solid": "^2.7.0",
+    "vite-tsconfig-paths": "^4.0.8",
+    "vitest": "^0.29.8"
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx}": [
@@ -56,5 +39,9 @@
       "prettier --write"
     ],
     "*.{json,md,mdx,html,css}": "prettier --write"
-  }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@8.1.1"
 }

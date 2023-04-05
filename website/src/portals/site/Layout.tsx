@@ -1,10 +1,10 @@
 import { A, Outlet } from '@resolid/run';
 import ResolidBanner from '~/assets/images/resolid-banner.svg';
 import { createSignal, For, Show } from 'solid-js';
-import { Github } from '~/core/icons/Github';
-import { System } from '~/core/icons/System';
-import { Menu } from '~/core/icons/Menu';
-import { Close } from '~/core/icons/Close';
+import { Github } from '~/common/icons/Github';
+import { System } from '~/common/icons/System';
+import { Menu } from '~/common/icons/Menu';
+import { Close } from '~/common/icons/Close';
 import { cx } from '@resolid/utils';
 
 const SiteLayout = () => {
@@ -12,8 +12,8 @@ const SiteLayout = () => {
 
   return (
     <>
-      <header class={'fixed z-10 w-full inset-x-0 border-b border-gray-100 bg-white/80 backdrop-blur'}>
-        <nav class={'mx-auto p-4 desktop:max-w-7xl flex items-center justify-between'}>
+      <header class={'fixed inset-x-0 z-10 w-full border-b border-gray-100 bg-white/80 backdrop-blur'}>
+        <nav class={'desktop:max-w-7xl mx-auto flex items-center justify-between p-4'}>
           <div class={'flex flex-row items-center'}>
             <A href={'/'}>
               <img height={32} width={129} alt={'Resolid Run'} src={ResolidBanner} />
@@ -22,13 +22,13 @@ const SiteLayout = () => {
           <div class={'flex flex-row items-center gap-4'}>
             <div
               class={cx(
-                'fixed p-5 w-full top-full z-20 right-0 left-0 h-screen bg-white',
-                'duration-300 transition-opacity',
+                'fixed left-0 right-0 top-full z-20 h-screen w-full bg-white p-5',
+                'transition-opacity duration-300',
                 'laptop:opacity-100 laptop:relative laptop:p-0 laptop:h-auto laptop:block',
                 collapsed() ? 'block' : 'hidden'
               )}
             >
-              <ul class="max-w-[288px] mx-auto space-y-5 font-medium tracking-wide laptop:flex laptop:space-y-0 laptop:max-w-none">
+              <ul class="laptop:flex laptop:space-y-0 laptop:max-w-none mx-auto max-w-[288px] space-y-5 font-medium tracking-wide">
                 <For
                   each={[
                     { name: 'Home', href: '/', end: true },
@@ -48,7 +48,7 @@ const SiteLayout = () => {
                         inactiveClass={'text-gray-600'}
                         href={link.href}
                         onClick={() => setCollapsed(false)}
-                        class="block hover:text-blue-500 tablet:px-4"
+                        class="tablet:px-4 block hover:text-blue-500"
                       >
                         <span>{link.name}</span>
                       </A>
@@ -59,7 +59,7 @@ const SiteLayout = () => {
             </div>
             <div class={'flex flex-row items-center gap-4'}>
               <button class={'text-gray-600 hover:text-blue-500'}>
-                <System class={'h-5 w-5'} />
+                <System size={'sm'} />
               </button>
               <a
                 class={'text-gray-600 hover:text-blue-500'}
@@ -67,10 +67,10 @@ const SiteLayout = () => {
                 target="_blank"
                 href="https://github.com/resolid/run"
               >
-                <Github class={'h-5 w-5'} />
+                <Github size={'sm'} />
               </a>
             </div>
-            <button onClick={() => setCollapsed((prev) => !prev)} class={'block laptop:hidden'}>
+            <button onClick={() => setCollapsed((prev) => !prev)} class={'laptop:hidden block'}>
               <Show when={!collapsed()} fallback={<Close class={'h-5 w-5'} />} keyed>
                 <Menu class={'h-5 w-5'} />
               </Show>
@@ -78,7 +78,7 @@ const SiteLayout = () => {
           </div>
         </nav>
       </header>
-      <div class={'pt-16 mx-auto desktop:max-w-7xl'}>
+      <div class={'desktop:max-w-7xl mx-auto pt-16'}>
         <Outlet />
       </div>
     </>

@@ -2,10 +2,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
 import { once } from 'node:events';
 import { splitCookiesString } from 'set-cookie-parser';
-import { installPolyfills } from './polyfills';
 import { type IncomingHttpHeaders, type OutgoingHttpHeaders } from 'http';
-
-installPolyfills();
 
 export const createRequest = (req: IncomingMessage) => {
   // noinspection HttpUrlsUsage

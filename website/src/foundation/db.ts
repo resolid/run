@@ -6,6 +6,6 @@ interface PrismaNodeJsGlobal extends Global {
 
 declare const global: PrismaNodeJsGlobal;
 
-export const prisma = global.prisma || new PrismaClient();
+export const db = global.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV === 'development') global.prisma = prisma;
+if (process.env.NODE_ENV === 'development') global.prisma = db;

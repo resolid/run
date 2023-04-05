@@ -1,4 +1,4 @@
-import { Icon, type IconProps } from '../components/Icon';
+import { Icon, type IconProps } from '@resolid/ui';
 
 export const Menu = (props: IconProps) => {
   return (

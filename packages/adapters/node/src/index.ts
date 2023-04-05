@@ -2,14 +2,15 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync, writeFileSync } from 'fs';
 import { rollup } from 'rollup';
-import common, { type RollupCommonJSOptions } from '@rollup/plugin-commonjs';
+import common from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import type { ResolidRunAdapter } from '@resolid/run/vite';
 
-export default function () {
+export default function (): ResolidRunAdapter {
   return {
     name: 'node',
-    async build(root: string, outPath: string, ssrExternal: string[], commonjsOptions: RollupCommonJSOptions) {
+    async build(root, outPath, ssrExternal, commonjsOptions) {
       const __dirname = dirname(fileURLToPath(import.meta.url));
 
       writeFileSync(
@@ -27,7 +28,7 @@ export default function () {
           }),
           common({ strictRequires: true, ...commonjsOptions }),
         ],
-        external: [...ssrExternal],
+        external: [...(ssrExternal ?? [])],
       });
 
       await bundle.write({

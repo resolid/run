@@ -17,22 +17,35 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "engines": {
     "node": ">=18"
   },
   "dependencies": {},
   "devDependencies": {
-    "@resolid/run": "^0.1.1",
+    "@resolid/run": "workspace:*",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "polka": "1.0.0-next.22",
     "rollup": "^3.20.2",
     "sirv": "^2.0.2"
   },
   "peerDependencies": {
-    "@resolid/run": "^0.1.1",
-    "polka": "1.0.0-next.22",
-    "sirv": "^2.0.2"
-  }
+    "@resolid/run": "*",
+    "polka": ">=1",
+    "sirv": ">=2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/resolid/run",
+    "directory": "packages/adapters/node"
+  },
+  "homepage": "https://run.resolid.tech/docs",
+  "license": "MIT"
 }

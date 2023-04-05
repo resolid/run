@@ -1,30 +1,28 @@
-import { Outlet, useLocation } from '@resolid/run';
+import { Outlet } from '@resolid/run';
 import { MDXProvider } from '@resolid/mdx';
-import { AsideMenu } from '~/shared/AsideMenu';
+import { AsideMenu } from '~/common/components/AsideMenu';
 import { menus } from './menus';
-import { mdx } from './mdx';
-import { TocLayout } from '~/shared/mdx/TocLayout';
+import { mdxComponents } from './mdxComponents';
+import { TocLayout } from '~/common/mdx/TocLayout';
 
 export default function Layout() {
-  const location = useLocation();
-
-  const getMdxPath = () => {
-    const path = location.pathname.replace('/docs/', '');
-
-    return `content/${path}`;
-  };
-
   return (
     <>
-      <aside class={'w-60 fixed top-16 bottom-0 scrollbar-thin overflow-y-auto overflow-x-hidden overscroll-contain'}>
+      <aside class={'scrollbar-thin fixed bottom-0 top-16 w-60 overflow-y-auto overflow-x-hidden overscroll-contain'}>
         <nav role={'navigation'}>
           <AsideMenu menus={menus} />
         </nav>
       </aside>
       <div class={'pl-60'}>
         <main class={'mx-auto h-full p-4'}>
-          <MDXProvider components={mdx}>
-            <TocLayout module={'docs'} path={getMdxPath()}>
+          <MDXProvider components={mdxComponents}>
+            <TocLayout
+              getMdxPath={(pathname: string) => {
+                const path = pathname.replace('/run/', '');
+
+                return `run/content/${path}`;
+              }}
+            >
               <Outlet />
             </TocLayout>
           </MDXProvider>
