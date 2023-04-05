@@ -1,17 +1,14 @@
 import { type Accessor, createEffect, createSignal, For, onCleanup } from 'solid-js';
 import { cx } from '@resolid/utils';
-import { useLocation } from '@resolid/run';
 
-type TocItem = {
+export type TocItem = {
   depth: number;
   text: string;
   slug: string;
 };
 
-export type GetMdxPath = (pathname: string) => string;
-
-const getHeadingsFromToc = (tableOfContents: TocItem[]) => {
-  return tableOfContents.map(({ slug }) => {
+const getHeadingsFromToc = (toc: TocItem[]) => {
+  return toc.map(({ slug }) => {
     const el = document.getElementById(slug);
 
     if (!el) {
@@ -28,13 +25,15 @@ const getHeadingsFromToc = (tableOfContents: TocItem[]) => {
   });
 };
 
-const useCurrentSection = (tableOfContents: Accessor<TocItem[] | undefined>) => {
-  const [currentSection, setCurrentSection] = createSignal(tableOfContents()?.[0]?.slug);
+export const TocSection = (props: { toc: Accessor<TocItem[]> }) => {
+  const [currentSection, setCurrentSection] = createSignal();
+
+  const filterToc = () => props.toc().filter((item) => item.depth > 1 && item.depth <= 3);
 
   createEffect(() => {
-    const toc = tableOfContents();
+    const toc = filterToc();
 
-    if (toc == null || toc.length === 0) {
+    if (toc.length === 0) {
       return;
     }
 
@@ -70,44 +69,9 @@ const useCurrentSection = (tableOfContents: Accessor<TocItem[] | undefined>) => 
     });
   });
 
-  return currentSection;
-};
-
-export const TocSection = (props: { getMdxPath: GetMdxPath }) => {
-  const location = useLocation();
-
-  const [toc, setToc] = createSignal<TocItem[]>([]);
-
-  createEffect(() => {
-    const paths = props.getMdxPath(location.pathname).split('/');
-
-    (async () => {
-      try {
-        const { getHeadings } =
-          paths.length == 5
-            ? await import(`../../modules/${paths[0]}/${paths[1]}/${paths[2]}/${paths[3]}/${paths[4]}.mdx`)
-            : paths.length == 4
-            ? await import(`../../modules/${paths[0]}/${paths[1]}/${paths[2]}/${paths[3]}.mdx`)
-            : paths.length == 3
-            ? await import(`../../modules/${paths[0]}/${paths[1]}/${paths[2]}.mdx`)
-            : paths.length == 2
-            ? await import(`../../modules/${paths[0]}/${paths[1]}.mdx`)
-            : await import(`../../modules/${paths[0]}.mdx`);
-
-        const headings = (getHeadings() as TocItem[]).filter((h) => h.depth > 1 && h.depth <= 3);
-
-        setToc(headings);
-      } catch (ex) {
-        setToc([]);
-      }
-    })();
-  });
-
-  const currentSection = useCurrentSection(toc);
-
   return (
     <ul class={'sticky top-20 space-y-1 border-l border-gray-200'}>
-      <For each={toc()}>
+      <For each={filterToc()}>
         {(item) => (
           <li>
             <a

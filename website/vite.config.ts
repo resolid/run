@@ -3,7 +3,10 @@ import { defineConfig, type UserConfig } from 'vite';
 import resolid from '@resolid/run/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import resolidRunNode from '@resolid/run-node';
-import { mdx } from './scripts/vite-plugin-mdx';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import mdx from '@mdx-js/rollup';
+import rehypeHeadings from './scripts/rehype-headings';
 
 export default defineConfig(async ({ command }) => {
   const isBuild = command == 'build';
@@ -11,10 +14,17 @@ export default defineConfig(async ({ command }) => {
   const config: UserConfig = {
     plugins: [
       !isBuild && tsconfigPaths(),
-      await mdx({
-        rehypePlugins: [],
-        remarkPlugins: [],
-      }),
+      {
+        ...mdx({
+          jsx: true,
+          jsxImportSource: 'solid-js',
+          providerImportSource: '@resolid/mdx',
+          elementAttributeNameCase: 'html',
+          rehypePlugins: [rehypeSlug, rehypeHeadings],
+          remarkPlugins: [remarkGfm],
+        }),
+        enforce: 'pre',
+      },
       resolid({
         adapter: resolidRunNode(),
         extensions: ['.mdx'],

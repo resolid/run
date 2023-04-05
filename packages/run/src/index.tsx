@@ -14,6 +14,7 @@ export {
   type LinkProps,
   type RouteDataFunc,
   type RouteDataFuncArgs,
+  type RouteDefinition,
 } from '@solidjs/router';
 
 export * from './components/Router';

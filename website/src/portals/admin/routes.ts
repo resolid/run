@@ -1,4 +1,4 @@
-import type { RouteDefinition } from '@solidjs/router';
+import type { RouteDefinition } from '@resolid/run';
 import { lazy } from 'solid-js';
 
 const routes: RouteDefinition[] = [

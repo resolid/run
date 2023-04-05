@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply min-h-screen overflow-y-scroll bg-white text-base text-gray-900;
+  @apply overflow-y-scroll bg-white text-base text-gray-900;
 }

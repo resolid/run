@@ -1,9 +1,7 @@
-import { type RouteDefinition } from '@solidjs/router';
-import { type Component, lazy } from 'solid-js';
-import { Navigate } from '@resolid/run';
+import { lazy } from 'solid-js';
+import { Navigate, type RouteDefinition } from '@resolid/run';
 import { getPathname } from '~/common/utils/path';
-
-const documents = import.meta.glob<boolean, string, { default: Component }>('./content/**/*.mdx');
+import { documents } from './mdxDocuments';
 
 const getBasename = (path: string) => {
   const paths = getPathname(path).split('/');
