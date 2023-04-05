@@ -28,4 +28,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to develop resol
 
 ## Thanks
 
-[![WebStorm](.github/assets/webstorm-icon.svg)](https://jb.gg/OpenSourceSupport)
+Thanks to JetBrains for the [OSS development license](https://jb.gg/OpenSourceSupport).
+
+![JetBrain](.github/assets/jetbrain-logo.svg)
