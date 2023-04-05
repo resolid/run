@@ -1,4 +1,4 @@
-import { type Menu } from '~/common/components/AsideMenu';
+import { type Menu } from '~/common/components/AsideLayoutSide';
 
 export const menus: Menu[] = [
   {
