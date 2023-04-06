@@ -1,0 +1,6 @@
+{
+  "name": "examples-basic",
+  "private": true,
+  "type": "module",
+  "dependencies": {}
+}

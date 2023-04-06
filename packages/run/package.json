@@ -11,9 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsup --watch",
-    "prepublishOnly": "npm run build"
+    "build": "tsup"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

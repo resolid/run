@@ -1,11 +1,13 @@
 {
-  "private": true,
   "name": "resolid-run",
+  "type": "module",
+  "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "lint": "eslint --cache --ext .js,.jsx,.cjs,.mjs,.ts,.tsx .",
     "format": "prettier --write .",
+    "test": "pnpm test -r",
     "website:dev": "pnpm run --filter website dev",
     "website:build": "pnpm run --filter website build",
     "website:serve": "pnpm run --filter website serve",
@@ -29,7 +31,6 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.3",
     "vite": "^4.2.1",
-    "vite-plugin-solid": "^2.7.0",
     "vite-tsconfig-paths": "^4.0.8",
     "vitest": "^0.29.8"
   },

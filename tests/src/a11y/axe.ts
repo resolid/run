@@ -7,8 +7,26 @@ export type AxeConfigureOptions = RunOptions & { globalOptions?: Spec };
 
 export const configureAxe = (options: AxeConfigureOptions = {}) => {
   const { globalOptions = {}, ...runnerOptions } = options;
+  const { checks = [], rules = [], ...otherGlobalOptions } = globalOptions;
 
-  configure(globalOptions);
+  configure({
+    checks: [
+      {
+        // color contrast checking doesnt work in a jsdom environment.
+        id: 'color-contrast',
+        enabled: false,
+      },
+      ...checks,
+    ],
+    rules: [
+      {
+        id: 'color-contrast',
+        enabled: false,
+      },
+      ...rules,
+    ],
+    ...otherGlobalOptions,
+  });
 
   return (html: string | HTMLElement, additionalOptions = {}) => {
     const [element, restore] = mount(html);

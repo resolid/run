@@ -11,8 +11,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "test": "vitest run",
-    "prepublishOnly": "npm run build"
+    "test": "vitest run"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -33,7 +32,8 @@
     "@resolid/tests": "workspace:*",
     "@resolid/utils": "workspace:*",
     "solid-js": "^1.7.2",
-    "tsup-preset-solid": "^0.1.8"
+    "tsup-preset-solid": "^0.1.8",
+    "vite-plugin-solid": "^2.7.0"
   },
   "peerDependencies": {
     "@floating-ui/dom": ">=1",

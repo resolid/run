@@ -9,18 +9,18 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  extends: ['eslint:recommended', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint', 'solid', 'jsx-a11y'],
+      plugins: ['@typescript-eslint', 'solid'],
       extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:solid/typescript',
         'plugin:jsx-a11y/recommended',
-        'prettier',
+        'plugin:prettier/recommended',
       ],
     },
   ],

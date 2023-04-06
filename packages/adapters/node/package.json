@@ -10,9 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsup --watch",
-    "prepublishOnly": "npm run build"
+    "build": "tsup"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

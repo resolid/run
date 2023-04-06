@@ -1,9 +1,8 @@
 {
   "name": "@resolid/tests",
   "private": true,
-  "sideEffects": false,
   "type": "module",
-  "main": "src/index.ts",
+  "main": "./src/index.ts",
   "dependencies": {
     "@solidjs/testing-library": "^0.7.0",
     "@testing-library/dom": "^9.2.0",
