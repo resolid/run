@@ -136,8 +136,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.1(@types/node@18.15.11)
       vite-plugin-inspect:
-        specifier: ^0.7.18
-        version: 0.7.18(rollup@3.20.2)(vite@4.2.1)
+        specifier: ^0.7.19
+        version: 0.7.19(rollup@3.20.2)(vite@4.2.1)
       vite-plugin-solid:
         specifier: ^2.7.0
         version: 2.7.0(solid-js@1.7.2)(vite@4.2.1)
@@ -149,6 +149,13 @@ importers:
         version: 3.3.1(postcss@8.4.21)(ts-node@10.9.1)
 
   packages/ui:
+    dependencies:
+      '@resolid/utils':
+        specifier: workspace:*
+        version: link:../utils
+      class-variance-authority:
+        specifier: ^0.5.1
+        version: 0.5.1(typescript@5.0.3)
     devDependencies:
       '@floating-ui/dom':
         specifier: ^1.2.5
@@ -162,9 +169,6 @@ importers:
       '@resolid/tests':
         specifier: workspace:*
         version: link:../../tests
-      '@resolid/utils':
-        specifier: workspace:*
-        version: link:../utils
       solid-js:
         specifier: ^1.7.2
         version: 1.7.2
@@ -2206,6 +2210,17 @@ packages:
   /ci-info@3.8.0:
     resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==}
     engines: {node: '>=8'}
+    dev: false
+
+  /class-variance-authority@0.5.1(typescript@5.0.3):
+    resolution: {integrity: sha512-J3tAiPbmBhPffsZ6Le3cR4o5hN78XBTst5NwCJJF7hAkZYIDuHQKV03Tb89zMDAxIONmM+DFRooMUCK5nTWpvQ==}
+    peerDependencies:
+      typescript: '>= 4.5.5 < 6'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.0.3
     dev: false
 
   /clean-stack@2.2.0:
@@ -6236,7 +6251,6 @@ packages:
     resolution: {integrity: sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA==}
     engines: {node: '>=12.20'}
     hasBin: true
-    dev: true
 
   /ufo@1.1.1:
     resolution: {integrity: sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==}
@@ -6421,8 +6435,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-inspect@0.7.18(rollup@3.20.2)(vite@4.2.1):
-    resolution: {integrity: sha512-hyIxg2qJaRs0LoB3Tqy9ML8yEublIzTzFVXmNhgw2jsjETJUXeR6iQ4YPHk3Q6kTbbiwgoPPyXimlAfEwektnA==}
+  /vite-plugin-inspect@0.7.19(rollup@3.20.2)(vite@4.2.1):
+    resolution: {integrity: sha512-OdKObJGdzOMR7SuqykN/Rb6rVtMK1wp4EmUTM3xhTCuSR1K/oM7fi4CKeBWhpYSkqop7O4gVB/MOUk7+RO7gIQ==}
     engines: {node: '>=14'}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0

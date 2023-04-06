@@ -3,7 +3,7 @@ import { mergeProps, splitProps } from 'solid-js';
 import { isString } from '@resolid/utils';
 import type { Size } from '../../utils/types';
 
-export type IconProps = JSX.SvgSVGAttributes<SVGSVGElement> & { size?: Size };
+export type IconProps = JSX.SvgSVGAttributes<SVGSVGElement> & { size?: Size | number };
 
 const iconSizes = {
   xs: 16,
@@ -28,7 +28,7 @@ export const Icon = (props: IconProps) => {
     props
   );
 
-  const [local, rest] = splitProps(propsWithDefault, ['size', 'width', 'height', 'class', 'children']);
+  const [local, rest] = splitProps(propsWithDefault, ['size', 'width', 'height', 'children']);
 
   const sizeValue = () => (isString(local.size) ? iconSizes[local.size as Size] : local.size);
 

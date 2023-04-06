@@ -24,13 +24,15 @@
     },
     "require": "./dist/index.cjs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@resolid/utils": "workspace:*",
+    "class-variance-authority": "^0.5.1"
+  },
   "devDependencies": {
     "@floating-ui/dom": "^1.2.5",
     "@motionone/dom": "^10.15.5",
     "@motionone/types": "^10.15.1",
     "@resolid/tests": "workspace:*",
-    "@resolid/utils": "workspace:*",
     "solid-js": "^1.7.2",
     "tsup-preset-solid": "^0.1.8",
     "vite-plugin-solid": "^2.7.0"
@@ -38,7 +40,6 @@
   "peerDependencies": {
     "@floating-ui/dom": ">=1",
     "@motionone/dom": ">=10",
-    "@resolid/utils": "*",
     "solid-js": ">=1"
   },
   "repository": {
