@@ -40,14 +40,3 @@ jobs:
           remote_user: ${{ secrets.REMOTE_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote_path: /home/websites/resolid-run/web
-
-      - name: Deploy TX
-        uses: Burnett01/rsync-deployments@5.2.1
-        with:
-          switches: -avzr --delete
-          path: website/dist/
-          remote_host: ${{ secrets.TX_REMOTE_HOST }}
-          remote_port: ${{ secrets.TX_REMOTE_PORT }}
-          remote_user: ${{ secrets.TX_REMOTE_USER }}
-          remote_key: ${{ secrets.TX_SSH_PRIVATE_KEY }}
-          remote_path: /home/websites/resolid-run/web
