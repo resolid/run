@@ -29,9 +29,10 @@
     "class-variance-authority": "^0.5.1"
   },
   "devDependencies": {
-    "@floating-ui/dom": "^1.2.5",
+    "@floating-ui/dom": "^1.2.6",
     "@motionone/dom": "^10.15.5",
     "@motionone/types": "^10.15.1",
+    "@resolid/tailwind": "workspace:*",
     "@resolid/tests": "workspace:*",
     "solid-js": "^1.7.2",
     "tsup-preset-solid": "^0.1.8",
