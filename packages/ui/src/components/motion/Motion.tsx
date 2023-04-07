@@ -9,13 +9,13 @@ import { createPolymorphic, mergeRefs, mergeStyle } from '../../primitives';
 
 export type MotionComponentProps = {
   /**
-   * 预设动画
+   * Motion Preset
    * @default 'fade'
    */
   motionPreset?: MotionPreset;
 
   /**
-   * 动画属性 @see https://motion.dev/solid/motion#props
+   * Motion Props @see https://motion.dev/solid/motion#props
    */
   motionProps?: MotionOptions;
 };

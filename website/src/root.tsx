@@ -22,7 +22,7 @@ export default function Root() {
         <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <Link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
-      <Body class={'min-h-screen'}>
+      <Body class={'min-h-screen overflow-y-scroll bg-white text-base text-gray-900'}>
         <ColorModeScript />
         <ErrorBoundary>
           <Suspense>
