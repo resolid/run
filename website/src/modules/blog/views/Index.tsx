@@ -1,3 +1,11 @@
+import { DefaultLayout } from '~/common/components/DefaultLayout';
+import { HelmetTitle } from '@resolid/run';
+
 export default function Index() {
-  return <div class={'p-4'}>Blog</div>;
+  return (
+    <>
+      <HelmetTitle text={'Blog'} />
+      <DefaultLayout>Blog</DefaultLayout>
+    </>
+  );
 }

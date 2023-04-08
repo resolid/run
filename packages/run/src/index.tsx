@@ -1,4 +1,4 @@
-export { Link, Meta, Style, Stylesheet, Title } from '@solidjs/meta';
+export { Link, Meta, Style, Stylesheet } from '@solidjs/meta';
 
 export {
   Navigate,
@@ -28,6 +28,8 @@ export * from './components/Scripts';
 
 export * from './base/createRouteData';
 export * from './base/createRouteAction';
+
+export * from './components/Helmet';
 
 export { FormError, ServerError } from './components/FormError';
 
