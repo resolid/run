@@ -23,6 +23,12 @@ export const createHandler = (handle: HandleFn) => {
       });
     }
 
-    return handle(request, responseStatusCode, responseHeaders, runContext);
+    const context: RunContextValue = {
+      tags: [],
+      components: new Set(),
+      ...runContext,
+    };
+
+    return handle(request, responseStatusCode, responseHeaders, context);
   };
 };

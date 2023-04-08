@@ -11,8 +11,6 @@ export const dev = (viteServer: ViteDevServer) => {
         const handleRequest = (await viteServer.ssrLoadModule('~resolid-run/entry-server')).default;
 
         const response = await handleRequest(createRequest(url, req), res.statusCode, createHeaders(res.getHeaders()), {
-          tags: [],
-          components: new Set(),
           manifest: {},
         });
 

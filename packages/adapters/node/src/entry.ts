@@ -29,8 +29,6 @@ const render = async (req: IncomingMessage, res: ServerResponse) => {
 
   try {
     const response = await handleRequest(createRequest(url, req), res.statusCode, createHeaders(res.getHeaders()), {
-      tags: [],
-      components: new Set(),
       manifest: manifest,
     });
 
