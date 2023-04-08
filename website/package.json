@@ -18,9 +18,9 @@
     "@resolid/ui": "workspace:*",
     "@resolid/utils": "workspace:*",
     "polka": "1.0.0-next.22",
-    "solid-js": "^1.7.2",
-    "zod": "^3.21.4",
-    "sirv": "^2.0.2"
+    "sirv": "^2.0.2",
+    "solid-js": "^1.7.3",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",

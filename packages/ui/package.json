@@ -34,7 +34,7 @@
     "@motionone/types": "^10.15.1",
     "@resolid/tailwind": "workspace:*",
     "@resolid/tests": "workspace:*",
-    "solid-js": "^1.7.2",
+    "solid-js": "^1.7.3",
     "tsup-preset-solid": "^0.1.8",
     "vite-plugin-solid": "^2.7.0"
   },
