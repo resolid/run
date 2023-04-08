@@ -36,11 +36,11 @@ export default function Root() {
         <Body class={'min-h-screen overflow-y-scroll bg-white text-base text-gray-900'}>
           <ColorModeScript />
           <ErrorBoundary>
-            <Suspense>
-              <ResolidProvider>
+            <ResolidProvider>
+              <Suspense>
                 <Routes base={import.meta.env.BASE_URL}>{routes as never}</Routes>
-              </ResolidProvider>
-            </Suspense>
+              </Suspense>
+            </ResolidProvider>
           </ErrorBoundary>
           <Scripts />
         </Body>

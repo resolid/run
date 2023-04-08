@@ -7,7 +7,7 @@ import { TocLayout } from '~/common/mdx/TocLayout';
 import { AsideLayout } from '~/common/components/AsideLayout';
 import { AsideLayoutMain } from '~/common/components/AsideLayoutMain';
 import { headings } from './mdxDocuments';
-import { createEffect, createSignal } from 'solid-js';
+import { createEffect, createSignal, Suspense } from 'solid-js';
 import { type TocItem } from '~/common/mdx/TocSection';
 
 export default function Layout() {
@@ -29,7 +29,9 @@ export default function Layout() {
       <AsideLayoutMain>
         <MDXProvider components={mdxComponents}>
           <TocLayout toc={toc}>
-            <Outlet />
+            <Suspense>
+              <Outlet />
+            </Suspense>
           </TocLayout>
         </MDXProvider>
       </AsideLayoutMain>

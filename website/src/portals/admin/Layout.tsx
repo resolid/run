@@ -1,4 +1,5 @@
 import { A, Outlet } from '@resolid/run';
+import { Suspense } from 'solid-js';
 
 const AdminLayout = () => {
   return (
@@ -12,7 +13,9 @@ const AdminLayout = () => {
           <A href={'/admin/about'}>Admin About</A>
         </li>
       </ul>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

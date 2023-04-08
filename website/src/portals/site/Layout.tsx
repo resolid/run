@@ -1,6 +1,6 @@
 import { A, Outlet } from '@resolid/run';
 import ResolidBanner from '~/assets/images/resolid-banner.svg';
-import { createSignal, For } from 'solid-js';
+import { createSignal, For, Suspense } from 'solid-js';
 import { Github } from '~/common/icons/Github';
 import { System } from '~/common/icons/System';
 import { Menu } from '~/common/icons/Menu';
@@ -88,7 +88,9 @@ const SiteLayout = () => {
     <>
       <Header />
       <div class={'desktop:max-w-7xl mx-auto pt-16'}>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );

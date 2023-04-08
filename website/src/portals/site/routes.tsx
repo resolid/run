@@ -1,8 +1,10 @@
-import type { RouteDefinition } from '@solidjs/router';
+import type { RouteDefinition } from '@resolid/run';
 import { lazy } from 'solid-js';
 import { indexData } from '~/modules/home/views/Index.data';
 import docsSiteRoutes from '~/modules/docs/siteRoutes';
 import uiSiteRoutes from '~/modules/ui/siteRoutes';
+
+import NotFound from '~/portals/site/NotFound';
 
 const routes: RouteDefinition[] = [
   {
@@ -19,7 +21,7 @@ const routes: RouteDefinition[] = [
       { path: '/forum', component: lazy(() => import('~/modules/forum/views/Index')) },
       { path: '/blog', component: lazy(() => import('~/modules/blog/views/Index')) },
       { path: '/about', component: lazy(() => import('~/modules/home/views/About')) },
-      { path: '/*', component: lazy(() => import('./NotFound')) },
+      { path: '/*', component: () => <NotFound class={'max-w-3xl'} /> },
     ],
   },
 ];
