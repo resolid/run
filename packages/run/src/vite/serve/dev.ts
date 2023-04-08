@@ -1,15 +1,16 @@
 import type { ViteDevServer } from 'vite';
-import { createHeaders, createRequest, setResponse } from '../../node';
+import { createHeaders, createRequest, getUrl, setResponse } from '../../node';
 
 export const dev = (viteServer: ViteDevServer) => {
   return () => {
     viteServer.middlewares.use(async (req, res) => {
-      console.log(req.method, new URL(req.url ?? '', viteServer.resolvedUrls?.local[0]).href);
+      const url = getUrl(req);
+      console.log(req.method, url.href);
 
       try {
         const handleRequest = (await viteServer.ssrLoadModule('~resolid-run/entry-server')).default;
 
-        const response = await handleRequest(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
+        const response = await handleRequest(createRequest(url, req), res.statusCode, createHeaders(res.getHeaders()), {
           tags: [],
           components: new Set(),
           manifest: {},

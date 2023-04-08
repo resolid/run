@@ -3,7 +3,7 @@ import polka from 'polka';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { type IncomingMessage, type ServerResponse } from 'http';
-import { createHeaders, createRequest, setResponse } from '@resolid/run/node';
+import { createHeaders, createRequest, setResponse, getUrl } from '@resolid/run/node';
 
 // @ts-expect-error Cannot find module
 import manifest from './route-manifest.json';
@@ -25,8 +25,10 @@ const assets = sirv(join(__dirname, '/public'), {
 });
 
 const render = async (req: IncomingMessage, res: ServerResponse) => {
+  const url = getUrl(req);
+
   try {
-    const response = await handleRequest(createRequest(req), res.statusCode, createHeaders(res.getHeaders()), {
+    const response = await handleRequest(createRequest(url, req), res.statusCode, createHeaders(res.getHeaders()), {
       tags: [],
       components: new Set(),
       manifest: manifest,

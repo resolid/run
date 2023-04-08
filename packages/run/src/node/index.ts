@@ -4,11 +4,14 @@ import { once } from 'node:events';
 import { splitCookiesString } from 'set-cookie-parser';
 import { type IncomingHttpHeaders, type OutgoingHttpHeaders } from 'http';
 
-export const createRequest = (req: IncomingMessage) => {
-  // noinspection HttpUrlsUsage
+export const getUrl = (req: IncomingMessage) => {
   const origin = req.headers.origin || `http://${req.headers.host}`;
-  const url = new URL(req.url ?? '', origin);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return new URL((req as any).originalUrl || req.url || '/', origin);
+};
+
+export const createRequest = (url: URL, req: IncomingMessage) => {
   const body =
     req.method === 'GET' || req.method === 'HEAD'
       ? undefined
@@ -66,7 +69,7 @@ export const setResponse = async (res: ServerResponse, response: Response) => {
     return;
   }
 
-  const readable = Readable.from(response.body as never);
+  const readable = Readable.fromWeb(response.body as never);
   readable.pipe(res);
 
   await once(readable, 'end');
