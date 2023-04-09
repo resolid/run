@@ -13,13 +13,12 @@ export default function (): ResolidRunAdapter {
     async build(root, outPath, ssrExternal, commonjsOptions) {
       const __dirname = dirname(fileURLToPath(import.meta.url));
 
-      writeFileSync(
-        join(root, '.resolid', 'server', 'server.js'),
-        readFileSync(join(__dirname, 'entry.js')).toString()
-      );
+      const inputEntry = join(root, '.resolid', 'server', 'server.js');
+
+      writeFileSync(inputEntry, readFileSync(join(__dirname, 'entry.js')).toString());
 
       const bundle = await rollup({
-        input: join(root, '.resolid', 'server', 'server.js'),
+        input: inputEntry,
         plugins: [
           json(),
           nodeResolve({
