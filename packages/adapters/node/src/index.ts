@@ -10,7 +10,7 @@ import type { ResolidRunAdapter } from '@resolid/run/vite';
 export default function (): ResolidRunAdapter {
   return {
     name: 'node',
-    async build(root, outPath, ssrExternal, commonjsOptions) {
+    async buildEnd(root, outPath, ssrExternal, commonjsOptions) {
       const __dirname = dirname(fileURLToPath(import.meta.url));
 
       const inputEntry = join(root, '.resolid', 'server', 'server.js');

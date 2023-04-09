@@ -1,6 +1,6 @@
 import type { ResolidRunViteOptions } from './types';
 import type { Plugin, ResolvedConfig, UserConfig } from 'vite';
-import { build } from 'vite';
+import { build, mergeConfig } from 'vite';
 import solidVitePlugin from 'vite-plugin-solid';
 import { chunkSplitPlugin } from './plugins/split-chunk';
 import { findAny } from './utils/file';
@@ -65,7 +65,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
     {
       name: 'resolid-run-config',
       enforce: 'pre',
-      config(userConfig, { mode, command }) {
+      async config(userConfig, { mode, command }) {
         root = userConfig.root || process.cwd();
         isBuild = command == 'build';
 
@@ -113,6 +113,12 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
           }
 
           config.build.ssr = !secondaryBuildStarted;
+        }
+
+        const adapterConfig = await adapter?.config?.(userConfig);
+
+        if (adapterConfig) {
+          return mergeConfig(config, adapterConfig);
         }
 
         return config;
@@ -313,7 +319,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
           );
 
           finalise = async () => {
-            await adapter.build(viteConfig.root, outPath, viteConfig.ssr.external, viteConfig.build.commonjsOptions);
+            await adapter.buildEnd(viteConfig.root, outPath, viteConfig.ssr.external, viteConfig.build.commonjsOptions);
           };
         },
       },
