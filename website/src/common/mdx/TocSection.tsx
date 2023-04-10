@@ -1,5 +1,5 @@
-import { type Accessor, createEffect, createSignal, For, onCleanup } from 'solid-js';
 import { cx } from '@resolid/utils';
+import { For, createEffect, createSignal, onCleanup, type Accessor } from 'solid-js';
 
 export type TocItem = {
   depth: number;
@@ -70,7 +70,7 @@ export const TocSection = (props: { toc: Accessor<TocItem[]> }) => {
   });
 
   return (
-    <ul class={'sticky top-20 space-y-1 border-l border-gray-200'}>
+    <ul class={'sticky top-20 space-y-1 border-l'}>
       <For each={filterToc()}>
         {(item) => (
           <li>

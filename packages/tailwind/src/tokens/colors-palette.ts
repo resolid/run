@@ -1,4 +1,8 @@
 export const colorsPalette = {
+  inherit: 'inherit',
+  transparent: 'transparent',
+  current: 'currentColor',
+
   black: '#1C2B36',
   white: '#FFFFFF',
 

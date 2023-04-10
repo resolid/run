@@ -1,27 +1,28 @@
-import { type ComponentProps, splitProps } from 'solid-js';
 import { HelmetTitle } from '@resolid/run';
+import { cx } from '@resolid/utils';
+import { splitProps, type ComponentProps } from 'solid-js';
 
 export const mdxComponents = (module: string) => {
   return {
     h1: (props: ComponentProps<'h1'>) => {
-      const [local, rest] = splitProps(props, ['id', 'children']);
+      const [local, rest] = splitProps(props, ['id', 'class', 'children']);
 
       return (
-        <h1 {...rest}>
+        <h1 class={cx('mb-3 mt-2 text-[1.75em] font-bold', local.class)} {...rest}>
           <HelmetTitle text={`${local.children} - ${module}`} />
           {local.children}
         </h1>
       );
     },
     h2: (props: ComponentProps<'h2'>) => {
-      const [local, rest] = splitProps(props, ['id', 'children']);
+      const [local, rest] = splitProps(props, ['id', 'class', 'children']);
 
       return (
-        <h2 id={local.id} class={'group scroll-mt-24'} {...rest}>
+        <h2 id={local.id} class={cx('group mb-3 mt-6 scroll-mt-24 text-xl font-bold', local.class)} {...rest}>
           {local.children}
           <a
             tabIndex={-1}
-            class={'ml-2 text-green-500 opacity-0 transition-opacity group-hover:opacity-100'}
+            class={'ms-2 text-green-500 opacity-0 transition-opacity group-hover:opacity-100'}
             aria-hidden={true}
             href={`#${local.id}`}
           >
@@ -31,10 +32,10 @@ export const mdxComponents = (module: string) => {
       );
     },
     h3: (props: ComponentProps<'h3'>) => {
-      const [local, rest] = splitProps(props, ['id', 'children']);
+      const [local, rest] = splitProps(props, ['id', 'class', 'children']);
 
       return (
-        <h3 id={local.id} class={'group scroll-mt-24'} {...rest}>
+        <h3 id={local.id} class={cx('group mb-3 mt-6 scroll-mt-24 text-xl font-medium', local.class)} {...rest}>
           {local.children}
           <a
             tabIndex={-1}
@@ -45,6 +46,52 @@ export const mdxComponents = (module: string) => {
             #
           </a>
         </h3>
+      );
+    },
+    ul: (props: ComponentProps<'ul'>) => {
+      const [local, rest] = splitProps(props, ['class', 'children']);
+      return (
+        <ul class={cx('my-4 list-disc ps-6', local.class)} {...rest}>
+          {local.children}
+        </ul>
+      );
+    },
+    ol: (props: ComponentProps<'ol'>) => {
+      const [local, rest] = splitProps(props, ['class', 'children']);
+      return (
+        <ol class={cx('my-4 list-decimal ps-6', local.class)} {...rest}>
+          {local.children}
+        </ol>
+      );
+    },
+    li: (props: ComponentProps<'li'>) => {
+      const [local, rest] = splitProps(props, ['class', 'children']);
+      return (
+        <li class={cx('my-1 ps-1', local.class)} {...rest}>
+          {local.children}
+        </li>
+      );
+    },
+    p: (props: ComponentProps<'p'>) => {
+      const [local, rest] = splitProps(props, ['class', 'children']);
+      return (
+        <p class={cx('my-4', local.class)} {...rest}>
+          {local.children}
+        </p>
+      );
+    },
+    pre: (props: ComponentProps<'pre'>) => {
+      const [local, rest] = splitProps(props, ['class', 'children']);
+      return (
+        <pre
+          class={cx(
+            'scrollbar scrollbar-thin my-4 overflow-x-auto rounded bg-black px-4 py-3 font-mono text-white',
+            local.class
+          )}
+          {...rest}
+        >
+          {local.children}
+        </pre>
       );
     },
     a: (props: ComponentProps<'a'>) => {

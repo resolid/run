@@ -117,6 +117,10 @@ const preset: Preset = (config = {}) => {
       fontFamily: fontFamily,
       fontSize: fontSize,
       colors: { ...colorsPalette, ...resolved.colors },
+      borderColor: ({ theme }) => ({
+        ...theme('colors'),
+        DEFAULT: `rgb(var(--${cssVarPrefix}-border-default))`,
+      }),
       borderRadius: borderRadius,
       fontWeight: fontWidth,
     },
@@ -132,7 +136,7 @@ const preset: Preset = (config = {}) => {
         });
         addUtilities(resolved.utilities);
       }),
-      scrollbar,
+      scrollbar(cssVarPrefix),
     ],
   };
 };
