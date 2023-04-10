@@ -20,5 +20,6 @@ export const testA11y = async (
   const { axeOptions, ...rest } = options;
   const container = typeof ui == 'function' ? render(ui, rest).container : ui;
   const results = await axe(container, axeOptions);
+  // @ts-expect-error Property
   expect(results).toHaveNoViolations();
 };

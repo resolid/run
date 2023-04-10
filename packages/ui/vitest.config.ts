@@ -8,7 +8,6 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: '../../tests/src/setup.ts',
     deps: {
-      registerNodeLoader: false,
       inline: [/solid-js/],
     },
     transformMode: { web: [/\.[jt]sx?$/] },
