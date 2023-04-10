@@ -1,20 +1,20 @@
-import type { ResolidRunViteOptions } from './types';
-import type { Plugin, ResolvedConfig, UserConfig } from 'vite';
-import { build, mergeConfig } from 'vite';
-import solidVitePlugin from 'vite-plugin-solid';
-import { chunkSplitPlugin } from './plugins/split-chunk';
-import { findAny } from './utils/file';
-import { join } from 'node:path';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { solidPlugin } from 'esbuild-plugin-solid';
-import viteInspect from 'vite-plugin-inspect';
-import { dev } from './serve/dev';
 import type * as Babel from '@babel/core';
 import { parse } from '@babel/parser';
 import _traverse from '@babel/traverse';
-import { babelOptions, isReturnJsx } from './utils/babel';
-import { prepareManifest } from './utils/manifest';
+import { solidPlugin } from 'esbuild-plugin-solid';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import type { Plugin, ResolvedConfig, UserConfig } from 'vite';
+import { build, mergeConfig } from 'vite';
+import viteInspect from 'vite-plugin-inspect';
+import solidVitePlugin from 'vite-plugin-solid';
 import transformServer from './babel/transformServer';
+import { chunkSplitPlugin } from './plugins/split-chunk';
+import { dev } from './serve/dev';
+import type { ResolidRunViteOptions } from './types';
+import { babelOptions, isReturnJsx } from './utils/babel';
+import { findAny } from './utils/file';
+import { prepareManifest } from './utils/manifest';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -219,7 +219,7 @@ export const resolidRunVitePlugin = (options: ResolidRunViteOptions): Plugin[] =
         }
       },
     } as Plugin,
-    inspect && viteInspect({ build: true, outputDir: join('.resolid', 'inspect') }),
+    inspect && viteInspect({ outputDir: join('.resolid', 'inspect') }),
     {
       name: 'resolid-run-data',
       enforce: 'pre',
