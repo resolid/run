@@ -7,9 +7,8 @@ export const ColorModeScript = (props: { nonce?: string }) => {
       {isServer && (
         <script id="color-mode-script" nonce={props.nonce} $ServerOnly>{`
 try {
-  var t = localStorage.getItem('${COLOR_MODE_STORAGE_KEY}');
-  var isDark = t ? t == '"dark"' : matchMedia('(prefers-color-scheme:dark)').matches;
-  if (isDark) {
+  var dark = localStorage.getItem('${COLOR_MODE_STORAGE_KEY}');
+  if (dark ? dark == '"dark"' : matchMedia('(prefers-color-scheme:dark)').matches) {
     document.documentElement.classList.add('dark');
   }
 } catch (e) {}
