@@ -1,17 +1,46 @@
 import { A, Outlet } from '@resolid/run';
-import ResolidBanner from '~/assets/images/resolid-banner.svg';
-import { createSignal, For, Suspense } from 'solid-js';
-import { Github } from '~/common/icons/Github';
-import { System } from '~/common/icons/System';
-import { Menu } from '~/common/icons/Menu';
-import { Close } from '~/common/icons/Close';
+import { useColorMode } from '@resolid/ui';
 import { cx } from '@resolid/utils';
+import { For, Show, Suspense, createSignal } from 'solid-js';
+import ResolidBannerDark from '~/assets/images/resolid-banner-dark.svg';
+import ResolidBanner from '~/assets/images/resolid-banner.svg';
+import { Close } from '~/common/icons/Close';
+import { Github } from '~/common/icons/Github';
+import { Menu } from '~/common/icons/Menu';
+import { Moon } from '~/common/icons/Moon';
+import { Sun } from '~/common/icons/Sun';
+
+const ThemeChanger = () => {
+  const { darkMode, setColorMode } = useColorMode();
+
+  return (
+    <button
+      onClick={() => setColorMode(darkMode() ? 'light' : 'dark')}
+      title={'Change Color Theme'}
+      class={'p-2 hover:text-blue-500'}
+    >
+      <Show when={darkMode()} fallback={<Moon size={'sm'} />}>
+        <Sun size={'sm'} />
+      </Show>
+    </button>
+  );
+};
+
+const Banner = () => {
+  const { darkMode } = useColorMode();
+
+  return (
+    <Show when={darkMode()} fallback={<img height={32} width={129} alt={'Resolid Run'} src={ResolidBanner} />}>
+      <img height={32} width={129} alt={'Resolid Run'} src={ResolidBannerDark} />
+    </Show>
+  );
+};
 
 const Header = () => {
   const [opened, setOpened] = createSignal(false);
 
   return (
-    <header class={'fixed inset-x-0 z-20 w-full border-b bg-white/75 backdrop-blur'}>
+    <header class={'bg-bg-default/75 fixed inset-x-0 z-20 w-full border-b backdrop-blur'}>
       <nav class={'desktop:max-w-7xl mx-auto flex h-16 items-center justify-between px-4'}>
         <div class={'tablet:hidden flex flex-1'}>
           <button
@@ -24,13 +53,13 @@ const Header = () => {
         </div>
         <div class={'tablet:justify-between flex flex-1 items-center justify-center'}>
           <A href={'/'}>
-            <img height={32} width={129} alt={'Resolid Nxt'} src={ResolidBanner} />
+            <Banner />
           </A>
         </div>
         <div class={'flex flex-1 items-center justify-end gap-4'}>
           <div
             class={cx(
-              'tablet:block tablet:relative tablet:top-0 tablet:h-auto absolute inset-x-0 top-[calc(4rem+1px)] z-20 h-screen bg-white p-0',
+              'tablet:block tablet:relative tablet:top-0 tablet:h-auto bg-bg-default absolute inset-x-0 top-[calc(4rem+1px)] z-20 h-screen p-0',
               opened() ? 'block' : 'hidden'
             )}
           >
@@ -51,7 +80,7 @@ const Header = () => {
                     <A
                       end={link.end}
                       activeClass={'text-blue-600'}
-                      inactiveClass={'text-gray-600'}
+                      inactiveClass={''}
                       href={link.href}
                       onClick={() => setOpened(false)}
                       class="tablet:px-4 block p-2 hover:text-blue-500"
@@ -64,11 +93,9 @@ const Header = () => {
             </ul>
           </div>
           <div class={'flex flex-row items-center gap-1'}>
-            <button title={'Change Color Theme'} class={'p-2 text-gray-600 hover:text-blue-500'}>
-              <System size={'sm'} />
-            </button>
+            <ThemeChanger />
             <a
-              class={'p-2 text-gray-600 hover:text-blue-500'}
+              class={'p-2 hover:text-blue-500'}
               rel="noreferrer"
               target="_blank"
               href="https://github.com/resolid/run"

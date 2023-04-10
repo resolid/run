@@ -28,6 +28,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-tailwindcss": "^0.2.7",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",

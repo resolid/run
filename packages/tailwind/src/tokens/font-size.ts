@@ -1,4 +1,4 @@
-export const fontSize = {
+export const fontSize: Record<string, [fontSize: string, lineHeight: string]> = {
   xs: ['0.75rem', '1rem'],
   sm: ['0.8125rem', '1.25rem'],
   base: ['0.875rem', '1.375rem'],

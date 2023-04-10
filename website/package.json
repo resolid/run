@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",
-    "@tailwindcss/typography": "^0.5.9",
     "acorn": "^8.8.2",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",

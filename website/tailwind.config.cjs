@@ -1,8 +1,8 @@
-/** @type {import('tailwindcss').Config} */
+const resolid = require('@resolid/tailwind');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  presets: [require('@resolid/tailwind')],
+  presets: [resolid()],
   content: ['./src/**/*.{js,ts,tsx}'],
   theme: {},
-  plugins: [require('@tailwindcss/typography')],
 };

@@ -1,4 +1,4 @@
-import { type Accessor, createContext, createSignal, type ParentProps, type Setter, useContext } from 'solid-js';
+import { createContext, createSignal, useContext, type Accessor, type ParentProps, type Setter } from 'solid-js';
 import { Menu } from '~/common/icons/Menu';
 
 export type AsideLayoutContextValue = {
@@ -24,7 +24,7 @@ const AsideLayoutBar = () => {
   return (
     <div
       class={
-        'tablet:hidden fixed z-10 flex h-12 w-full items-center justify-between border-b bg-white/75 px-2 backdrop-blur'
+        'tablet:hidden bg-bg-default/75 fixed z-10 flex h-12 w-full items-center justify-between border-b px-2 backdrop-blur'
       }
     >
       <button title={'Open Navigation'} onClick={() => setOpened(true)} class={'flex items-center gap-1 p-2'}>

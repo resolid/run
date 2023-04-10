@@ -3,6 +3,7 @@ export const fontFamily = {
     '-apple-system',
     'BlinkMacSystemFont',
     '"Segoe UI"',
+    '"Noto Sans"',
     'Helvetica',
     'Arial',
     'sans-serif',

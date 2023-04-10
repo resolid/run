@@ -1,6 +1,6 @@
-export const colors = {
-  black: '#091E42',
-  white: '#ffffff',
+export const colorsPalette = {
+  black: '#1C2B36',
+  white: '#FFFFFF',
 
   gray: {
     50: '#F7F8F9',
@@ -9,10 +9,10 @@ export const colors = {
     300: '#B3B9C4',
     400: '#8590A2',
     500: '#758195',
-    600: '#626F86',
-    700: '#44546F',
-    800: '#2C3E5D',
-    900: '#172B4D',
+    600: '#596773',
+    700: '#454F59',
+    800: '#2C333A',
+    900: '#1D2125',
   },
 
   blue: {

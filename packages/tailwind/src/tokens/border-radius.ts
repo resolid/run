@@ -3,8 +3,7 @@ export const borderRadius = {
   xs: '1px',
   sm: '2px',
   DEFAULT: '3px',
-  md: '5px',
-  lg: '6px',
-  xl: '8px',
+  lg: '4px',
+  xl: '5px',
   full: '9999px',
 };

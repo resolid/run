@@ -1,19 +1,8 @@
 /* @refresh reload */
-import {
-  Body,
-  ErrorBoundary,
-  Head,
-  Html,
-  Link,
-  Meta,
-  Routes,
-  Scripts,
-  HelmetProvider,
-  HelmetTitle,
-} from '@resolid/run';
+import { Body, ErrorBoundary, Head, HelmetProvider, Html, Link, Meta, Routes, Scripts } from '@resolid/run';
+import { ColorModeScript, ResolidProvider } from '@resolid/ui';
 import { Suspense } from 'solid-js';
 import routes from './routes';
-import { ColorModeScript, ResolidProvider } from '@resolid/ui';
 
 import './root.css';
 
@@ -33,7 +22,7 @@ export default function Root() {
           <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <Link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         </Head>
-        <Body class={'min-h-screen overflow-y-scroll bg-white text-base text-gray-900'}>
+        <Body class={'min-h-screen overflow-y-scroll'}>
           <ColorModeScript />
           <ErrorBoundary>
             <ResolidProvider>

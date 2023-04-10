@@ -1,6 +1,6 @@
 import { A } from '@resolid/run';
-import { For, Show } from 'solid-js';
 import { cx } from '@resolid/utils';
+import { For, Show } from 'solid-js';
 import { useAsideLayout } from '~/common/components/AsideLayout';
 import { Close } from '~/common/icons/Close';
 
@@ -44,7 +44,7 @@ export const AsideLayoutSide = (props: { menus: Menu[] }) => {
     <aside
       class={cx(
         'scrollbar scrollbar-thin overflow-y-auto overflow-x-hidden overscroll-contain',
-        'fixed bottom-0 top-16 w-56 border-e bg-white',
+        'bg-bg-default fixed bottom-0 top-16 w-56 border-e',
         'tablet:z-0 z-10',
         'tablet:translate-x-0 transition-transform duration-200',
         opened() ? 'translate-x-0' : '-translate-x-full'
