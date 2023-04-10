@@ -25,7 +25,7 @@ export const MdxColorPalette = () => {
             {isString(color.value) ? (
               <div class={'flex flex-row gap-3'}>
                 <div
-                  class={'h-10 w-10 rounded shadow'}
+                  class={'h-10 w-10 rounded border'}
                   style={{
                     'background-color': color.value,
                   }}
@@ -48,7 +48,7 @@ export const MdxColorPalette = () => {
                       return (
                         <div class={'flex flex-col gap-1'}>
                           <div
-                            class={'h-10 w-full rounded shadow'}
+                            class={'h-10 w-full rounded border'}
                             style={{
                               'background-color': value,
                             }}

@@ -5,7 +5,7 @@ export const flattenColorPalette = (colors: Record<string, any>): Record<string,
     ...Object.entries(colors ?? {}).flatMap(([color, values]) =>
       typeof values == 'object'
         ? Object.entries(flattenColorPalette(values)).map(([name, value]) => ({
-            [`${color}-${name}`]: value,
+            [color + (name === 'DEFAULT' ? '' : `-${name}`)]: value,
           }))
         : [{ [color]: values }]
     )

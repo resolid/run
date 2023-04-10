@@ -17,9 +17,9 @@ const MenuItem = (props: { menu: Menu; depth: number }) => {
     <li class={''}>
       {props.menu.path ? (
         <A
-          class={cx('block py-1', props.depth == 2 && 'ps-4')}
-          activeClass={'bg-blue-50 text-blue-600'}
-          inactiveClass={'hover:bg-gray-100 active:bg-gray-200'}
+          class={cx('block py-1 rounded', props.depth == 2 && 'ps-4')}
+          activeClass={'bg-bg-accent'}
+          inactiveClass={'hover:bg-bg-subtle active:bg-bg-muted'}
           href={props.menu.path}
           onClick={() => setOpened(false)}
         >

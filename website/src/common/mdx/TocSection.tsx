@@ -79,8 +79,8 @@ export const TocSection = (props: { toc: Accessor<TocItem[]> }) => {
                 '-ml-px block border-l py-1',
                 item.depth == 2 ? 'pl-4' : 'pl-8',
                 item.slug == currentSection()
-                  ? 'border-l-blue-300 text-blue-600'
-                  : 'text-gray-600 hover:border-l-gray-300 hover:text-gray-700'
+                  ? 'border-l-blue-300 text-link'
+                  : 'hover:border-l-gray-300 hover:text-fg-muted'
               )}
               href={'#' + item.slug}
             >

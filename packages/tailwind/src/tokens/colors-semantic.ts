@@ -3,8 +3,8 @@ import { colorsPalette } from './colors-palette';
 export const colorsSemantic = {
   light: {
     fg: {
-      default: colorsPalette.gray[900],
-      emphasized: colorsPalette.gray[700],
+      default: colorsPalette.black,
+      emphasized: colorsPalette.white,
       muted: colorsPalette.gray[600],
       subtle: colorsPalette.gray[500],
     },
@@ -12,9 +12,14 @@ export const colorsSemantic = {
       default: colorsPalette.white,
       muted: colorsPalette.gray[200],
       subtle: colorsPalette.gray[100],
+      accent: colorsPalette.blue[50],
     },
     border: {
       default: colorsPalette.gray[200],
+    },
+    link: {
+      DEFAULT: colorsPalette.blue[500],
+      pressed: colorsPalette.blue[600],
     },
   },
   dark: {
@@ -26,11 +31,16 @@ export const colorsSemantic = {
     },
     bg: {
       default: colorsPalette.gray[900],
-      muted: colorsPalette.gray[400],
-      subtle: colorsPalette.gray[500],
+      muted: colorsPalette.gray[600],
+      subtle: colorsPalette.gray[700],
+      accent: colorsPalette.blue[800],
     },
     border: {
-      default: colorsPalette.gray[400],
+      default: colorsPalette.gray[600],
+    },
+    link: {
+      DEFAULT: colorsPalette.blue[300],
+      pressed: colorsPalette.blue[400],
     },
   },
 };

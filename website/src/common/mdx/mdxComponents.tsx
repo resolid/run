@@ -95,8 +95,18 @@ export const mdxComponents = (module: string) => {
       );
     },
     a: (props: ComponentProps<'a'>) => {
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
-      return <a target="_blank" rel="noreferrer" {...props} />;
+      const [local, rest] = splitProps(props, ['class', 'children']);
+
+      return (
+        <a
+          class={cx('text-link hover:underline underline-offset-2 active:text-link-pressed', local.class)}
+          target="_blank"
+          rel="noreferrer"
+          {...rest}
+        >
+          {local.children}
+        </a>
+      );
     },
   };
 };
