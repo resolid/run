@@ -4,27 +4,10 @@ import { cx } from '@resolid/utils';
 import { For, Show, Suspense, createSignal } from 'solid-js';
 import ResolidBannerDark from '~/assets/images/resolid-banner-dark.svg';
 import ResolidBanner from '~/assets/images/resolid-banner.svg';
+import { ThemeSwitcher } from '~/common/components/ThemeSwitcher';
 import { Close } from '~/common/icons/Close';
 import { Github } from '~/common/icons/Github';
 import { Menu } from '~/common/icons/Menu';
-import { Moon } from '~/common/icons/Moon';
-import { Sun } from '~/common/icons/Sun';
-
-const ThemeChanger = () => {
-  const { darkMode, setColorMode } = useColorMode();
-
-  return (
-    <button
-      onClick={() => setColorMode(darkMode() ? 'light' : 'dark')}
-      title={'Change Color Theme'}
-      class={'p-2 hover:text-blue-500'}
-    >
-      <Show when={darkMode()} fallback={<Moon size={'sm'} />}>
-        <Sun size={'sm'} />
-      </Show>
-    </button>
-  );
-};
 
 const Banner = () => {
   const { darkMode } = useColorMode();
@@ -73,7 +56,6 @@ const Header = () => {
                   { name: 'Blog', href: '/blog' },
                   { name: 'About', href: '/about' },
                 ]}
-                fallback={<div>Loading...</div>}
               >
                 {(link) => (
                   <li>
@@ -93,7 +75,7 @@ const Header = () => {
             </ul>
           </div>
           <div class={'flex flex-row items-center gap-1'}>
-            <ThemeChanger />
+            <ThemeSwitcher />
             <a
               class={'p-2 hover:text-blue-500'}
               rel="noreferrer"
