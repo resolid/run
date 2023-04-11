@@ -1,4 +1,3 @@
-import type { JSX } from 'solid-js';
 import type {
   CustomPointerEvent,
   InViewOptions,
@@ -8,27 +7,28 @@ import type {
   ViewEvent,
 } from '@motionone/dom';
 import type { AnimationOptions } from '@motionone/types';
+import type { JSX } from 'solid-js';
 
-export type SolidCSSPropertyKeys = Exclude<
+type SolidCSSPropertyKeys = Exclude<
   keyof {
     [K in keyof JSX.CSSProperties as string extends K ? never : K]: never;
   },
   'transition'
 >;
 
-export type AnimationOptionsWithOverrides = AnimationOptions & {
+type AnimationOptionsWithOverrides = AnimationOptions & {
   [K in keyof KeyframesDefinition]: AnimationOptions;
 };
 
-export type KeyframesDefinition = MotionKeyframesDefinition & {
+type KeyframesDefinition = MotionKeyframesDefinition & {
   [K in SolidCSSPropertyKeys]?: ValueKeyframesDefinition;
 };
 
-export type Variant = KeyframesDefinition & {
+type Variant = KeyframesDefinition & {
   transition?: AnimationOptionsWithOverrides;
 };
 
-export type VariantDefinition = string | Variant;
+type VariantDefinition = string | Variant;
 
 export type MotionEventHandlers = {
   onMotionStart?: (event: MotionEvent) => void;
