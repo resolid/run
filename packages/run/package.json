@@ -20,29 +20,35 @@
     ".": {
       "solid": "./dist/index.jsx",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     },
     "./node": {
       "import": "./dist/node.js",
-      "require": "./dist/node.cjs"
+      "require": "./dist/node.cjs",
+      "types": "./dist/node.d.ts"
     },
     "./server": {
       "browser": {
         "import": "./dist/browser.js",
-        "require": "./dist/browser.cjs"
+        "require": "./dist/browser.cjs",
+        "types": "./dist/browser.d.ts"
       },
       "node": {
         "import": "./dist/server.js",
-        "require": "./dist/server.cjs"
+        "require": "./dist/server.cjs",
+        "types": "./dist/server.d.ts"
       },
       "default": {
         "import": "./dist/server.js",
-        "require": "./dist/server.cjs"
+        "require": "./dist/server.cjs",
+        "types": "./dist/server.d.ts"
       }
     },
     "./vite": {
       "import": "./dist/vite.js",
-      "require": "./dist/vite.cjs"
+      "require": "./dist/vite.cjs",
+      "types": "./dist/vite.d.ts"
     }
   },
   "typesVersions": {
@@ -76,7 +82,7 @@
     "set-cookie-parser": "^2.6.0",
     "solid-js": "^1.7.3",
     "vite": "^4.2.1",
-    "vite-plugin-inspect": "^0.7.19",
+    "vite-plugin-inspect": "^0.7.20",
     "vite-plugin-solid": "^2.7.0"
   },
   "peerDependencies": {
