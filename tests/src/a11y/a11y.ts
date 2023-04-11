@@ -1,9 +1,9 @@
-import { expect } from 'vitest';
-import { axe, type AxeConfigureOptions } from './axe';
 import { render } from '@solidjs/testing-library';
-import { type Component, type JSX } from 'solid-js';
 import type { Queries } from '@testing-library/dom';
 import { queries } from '@testing-library/dom';
+import { type Component, type JSX } from 'solid-js';
+import { expect } from 'vitest';
+import { axe, type AxeConfigureOptions } from './axe';
 
 type RenderOptions = {
   container?: HTMLElement;
@@ -20,6 +20,5 @@ export const testA11y = async (
   const { axeOptions, ...rest } = options;
   const container = typeof ui == 'function' ? render(ui, rest).container : ui;
   const results = await axe(container, axeOptions);
-  // @ts-expect-error Property
   expect(results).toHaveNoViolations();
 };

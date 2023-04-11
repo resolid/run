@@ -1,11 +1,11 @@
-import { fileURLToPath, URL } from 'url';
-import { defineConfig, type UserConfig } from 'vite';
-import resolid from '@resolid/run/vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import mdx from '@mdx-js/rollup';
 import resolidRunNode from '@resolid/run-node';
+import resolid from '@resolid/run/vite';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import mdx from '@mdx-js/rollup';
+import { fileURLToPath, URL } from 'url';
+import { defineConfig, type UserConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import rehypeHeadings from './scripts/rehype-headings';
 
 export default defineConfig(async ({ command }) => {

@@ -1,3 +1,30 @@
 # Alert
 
-Alert
+Display a brief, important message in a way that attracts the user's attention without interrupting the user's task.
+
+## Import
+
+```ts
+import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@resolid/ui';
+```
+
+- **Alert:** The wrapper for alert components.
+- **AlertIcon:** The visual icon for the alert that changes based on the status prop.
+- **AlertTitle:** The title of the alert to be announced by screen readers.
+- **AlertDescription:** The description of the alert to be announced by screen readers
+
+## Usage
+
+<Demo demo={'alert/AlertPlayground.tsx'} />
+
+## Variants
+
+Alert has 3 variant styles you can use. Pass the `variant` prop and use either `light`, `solid` or `outline`.
+
+<Demo demo={'alert/AlertVariants.tsx'} />
+
+## Colors
+
+Change the color of the alerts by passing the `color` prop. This affects the color scheme and icon used. Alert supports `primary`, `success`, `warning`, `danger`, and `neutral` colors.
+
+<Demo demo={'alert/AlertColors.tsx'} />

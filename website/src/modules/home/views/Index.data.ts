@@ -4,7 +4,11 @@ import { server$ } from '@resolid/run/server';
 let count = 0;
 
 export const increment = server$(async () => {
-  count = count + 2;
+  count = count + 1;
+});
+
+export const decrement = server$(async () => {
+  count = count - 1;
 });
 
 export const indexData = () =>

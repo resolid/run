@@ -42,7 +42,7 @@ const Header = () => {
         <div class={'flex flex-1 items-center justify-end gap-4'}>
           <div
             class={cx(
-              'tablet:block tablet:relative tablet:top-0 tablet:h-auto bg-bg-default absolute inset-x-0 top-[calc(4rem+1px)] z-20 h-screen p-0',
+              'tablet:block tablet:relative tablet:top-0 tablet:h-auto tablet:bg-inherit bg-bg-default absolute inset-x-0 top-[calc(4rem+1px)] z-20 h-screen p-0',
               opened() ? 'block' : 'hidden'
             )}
           >
@@ -61,11 +61,11 @@ const Header = () => {
                   <li>
                     <A
                       end={link.end}
-                      activeClass={'text-blue-600'}
+                      activeClass={'text-link'}
                       inactiveClass={''}
                       href={link.href}
                       onClick={() => setOpened(false)}
-                      class="tablet:px-4 block p-2 hover:text-blue-500"
+                      class="tablet:px-4 block p-2 hover:text-link-pressed"
                     >
                       <span>{link.name}</span>
                     </A>

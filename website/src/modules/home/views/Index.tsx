@@ -1,12 +1,13 @@
-import { createRouteAction, useRouteData, HelmetTitle } from '@resolid/run';
-import { createSignal, Show, Suspense } from 'solid-js';
+import { HelmetTitle, createRouteAction, useRouteData } from '@resolid/run';
 import { Motion, MotionPresence } from '@resolid/ui';
-import { type HomeData, increment } from './Index.data';
+import { Show, Suspense, createSignal } from 'solid-js';
 import { DefaultLayout } from '~/common/components/DefaultLayout';
+import { decrement, increment, type HomeData } from './Index.data';
 
 function Index() {
   const routeData = useRouteData<HomeData>();
-  const [, submit] = createRouteAction(increment);
+  const [, submitIncrement] = createRouteAction(increment);
+  const [, submitDecrement] = createRouteAction(decrement);
   const [show, setShow] = createSignal(false);
 
   return (
@@ -21,11 +22,33 @@ function Index() {
             </Show>
           </Suspense>
         </p>
-        <p>
-          <button onClick={() => submit()}>Increment</button>
+        <p class={'flex gap-3'}>
+          <button
+            class={
+              'px-3 py-1.5 rounded bg-bg-primary-emphasis hover:bg-bg-primary-emphasis-hovered active:bg-bg-primary-emphasis-pressed text-fg-emphasized'
+            }
+            onClick={() => submitIncrement()}
+          >
+            Increment
+          </button>
+          <button
+            class={
+              'px-3 py-1.5 rounded bg-bg-primary-emphasis hover:bg-bg-primary-emphasis-hovered active:bg-bg-primary-emphasis-pressed text-fg-emphasized'
+            }
+            onClick={() => submitDecrement()}
+          >
+            Decrement
+          </button>
         </p>
         <p>
-          <button onClick={() => setShow((prev) => !prev)}>Animation</button>
+          <button
+            class={
+              'px-3 py-1.5 rounded bg-bg-primary-emphasis hover:bg-bg-primary-emphasis-hovered active:bg-bg-primary-emphasis-pressed text-fg-emphasized'
+            }
+            onClick={() => setShow((prev) => !prev)}
+          >
+            Animation
+          </button>
         </p>
         <div>
           <MotionPresence>
