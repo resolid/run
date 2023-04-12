@@ -17,6 +17,7 @@ const MenuItem = (props: { menu: Menu; depth: number }) => {
     <li class={''}>
       {props.menu.path ? (
         <A
+          end
           class={cx('block py-1 rounded', props.depth == 2 && 'ps-4')}
           activeClass={'bg-bg-primary'}
           inactiveClass={'hover:bg-bg-subtle active:bg-bg-muted'}
