@@ -3,7 +3,7 @@ import { colorsPalette } from './colors-palette';
 export const colorsSemanticDark = {
   fg: {
     default: colorsPalette.gray[200],
-    emphasized: colorsPalette.gray[500],
+    emphasized: colorsPalette.black,
     muted: colorsPalette.gray[300],
     subtle: colorsPalette.gray[400],
 
@@ -20,9 +20,9 @@ export const colorsSemanticDark = {
     accent: colorsPalette.blue[800],
 
     primary: {
-      DEFAULT: colorsPalette.blue[900],
-      hovered: colorsPalette.blue[800],
-      pressed: colorsPalette.blue[700],
+      DEFAULT: colorsPalette.blue[800],
+      hovered: colorsPalette.blue[700],
+      pressed: colorsPalette.blue[600],
       emphasis: {
         DEFAULT: colorsPalette.blue[300],
         hovered: colorsPalette.blue[200],
@@ -31,9 +31,9 @@ export const colorsSemanticDark = {
     },
 
     neutral: {
-      DEFAULT: colorsPalette.gray[900],
-      hovered: colorsPalette.gray[800],
-      pressed: colorsPalette.gray[700],
+      DEFAULT: colorsPalette.gray[800],
+      hovered: colorsPalette.gray[700],
+      pressed: colorsPalette.gray[600],
       emphasis: {
         DEFAULT: colorsPalette.gray[300],
         hovered: colorsPalette.gray[200],
@@ -42,9 +42,9 @@ export const colorsSemanticDark = {
     },
 
     success: {
-      DEFAULT: colorsPalette.green[900],
-      hovered: colorsPalette.green[800],
-      pressed: colorsPalette.green[700],
+      DEFAULT: colorsPalette.green[800],
+      hovered: colorsPalette.green[700],
+      pressed: colorsPalette.green[600],
       emphasis: {
         DEFAULT: colorsPalette.green[300],
         hovered: colorsPalette.green[200],
@@ -53,9 +53,9 @@ export const colorsSemanticDark = {
     },
 
     warning: {
-      DEFAULT: colorsPalette.yellow[900],
-      hovered: colorsPalette.yellow[800],
-      pressed: colorsPalette.yellow[700],
+      DEFAULT: colorsPalette.yellow[800],
+      hovered: colorsPalette.yellow[700],
+      pressed: colorsPalette.yellow[600],
       emphasis: {
         DEFAULT: colorsPalette.yellow[300],
         hovered: colorsPalette.yellow[200],
@@ -64,9 +64,9 @@ export const colorsSemanticDark = {
     },
 
     danger: {
-      DEFAULT: colorsPalette.red[900],
-      hovered: colorsPalette.red[800],
-      pressed: colorsPalette.red[700],
+      DEFAULT: colorsPalette.red[800],
+      hovered: colorsPalette.red[700],
+      pressed: colorsPalette.red[600],
       emphasis: {
         DEFAULT: colorsPalette.red[300],
         hovered: colorsPalette.red[200],
