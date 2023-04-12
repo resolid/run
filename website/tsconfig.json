@@ -8,6 +8,7 @@
     "types": ["node", "vite/client"],
     "paths": {
       "~/*": ["./src/*"],
+      "@resolid/prism": ["../packages/prism/src"],
       "@resolid/ui": ["../packages/ui/src"],
       "@resolid/utils": ["../packages/utils/src"]
     }

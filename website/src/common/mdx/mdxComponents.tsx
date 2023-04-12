@@ -1,6 +1,9 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { HelmetTitle } from '@resolid/run';
 import { cx } from '@resolid/utils';
 import { splitProps, type ComponentProps } from 'solid-js';
+import { MdxCode } from '~/common/mdx/MdxPreCode';
 
 export const mdxComponents = (module: string) => {
   return {
@@ -80,19 +83,11 @@ export const mdxComponents = (module: string) => {
         </p>
       );
     },
+    code: (props: ComponentProps<'code'>) => {
+      return <MdxCode {...props} />;
+    },
     pre: (props: ComponentProps<'pre'>) => {
-      const [local, rest] = splitProps(props, ['class', 'children']);
-      return (
-        <pre
-          class={cx(
-            'scrollbar scrollbar-thin my-4 overflow-x-auto rounded bg-black px-4 py-3 font-mono text-white',
-            local.class
-          )}
-          {...rest}
-        >
-          {local.children}
-        </pre>
-      );
+      return <>{props.children}</>;
     },
     a: (props: ComponentProps<'a'>) => {
       const [local, rest] = splitProps(props, ['class', 'children']);

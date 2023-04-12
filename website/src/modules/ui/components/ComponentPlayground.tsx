@@ -1,6 +1,7 @@
 import type { JSXElement } from 'solid-js';
 import { createEffect, For, Match, Show, Switch } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { CodeHighlight } from '~/common/components/CodeHighlight';
 import { Check } from '~/common/icons/Check';
 
 export type ComponentPlaygroundProps<ComponentProps> = {
@@ -49,9 +50,11 @@ export const ComponentPlayground = <T extends { [k: string]: any } = {}>(props: 
     <div class={'flex min-h-[20em] flex-col laptop:flex-row w-full rounded border'}>
       <div class={'flex flex-1 flex-col p-5'}>
         <div class={'m-auto flex-grow flex items-center'}>{props.preview(demoProps)}</div>
-        <pre class={'bg-black rounded text-fg-emphasized p-4 mt-6 overflow-x-auto scrollbar scrollbar-thin'}>
-          <code class={'text-xs'}>{props.snippet.replace(' {...props}', codePropsReplace())}</code>
-        </pre>
+        <CodeHighlight
+          class={'rounded mt-6 p-3 border overflow-x-auto scrollbar scrollbar-thin'}
+          language={'jsx'}
+          code={props.snippet.replace(' {...props}', codePropsReplace())}
+        />
       </div>
       <div class={'flex-shrink-0 gap-2 p-3 min-w-[15em] laptop:border-t-0 laptop:border-s border-t'}>
         <div>
