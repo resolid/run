@@ -1,5 +1,5 @@
-import type { Plugin, UserConfig } from 'vite';
 import type { GetModuleInfo, OutputOptions } from 'rollup';
+import type { Plugin, UserConfig } from 'vite';
 
 export type ManualChunksFunction = (id: string) => string | void | undefined | null;
 type ChunkOptions = { cache?: SplitChunkCache; manualChunks?: ManualChunksFunction };

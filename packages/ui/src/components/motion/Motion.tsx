@@ -1,11 +1,11 @@
-import type { MotionPreset } from './MotionPresets';
-import { MotionPresets } from './MotionPresets';
 import { splitProps, useContext } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import type { MotionEventHandlers, MotionOptions } from './types';
-import { ParentContext, PresenceContext } from './MotionContext';
-import { createMotionOneState } from './primitives';
 import { createPolymorphic, mergeRefs, mergeStyle } from '../../primitives';
+import { ParentContext, PresenceContext } from './MotionContext';
+import type { MotionPreset } from './MotionPresets';
+import { MotionPresets } from './MotionPresets';
+import { createMotionOneState } from './primitives';
+import type { MotionEventHandlers, MotionOptions } from './types';
 
 export type MotionComponentProps = {
   /**

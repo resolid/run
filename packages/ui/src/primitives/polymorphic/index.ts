@@ -1,5 +1,5 @@
-import { type Component, type ComponentProps, type JSX } from 'solid-js';
 import { type Merge } from '@resolid/utils';
+import { type Component, type ComponentProps, type JSX } from 'solid-js';
 
 type DOMElements = keyof JSX.IntrinsicElements;
 

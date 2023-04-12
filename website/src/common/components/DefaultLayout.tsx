@@ -1,6 +1,6 @@
 import type { PrimitiveProps } from '@resolid/ui';
-import { splitProps } from 'solid-js';
 import { cx } from '@resolid/utils';
+import { splitProps } from 'solid-js';
 
 export const DefaultLayout = (props: PrimitiveProps<'div'>) => {
   const [local, rest] = splitProps(props, ['class', 'children']);

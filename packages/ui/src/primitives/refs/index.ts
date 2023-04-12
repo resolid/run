@@ -1,4 +1,4 @@
-import { type Accessor, createMemo, type JSX } from 'solid-js';
+import { createMemo, type Accessor, type JSX } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
 export type Ref<T> = T | ((el: T) => void) | undefined;

@@ -1,6 +1,6 @@
+import { isString } from '@resolid/utils';
 import type { JSX } from 'solid-js';
 import { mergeProps, splitProps } from 'solid-js';
-import { isString } from '@resolid/utils';
 import type { Size } from '../../utils/types';
 
 export type IconProps = JSX.SvgSVGAttributes<SVGSVGElement> & { size?: Size | number };

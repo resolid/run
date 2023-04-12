@@ -1,5 +1,5 @@
-import { camelCase, pascalCase, slugify } from './index';
 import { describe, expect, test } from 'vitest';
+import { camelCase, pascalCase, slugify } from './index';
 
 describe('utils/string', () => {
   test('camelCase', () => {

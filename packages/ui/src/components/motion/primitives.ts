@@ -1,8 +1,8 @@
-import { type MotionOptions } from './types';
 import { createMotionState, createStyles, type MotionState } from '@motionone/dom';
-import { type PresenceState } from './MotionContext';
-import { type Accessor, createEffect, onCleanup, onMount } from 'solid-js';
 import { isFunction } from '@resolid/utils';
+import { createEffect, onCleanup, onMount, type Accessor } from 'solid-js';
+import { type PresenceState } from './MotionContext';
+import { type MotionOptions } from './types';
 
 export const onCompleteExit = (el: Element, fn: VoidFunction) => el.addEventListener('motioncomplete', fn);
 

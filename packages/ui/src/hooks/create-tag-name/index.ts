@@ -1,5 +1,5 @@
-import { type Accessor, type Component, createEffect, createSignal } from 'solid-js';
 import { isString } from '@resolid/utils';
+import { createEffect, createSignal, type Accessor, type Component } from 'solid-js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const stringOrUndefined = (value: any) => {

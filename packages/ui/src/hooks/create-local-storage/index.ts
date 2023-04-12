@@ -1,8 +1,8 @@
+import { runIfFn, type MaybeFunction } from '@resolid/utils';
 import type { Accessor, Setter } from 'solid-js';
 import { createEffect, createSignal } from 'solid-js';
-import { createEventListener } from '../create-event-listener';
-import { type MaybeFunction, runIfFn } from '@resolid/utils';
 import { isServer } from 'solid-js/web';
+import { createEventListener } from '../create-event-listener';
 
 export const createLocalStorage = <T>(key: string, initialValue: MaybeFunction<T>): [Accessor<T>, Setter<T>] => {
   const getStoredValue = () => {

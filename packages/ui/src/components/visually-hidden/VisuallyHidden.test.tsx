@@ -1,6 +1,6 @@
 import { testA11y, testRender } from '@resolid/tests';
-import { VisuallyHidden } from './VisuallyHidden';
 import { describe, expect, test } from 'vitest';
+import { VisuallyHidden } from './VisuallyHidden';
 
 describe('VisuallyHidden', () => {
   test('should render correctly', async () => {

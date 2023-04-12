@@ -1,11 +1,11 @@
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync, writeFileSync } from 'fs';
-import { rollup } from 'rollup';
+import type { ResolidRunAdapter } from '@resolid/run/vite';
 import common from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
-import type { ResolidRunAdapter } from '@resolid/run/vite';
+import { readFileSync, writeFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { rollup } from 'rollup';
+import { fileURLToPath } from 'url';
 
 export default function (): ResolidRunAdapter {
   return {

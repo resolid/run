@@ -1,7 +1,7 @@
 import type { RouteDefinition } from '@resolid/run';
 import { lazy } from 'solid-js';
-import { indexData } from '~/modules/home/views/Index.data';
 import docsSiteRoutes from '~/modules/docs/siteRoutes';
+import { indexData } from '~/modules/home/views/Index.data';
 import uiSiteRoutes from '~/modules/ui/siteRoutes';
 
 import NotFound from '~/portals/site/NotFound';

@@ -4,13 +4,13 @@
 
 import {
   $TRACK,
-  type Accessor,
   batch,
   createComputed,
   createMemo,
   createSignal,
   untrack,
   useTransition,
+  type Accessor,
 } from 'solid-js';
 import { isServer } from 'solid-js/web';
 

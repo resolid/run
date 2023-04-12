@@ -1,5 +1,5 @@
-import { createContext } from 'solid-js';
 import type { MotionState } from '@motionone/dom';
+import { createContext } from 'solid-js';
 
 export const ParentContext = createContext<MotionState>();
 

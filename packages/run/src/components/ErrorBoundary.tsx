@@ -1,10 +1,10 @@
 import {
-  createEffect,
   ErrorBoundary as ErrorBoundaryBase,
+  Show,
+  createEffect,
+  resetErrorBoundaries,
   type JSX,
   type ParentProps,
-  resetErrorBoundaries,
-  Show,
 } from 'solid-js';
 
 const ErrorMessage = (props: { error: Error }) => {

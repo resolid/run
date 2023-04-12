@@ -1,4 +1,4 @@
-import { createComponent, createContext, type JSX, mergeProps, type ParentProps, useContext } from 'solid-js';
+import { createComponent, createContext, mergeProps, useContext, type JSX, type ParentProps } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { HTMLElements, SVGElements } from './elements';
 

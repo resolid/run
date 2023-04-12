@@ -1,6 +1,6 @@
 import type { Accessor } from 'solid-js';
+import { unAccessor, type MaybeAccessor } from '../../primitives';
 import { createControllableBooleanSignal } from '../create-controllable-signal';
-import { type MaybeAccessor, unAccessor } from '../../primitives';
 
 export type CreateDisclosureStateProps = {
   opened?: MaybeAccessor<boolean | undefined>;

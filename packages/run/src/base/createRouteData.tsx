@@ -1,20 +1,20 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { createStore, reconcile, type ReconcileOptions, unwrap } from 'solid-js/store';
 import {
   createResource,
   onCleanup,
+  startTransition,
+  untrack,
   type Resource,
   type ResourceFetcher,
   type ResourceFetcherInfo,
   type ResourceOptions,
   type Signal,
-  startTransition,
-  untrack,
 } from 'solid-js';
-import { useNavigate } from '../components/Router';
-import { isRedirectResponse, LocationHeader } from './reponses';
+import { createStore, reconcile, unwrap, type ReconcileOptions } from 'solid-js/store';
 import { isServer } from 'solid-js/web';
+import { useNavigate } from '../components/Router';
+import { LocationHeader, isRedirectResponse } from './reponses';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type RouteDataEvent = {};

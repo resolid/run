@@ -49,7 +49,7 @@ export const ComponentPlayground = <T extends { [k: string]: any } = {}>(props: 
     <div class={'flex min-h-[20em] flex-col laptop:flex-row w-full rounded border'}>
       <div class={'flex flex-1 flex-col p-5'}>
         <div class={'m-auto flex-grow flex items-center'}>{props.preview(demoProps)}</div>
-        <pre class={'bg-black rounded text-fg-emphasized p-4 mt-6'}>
+        <pre class={'bg-black rounded text-fg-emphasized p-4 mt-6 overflow-x-auto scrollbar scrollbar-thin'}>
           <code class={'text-xs'}>{props.snippet.replace(' {...props}', codePropsReplace())}</code>
         </pre>
       </div>
@@ -73,7 +73,7 @@ export const ComponentPlayground = <T extends { [k: string]: any } = {}>(props: 
                   <Switch>
                     <Match when={prop.control == 'select'}>
                       <select
-                        class={'px-2 py-1.5 border rounded laptop:w-full w-auto'}
+                        class={'px-2 h-8 border rounded laptop:w-full w-auto'}
                         value={(propValue() || '') as string}
                         onChange={(e) => {
                           // @ts-expect-error Argument of type
@@ -92,7 +92,7 @@ export const ComponentPlayground = <T extends { [k: string]: any } = {}>(props: 
                             <button
                               title={option}
                               style={{ 'background-color': `rgb(var(--re-bg-${option}-emphasis)` }}
-                              class={'h-6 w-6 flex items-center justify-center rounded'}
+                              class={'w-8 h-8 flex items-center justify-center rounded'}
                               onClick={() => {
                                 // @ts-expect-error Argument of type
                                 setDemoProps(prop.propName, option);
@@ -101,7 +101,7 @@ export const ComponentPlayground = <T extends { [k: string]: any } = {}>(props: 
                               }}
                             >
                               <Show when={propValue() == option}>
-                                <Check class={'text-white dark:text-black'} size={'xs'} />
+                                <Check stroke-width={'3'} class={'text-white dark:text-black'} size={'xs'} />
                               </Show>
                             </button>
                           )}

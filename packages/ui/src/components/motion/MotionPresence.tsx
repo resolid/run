@@ -1,9 +1,9 @@
-import { type FlowComponent } from 'solid-js';
-import { ParentContext, PresenceContext } from './MotionContext';
-import { createSwitchTransition, resolveFirst } from '../../primitives';
 import { mountedStates } from '@motionone/dom';
-import { type MotionOptions } from './types';
+import { type FlowComponent } from 'solid-js';
+import { createSwitchTransition, resolveFirst } from '../../primitives';
+import { ParentContext, PresenceContext } from './MotionContext';
 import { onCompleteExit } from './primitives';
+import { type MotionOptions } from './types';
 
 export const MotionPresence: FlowComponent<{
   initial?: boolean;

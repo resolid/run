@@ -1,5 +1,5 @@
-import { join } from 'path';
 import { existsSync } from 'fs';
+import { join } from 'path';
 
 export const findAny = (path: string, name: string, extensions = ['.ts', '.tsx']) => {
   for (const extension of extensions) {

@@ -1,4 +1,4 @@
-import { type ComponentProps, createEffect, mergeProps, onCleanup, splitProps } from 'solid-js';
+import { createEffect, mergeProps, onCleanup, splitProps, type ComponentProps } from 'solid-js';
 
 export type FormAction<Data> = {
   action: string;

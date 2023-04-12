@@ -1,6 +1,6 @@
+import type { RollupCommonJSOptions, UserConfig } from 'vite';
 import type { Options as SolidViteOptions } from 'vite-plugin-solid';
 import type { ManualChunksFunction } from './plugins/split-chunk';
-import type { RollupCommonJSOptions, UserConfig } from 'vite';
 
 export type ResolidRunAdapter = {
   name: string;

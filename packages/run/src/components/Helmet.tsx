@@ -1,6 +1,6 @@
-import type { Component, ParentProps } from 'solid-js';
-import { createContext, createMemo, type JSX, useContext, children } from 'solid-js';
 import { Title } from '@solidjs/meta';
+import type { ParentProps } from 'solid-js';
+import { createContext, createMemo, useContext } from 'solid-js';
 
 type HelmetContextValue = {
   defaultTitle: string;

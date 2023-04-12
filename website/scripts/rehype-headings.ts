@@ -1,6 +1,6 @@
-import { visit } from 'unist-util-visit';
-import { parse } from 'acorn';
 import { slugify } from '@resolid/utils';
+import { parse } from 'acorn';
+import { visit } from 'unist-util-visit';
 
 const rehypeHeadings = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

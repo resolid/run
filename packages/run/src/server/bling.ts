@@ -1,13 +1,5 @@
 // From: https://github.com/TanStack/bling/blob/main/packages/bling/src/server.ts
 
-import type {
-  AnyFetchFn,
-  CreateFetcherFn,
-  Fetcher,
-  FetchFnCtx,
-  FetchFnCtxOptions,
-  FetchFnCtxWithRequest,
-} from '../base/types';
 import {
   ContentTypeHeader,
   createFetcher,
@@ -23,6 +15,14 @@ import {
   XResolidOrigin,
   XResolidResponseTypeHeader,
 } from '../base/reponses';
+import type {
+  AnyFetchFn,
+  CreateFetcherFn,
+  Fetcher,
+  FetchFnCtx,
+  FetchFnCtxOptions,
+  FetchFnCtxWithRequest,
+} from '../base/types';
 
 const serverImpl = (() => {
   throw new Error('Should be compiled away');

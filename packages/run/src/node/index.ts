@@ -1,8 +1,8 @@
+import { type IncomingHttpHeaders, type OutgoingHttpHeaders } from 'http';
+import { once } from 'node:events';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
-import { once } from 'node:events';
 import { splitCookiesString } from 'set-cookie-parser';
-import { type IncomingHttpHeaders, type OutgoingHttpHeaders } from 'http';
 
 export const getUrl = (req: IncomingMessage) => {
   const origin = req.headers.origin || `http://${req.headers.host}`;

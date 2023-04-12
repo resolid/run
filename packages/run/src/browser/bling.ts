@@ -2,14 +2,6 @@
 
 // From: https://github.com/TanStack/bling/blob/main/packages/bling/src/client.ts
 
-import type {
-  AnyFetchFn,
-  FetcherFn,
-  FetcherMethods,
-  FetchFnCtxOptions,
-  FetchFnCtxWithRequest,
-  FetchFnReturn,
-} from '../base/types';
 import {
   mergeFetchOpts,
   mergeRequestInits,
@@ -19,6 +11,14 @@ import {
   XResolidOrigin,
   XResolidResponseTypeHeader,
 } from '../base/reponses';
+import type {
+  AnyFetchFn,
+  FetcherFn,
+  FetcherMethods,
+  FetchFnCtxOptions,
+  FetchFnCtxWithRequest,
+  FetchFnReturn,
+} from '../base/types';
 
 export type CreateClientFetcherFn = <T extends AnyFetchFn>(fn: T, opts?: FetchFnCtxWithRequest) => ClientFetcher<T>;
 

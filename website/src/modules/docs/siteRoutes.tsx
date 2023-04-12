@@ -1,5 +1,5 @@
-import { lazy } from 'solid-js';
 import { Navigate, type RouteDefinition } from '@resolid/run';
+import { lazy } from 'solid-js';
 import { getPathname } from '~/common/utils/path';
 import { documents } from './mdxDocuments';
 

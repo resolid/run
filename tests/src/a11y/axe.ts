@@ -1,7 +1,7 @@
-import { AxeResults, configure, type ImpactValue, type Result, run, type RunOptions, type Spec } from 'axe-core';
-import { matcherHint, mount, printReceived } from './utils';
-import { merge } from 'lodash-es';
+import { AxeResults, configure, run, type ImpactValue, type Result, type RunOptions, type Spec } from 'axe-core';
 import chalk from 'chalk';
+import { merge } from 'lodash-es';
+import { matcherHint, mount, printReceived } from './utils';
 
 export type AxeConfigureOptions = RunOptions & { globalOptions?: Spec };
 

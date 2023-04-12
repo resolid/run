@@ -1,11 +1,11 @@
 import {
   A as BaseA,
-  type LinkProps,
   Outlet as BaseOutlet,
   Router as BaseRouter,
   Routes as BaseRoutes,
   useLocation as useBaseLocation,
   useNavigate as useBaseNavigate,
+  type LinkProps,
 } from '@solidjs/router';
 
 // noinspection JSUnusedGlobalSymbols

@@ -1,6 +1,6 @@
 import { MetaProvider } from '@solidjs/meta';
-import { Router } from '../components/Router';
 import { ssr } from 'solid-js/web';
+import { Router } from '../components/Router';
 import { RunContext, type RunContextValue } from '../components/RunContext';
 
 // @ts-expect-error Cannot find module

@@ -1,14 +1,14 @@
-import { Outlet, useLocation } from '@resolid/run';
 import { MDXProvider } from '@resolid/mdx';
-import { AsideLayoutSide } from '~/common/components/AsideLayoutSide';
-import { menus } from './menus';
-import { mdxComponents } from './mdxComponents';
-import { TocLayout } from '~/common/mdx/TocLayout';
+import { Outlet, useLocation } from '@resolid/run';
+import { Suspense, createEffect, createSignal } from 'solid-js';
 import { AsideLayout } from '~/common/components/AsideLayout';
 import { AsideLayoutMain } from '~/common/components/AsideLayoutMain';
-import { headings } from './mdxDocuments';
-import { createEffect, createSignal, Suspense } from 'solid-js';
+import { AsideLayoutSide } from '~/common/components/AsideLayoutSide';
+import { TocLayout } from '~/common/mdx/TocLayout';
 import { type TocItem } from '~/common/mdx/TocSection';
+import { mdxComponents } from './mdxComponents';
+import { headings } from './mdxDocuments';
+import { menus } from './menus';
 
 export default function Layout() {
   const location = useLocation();

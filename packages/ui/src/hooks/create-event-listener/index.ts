@@ -1,7 +1,7 @@
-import { createEffect, createRenderEffect } from 'solid-js';
-import { type MaybeAccessor, tryOnCleanup, unAccessor } from '../../primitives';
 import { asArray, isFunction, type Many } from '@resolid/utils';
+import { createEffect, createRenderEffect } from 'solid-js';
 import { isServer } from 'solid-js/web';
+import { tryOnCleanup, unAccessor, type MaybeAccessor } from '../../primitives';
 
 export type TargetWithEventMap = Window | Document | HTMLElement | MediaQueryList;
 

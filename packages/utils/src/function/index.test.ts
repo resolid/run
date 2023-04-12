@@ -1,5 +1,5 @@
-import { runIfFn } from './index';
 import { describe, expect, test } from 'vitest';
+import { runIfFn } from './index';
 
 describe('utils/function', () => {
   test('should pass through a non function value', () => {

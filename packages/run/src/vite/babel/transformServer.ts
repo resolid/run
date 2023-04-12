@@ -1,6 +1,6 @@
+import type * as Babel from '@babel/core';
 import crypto from 'crypto';
 import nodePath from 'path';
-import type * as Babel from '@babel/core';
 
 const INLINE_SERVER_ROUTE_PREFIX = '/_m';
 
