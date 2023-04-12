@@ -1,6 +1,7 @@
 {
   "name": "@resolid/mdx",
   "version": "0.1.1",
+  "description": "MDX support for SolidJS",
   "sideEffects": false,
   "type": "module",
   "publishConfig": {
