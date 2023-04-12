@@ -73,8 +73,8 @@ importers:
         specifier: workspace:*
         version: link:../../run
       '@rollup/plugin-commonjs':
-        specifier: ^24.0.1
-        version: 24.0.1(rollup@3.20.2)
+        specifier: ^24.1.0
+        version: 24.1.0(rollup@3.20.2)
       '@rollup/plugin-json':
         specifier: ^6.0.0
         version: 6.0.0(rollup@3.20.2)
@@ -96,6 +96,15 @@ importers:
       solid-js:
         specifier: ^1.7.3
         version: 1.7.3
+
+  packages/prism:
+    devDependencies:
+      solid-js:
+        specifier: ^1.7.3
+        version: 1.7.3
+      tsup-preset-solid:
+        specifier: ^0.1.8
+        version: 0.1.8(esbuild@0.17.16)(solid-js@1.7.3)(tsup@6.7.0)
 
   packages/run:
     devDependencies:
@@ -232,6 +241,9 @@ importers:
       '@resolid/mdx':
         specifier: workspace:*
         version: link:../packages/mdx
+      '@resolid/prism':
+        specifier: workspace:*
+        version: link:../packages/prism
       '@resolid/run':
         specifier: workspace:*
         version: link:../packages/run
@@ -1285,8 +1297,8 @@ packages:
     resolution: {integrity: sha512-0alKtnxhNB5hYU+ymESBlGI4b9XrGGSdv7Ud+8TE/fBNOEhIud0XQsAR+TrvUZgS4na5czubiMsODw0TUrgkIA==}
     requiresBuild: true
 
-  /@rollup/plugin-commonjs@24.0.1(rollup@3.20.2):
-    resolution: {integrity: sha512-15LsiWRZk4eOGqvrJyu3z3DaBu5BhXIMeWnijSRvd8irrrg9SHpQ1pH+BUK4H6Z9wL9yOxZJMTLU+Au86XHxow==}
+  /@rollup/plugin-commonjs@24.1.0(rollup@3.20.2):
+    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -2070,7 +2082,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001477
+      caniuse-lite: 1.0.30001478
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2155,8 +2167,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001477
-      electron-to-chromium: 1.4.357
+      caniuse-lite: 1.0.30001478
+      electron-to-chromium: 1.4.359
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10(browserslist@4.21.5)
     dev: true
@@ -2211,8 +2223,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite@1.0.30001477:
-    resolution: {integrity: sha512-lZim4iUHhGcy5p+Ri/G7m84hJwncj+Kz7S5aD4hoQfslKZJgt0tHc/hafVbqHC5bbhHb+mrW2JOUHkI5KH7toQ==}
+  /caniuse-lite@1.0.30001478:
+    resolution: {integrity: sha512-gMhDyXGItTHipJj2ApIvR+iVB5hd0KP3svMWWXDvZOmjzJJassGLMfxRkQCSYgGd2gtdL/ReeiyvMSFD1Ss6Mw==}
     dev: true
 
   /ccount@2.0.1:
@@ -2692,8 +2704,8 @@ packages:
       zrender: 5.4.3
     dev: true
 
-  /electron-to-chromium@1.4.357:
-    resolution: {integrity: sha512-UTkCbNTAcGXABmEnQrGcW4m3cG6fcyBfD4KDF0iyEAlbrGZiY9dmslyDAGOD1Kr5biN2F743Y30aRCOtau35Vw==}
+  /electron-to-chromium@1.4.359:
+    resolution: {integrity: sha512-OoVcngKCIuNXtZnsYoqlCvr0Cf3NIPzDIgwUfI9bdTFjXCrr79lI0kwQstLPZ7WhCezLlGksZk/BFAzoXC7GDw==}
     dev: true
 
   /emoji-regex@8.0.0:

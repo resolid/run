@@ -28,7 +28,7 @@
   "dependencies": {},
   "devDependencies": {
     "@resolid/run": "workspace:*",
-    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "polka": "1.0.0-next.22",
