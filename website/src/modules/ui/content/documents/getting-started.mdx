@@ -4,6 +4,46 @@ Follow the steps below to quickly get started using the component library.
 
 ## Install
 
+Install Resolid UI base package by running either of the following:
+
 ```shell
-npm i @resolid/ui @resolid/tailwind
+## NPM
+npm install @resolid/ui
+## PNPM
+pnpm add @resolid/ui
+## Yarn
+yarn add @resolid/ui
 ```
+
+Install Resolid UI Tailwind CSS preset as a dev dependency by running either of the following:
+
+```shell
+## NPM
+npm install -D @resolid/tailwind
+## PNPM
+pnpm add -D @resolid/tailwind
+## Yarn
+yarn add -D @resolid/tailwind
+```
+
+## Adding the Tailwind CSS preset
+
+Make sure that you have [Tailwind CSS](https://tailwindcss.com/docs/guides/solidjs) installed, then inside the `tailwind.config.cjs` file:
+
+1. Add Resolid UI in the `content` array, in order to get the classes applied to the components.
+2. Require the preset for Tailwind CSS.
+
+```javascript
+module.exports = {
+  presets: [require('@resolid/tailwind')()],
+  content: [
+    './node_modules/@resolid/ui/dist/**/*.{js,cjs,mjs}',
+    './src/**/*.{html,js,jsx,ts,tsx,mdx}'
+  ],
+  theme: {},
+};
+```
+
+## Using the components
+
+Import the components you need and start building your application.

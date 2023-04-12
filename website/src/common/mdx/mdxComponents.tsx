@@ -38,7 +38,7 @@ export const mdxComponents = (module: string) => {
       const [local, rest] = splitProps(props, ['id', 'class', 'children']);
 
       return (
-        <h3 id={local.id} class={cx('group mb-3 mt-6 scroll-mt-24 text-xl font-medium', local.class)} {...rest}>
+        <h3 id={local.id} class={cx('group mb-3 mt-6 scroll-mt-24 text-lg font-medium', local.class)} {...rest}>
           {local.children}
           <a
             tabIndex={-1}

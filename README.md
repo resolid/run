@@ -26,6 +26,10 @@
 - [Tailwind CSS](https://tailwindcss.com)
 - [TypeScript](https://www.typescriptlang.org) first
 
+## Website
+
+visit [run.resolid.tech](https://run.resolid.tech).
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to develop resolid locally.

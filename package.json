@@ -41,7 +41,7 @@
       "eslint --cache --fix",
       "prettier --write"
     ],
-    "*.{json,md,mdx,html,css}": "prettier --write"
+    "*.{json,html,css}": "prettier --write"
   },
   "engines": {
     "node": ">=18"
