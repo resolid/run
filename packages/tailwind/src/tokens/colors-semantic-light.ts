@@ -7,7 +7,7 @@ export const colorsSemanticLight = {
     muted: colorsPalette.gray[800],
     subtle: colorsPalette.gray[700],
 
-    primary: colorsPalette.blue[700],
+    primary: colorsPalette.blue[800],
     success: colorsPalette.green[800],
     warning: colorsPalette.yellow[800],
     danger: colorsPalette.red[800],
@@ -16,7 +16,6 @@ export const colorsSemanticLight = {
     default: colorsPalette.white,
     muted: colorsPalette.gray[200],
     subtle: colorsPalette.gray[100],
-    accent: colorsPalette.blue[50],
 
     primary: {
       DEFAULT: colorsPalette.blue[50],

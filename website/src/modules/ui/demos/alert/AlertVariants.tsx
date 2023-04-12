@@ -5,7 +5,7 @@ export const Demo = () => {
   return (
     <ComponentExample
       preview={() => (
-        <div class={'flex flex-col justify-center gap-3'}>
+        <div class={'flex flex-col gap-3'}>
           <Alert class={'w-full'}>
             <AlertTitle>Alert Title</AlertTitle>
             <AlertDescription>Alert Description</AlertDescription>
@@ -20,7 +20,7 @@ export const Demo = () => {
           </Alert>
         </div>
       )}
-      snippet={`<div class={'flex flex-col justify-center gap-3'}>
+      snippet={`<div class={'flex flex-col gap-3'}>
   <Alert class={'w-full'}>
     <AlertTitle>Alert Title</AlertTitle>
     <AlertDescription>Alert Description</AlertDescription>
