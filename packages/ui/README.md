@@ -16,3 +16,7 @@ yarn add @resolid/ui
 ## Documentation
 
 For full documentation, visit [run.resolid.tech/ui](https://run.resolid.tech/ui).
+
+## Acknowledgment
+
+- [Solid Primitives](https://github.com/solidjs-community/solid-primitives)

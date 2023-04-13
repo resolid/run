@@ -23,14 +23,6 @@ export const mdxComponents = (module: string) => {
       return (
         <h2 id={local.id} class={cx('group mb-3 mt-6 scroll-mt-24 text-xl font-bold', local.class)} {...rest}>
           {local.children}
-          <a
-            tabIndex={-1}
-            class={'ms-2 text-green-500 opacity-0 transition-opacity group-hover:opacity-100'}
-            aria-hidden={true}
-            href={`#${local.id}`}
-          >
-            #
-          </a>
         </h2>
       );
     },
@@ -40,14 +32,6 @@ export const mdxComponents = (module: string) => {
       return (
         <h3 id={local.id} class={cx('group mb-3 mt-6 scroll-mt-24 text-lg font-medium', local.class)} {...rest}>
           {local.children}
-          <a
-            tabIndex={-1}
-            class={'ml-2 text-green-500 opacity-0 transition-opacity group-hover:opacity-100'}
-            aria-hidden={true}
-            href={`#${local.id}`}
-          >
-            #
-          </a>
         </h3>
       );
     },

@@ -57,7 +57,7 @@ export const ComponentPlayground = <T extends { [k: string]: any } = {}>(props: 
         />
       </div>
       <div class={'flex-shrink-0 gap-2 p-3 min-w-[15em] laptop:border-t-0 laptop:border-s border-t'}>
-        <div>
+        <div class={'flex justify-between'}>
           <h3 class={'font-medium text-lg mb-3'}>Playground</h3>
         </div>
         <div class={'flex flex-col gap-2'}>

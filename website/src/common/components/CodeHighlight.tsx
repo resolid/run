@@ -15,29 +15,14 @@ export const CodeHighlight = (props: CodeHighlightProps) => {
 
   const { darkMode } = useColorMode();
 
-  const code = () => {
-    return props.code?.replace(/\n$/, '') || '';
-  };
-
   return (
-    <Highlight code={code()} theme={darkMode() ? nightOwl : nightOwlLight} language={local.language} prism={Prism}>
+    <Highlight
+      code={props.code?.replace(/\n$/, '')}
+      theme={darkMode() ? nightOwl : nightOwlLight}
+      language={local.language}
+      prism={Prism}
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        const children = (
-          <For each={tokens}>
-            {(line) => {
-              return (
-                <div {...getLineProps({ line })}>
-                  <For each={line}>
-                    {(token) => {
-                      return <span {...getTokenProps({ token })} />;
-                    }}
-                  </For>
-                </div>
-              );
-            }}
-          </For>
-        );
-
         return (
           <pre
             translate={'no'}
@@ -45,7 +30,19 @@ export const CodeHighlight = (props: CodeHighlightProps) => {
             style={style}
             {...rest}
           >
-            {children}
+            <For each={tokens}>
+              {(line) => {
+                return (
+                  <div {...getLineProps({ line })}>
+                    <For each={line}>
+                      {(token) => {
+                        return <span {...getTokenProps({ token })} />;
+                      }}
+                    </For>
+                  </div>
+                );
+              }}
+            </For>
           </pre>
         );
       }}

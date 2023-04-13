@@ -1,18 +1,16 @@
 import { lazy, type JSXElement } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
 
 export const demos = import.meta.glob<boolean, string, { Demo: () => JSXElement }>('../demos/**/*.tsx');
 
 export const MdxDemo = (props: { demo: string }) => {
-  const demo = () => {
-    const path = `../demos/${props.demo}`;
-
-    return lazy(async () => {
-      const module = await demos[path]();
-
-      return { default: module.Demo };
+  const DemoComponent = lazy(() => {
+    // eslint-disable-next-line solid/reactivity
+    return new Promise<{ default: () => JSXElement }>((resolve) => {
+      demos[`../demos/${props.demo}`]().then((module) => {
+        resolve({ default: module.Demo });
+      });
     });
-  };
+  });
 
-  return <Dynamic component={demo()} />;
+  return <DemoComponent />;
 };
