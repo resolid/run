@@ -1,4 +1,4 @@
-import { A, Outlet } from '@resolid/run';
+import { A, ErrorBoundary, Outlet } from '@resolid/run';
 import { useColorMode } from '@resolid/ui';
 import { cx } from '@resolid/utils';
 import { For, Show, Suspense, createSignal } from 'solid-js';
@@ -97,9 +97,11 @@ const SiteLayout = () => {
     <>
       <Header />
       <div class={'desktop:max-w-7xl mx-auto pt-16'}>
-        <Suspense>
-          <Outlet />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense>
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </>
   );
