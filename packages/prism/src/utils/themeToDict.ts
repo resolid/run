@@ -25,31 +25,42 @@ type PrismThemeEntry = {
   fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
   textDecorationLine?: 'none' | 'underline' | 'line-through' | 'underline line-through';
   opacity?: number;
-  [styleKey: string]: string | number | void;
+  [styleKey: string]: string | number | undefined;
+};
+
+const convertPrismThemeEntry = (entry: PrismThemeEntry): JSX.CSSProperties => {
+  const style: Record<string, string | number | undefined> = {};
+
+  for (const key in entry) {
+    style[key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()] = entry[key];
+  }
+
+  return style;
 };
 
 export const themeToDict = (theme: PrismTheme, language: Language): ThemeDict => {
   const { plain } = theme;
 
+  const plainStyle = convertPrismThemeEntry(plain);
+
   const base: ThemeDict = Object.create(null);
 
   const themeDict = theme.styles.reduce((acc, themeEntry) => {
     const { types, languages, style } = themeEntry;
+
     if (languages && !languages.includes(language)) {
       return acc;
     }
 
     types.forEach((type) => {
-      const accStyle = { ...acc[type], ...style };
-
-      acc[type] = accStyle as StyleObj;
+      acc[type] = { ...acc[type], ...convertPrismThemeEntry(style) };
     });
 
     return acc;
   }, base);
 
-  themeDict.root = plain as StyleObj;
-  themeDict.plain = { ...plain, backgroundColor: null } as StyleObj;
+  themeDict.root = plainStyle;
+  themeDict.plain = { ...plainStyle, 'background-color': undefined };
 
   return themeDict;
 };

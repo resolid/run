@@ -1,9 +1,9 @@
 import type { JSXElement } from 'solid-js';
-import { createMemo, createSignal } from 'solid-js';
+import { createMemo } from 'solid-js';
 import type { Language, PrismGrammar, PrismLib, PrismToken } from '../lib/types';
 import type { Token } from '../utils/normalizeTokens';
 import { normalizeTokens } from '../utils/normalizeTokens';
-import type { PrismTheme, StyleObj, ThemeDict } from '../utils/themeToDict';
+import type { PrismTheme, StyleObj } from '../utils/themeToDict';
 import { themeToDict } from '../utils/themeToDict';
 
 export type { PrismTheme, Language };
@@ -50,22 +50,8 @@ export type HighlightProps = {
 };
 
 export const Highlight = (props: HighlightProps): JSXElement => {
-  const [prevTheme, setPrevTheme] = createSignal<PrismTheme | undefined>(undefined);
-  const [prevLanguage, setPrevLanguage] = createSignal<Language | undefined>(undefined);
-  const [themeDict, setThemeDict] = createSignal<ThemeDict | undefined>(undefined);
-
   const getThemeDict = createMemo(() => {
-    if (themeDict() !== undefined && props.theme === prevTheme() && props.language === prevLanguage()) {
-      return themeDict();
-    }
-
-    setPrevTheme(props.theme);
-    setPrevLanguage(props.language);
-
-    const newThemeDict = props.theme ? themeToDict(props.theme, props.language) : undefined;
-    setThemeDict(newThemeDict);
-
-    return newThemeDict;
+    return props.theme ? themeToDict(props.theme, props.language) : undefined;
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
