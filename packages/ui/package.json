@@ -26,15 +26,15 @@
   },
   "dependencies": {
     "@resolid/utils": "workspace:*",
-    "class-variance-authority": "^0.5.2"
+    "class-variance-authority": "^0.6.0"
   },
   "devDependencies": {
-    "@floating-ui/dom": "^1.2.6",
+    "@floating-ui/dom": "^1.2.7",
     "@motionone/dom": "^10.15.5",
     "@motionone/types": "^10.15.1",
     "@resolid/tailwind": "workspace:*",
     "@resolid/tests": "workspace:*",
-    "solid-js": "^1.7.3",
+    "solid-js": "^1.7.5",
     "tsup-preset-solid": "^0.1.8",
     "vite-plugin-solid": "^2.7.0"
   },

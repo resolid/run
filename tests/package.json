@@ -8,15 +8,14 @@
     "@testing-library/dom": "^9.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
-    "axe-core": "^4.6.3",
+    "axe-core": "^4.7.0",
     "chalk": "^5.2.0",
-    "jsdom": "^21.1.1",
+    "jsdom": "^21.1.2",
     "lodash-es": "^4.17.21",
     "pretty-format": "^29.5.0"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.7",
-    "solid-js": "^1.7.3"
-  },
-  "peerDependencies": {}
+    "solid-js": "^1.7.5"
+  }
 }
